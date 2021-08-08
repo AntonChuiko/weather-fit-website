@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Fit Support</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div id="app">
+    <form action="https://formsubmit.co/5f1c011ccfa665e07d97cd65497c498d" method="POST" class="form">
+      <input type="hidden" name="_next" value="https://weatherfit.com/support/success.html">
+
+      <input type="email" name="email" placeholder="Email" class="form__email" required>
+      <textarea name="message" cols="30" rows="5" placeholder="Message" class="form__message" spellcheck="false"
+        required></textarea>
+      <input type="submit" class="form__button" value="Send">
+
+      <input type="hidden" name="_subject">
+    </form>
+  </div>
+
+  <script>
+    document.querySelector('input[name="_subject"]').value = `Weather Fit Support (Ticket #${Math.floor(Math.random() * (999999 - 100000) + 100000)})`;
+
+    const urlParamsNames = [
+      'system_version',
+      'device_model',
+      'app_version',
+      'id'
+    ];
+
+    const urlParams = new URL(window.location.href).searchParams;
+
+    urlParamsNames.forEach(paramName => {
+      const value = urlParams.get(paramName);
+      if (value) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.value = urlParams.get(paramName);
+        hiddenField.name = paramName;
+        document.querySelector('.form').appendChild(hiddenField);
+      }
+    });
+  </script>
+</body>
+
+</html>
