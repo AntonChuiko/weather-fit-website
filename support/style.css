@@ -60,11 +60,6 @@ body {
   color: #90a9be;
 }
 
-.form input:focus:invalid,
-.form textarea:focus:invalid {
-  border: 1px solid #ec547a;
-}
-
 .form .form__email {
   margin-bottom: 16px;
 }
