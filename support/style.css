@@ -52,6 +52,7 @@ body {
   line-height: 1.5;
   border: 1px solid #ffffff;
   appearance: none;
+  -webkit-appearance: none;
 }
 
 .form input::placeholder,
@@ -84,6 +85,7 @@ body {
   border-radius: 4px;
   outline: 0;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 
 .form .form__button--active {
