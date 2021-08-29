@@ -1,0 +1,2 @@
+RewriteEngine on
+ErrorDocument 404   https://weatherfit.com/404.html
