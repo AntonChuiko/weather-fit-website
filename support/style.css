@@ -19,14 +19,14 @@ a {
 }
 
 p {
-  padding: 16px 16px 0 16px;
+  padding: 20px 20px 0 20px;
   text-align: left;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 20px;
 }
 
 .form input,
