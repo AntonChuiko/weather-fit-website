@@ -1,34 +1,14 @@
-@font-face {
-  font-family: "Museo Sans";
-  src: url("./assets/fonts/museosans-500.woff2") format("woff2"),
-    url("./assets/fonts/museosans-500.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Museo Sans";
-  src: url("./assets/fonts/museosans-700.woff2") format("woff2"),
-    url("./assets/fonts/museosans-700.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  background: #f4f6f8;
-}
-
 #app {
-  font-family: "Museo Sans", Helvetica, Arial, sans-serif;
+  font-family: "SF Pro Text", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #111111;
   max-width: 568px;
   margin: 0 auto;
 }
@@ -41,23 +21,28 @@ body {
 
 .form input,
 .form textarea {
-  font-family: "Museo Sans";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   color: #111111;
-  border-radius: 4px;
+  border-radius: 12px;
   border: 0;
-  padding: 16px;
+  padding: 13px 18px;
   outline: 0;
   resize: none;
   line-height: 1.5;
-  border: 1px solid #ffffff;
+  border: 1px solid #E5E5EA;
   appearance: none;
   -webkit-appearance: none;
 }
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: #90a9be;
+  color: #8E8E93;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border: 1px solid #007AFF;
 }
 
 .form .form__email {
@@ -69,15 +54,15 @@ body {
 }
 
 .form .form__button {
-  font-family: "Museo Sans";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 16px;
   font-weight: 700;
-  padding: 18px;
+  padding: 13px 18px;
   text-align: center;
-  background: #3896f6;
+  background: #007AFF;
   color: #ffffff;
   border: 0;
-  border-radius: 4px;
+  border-radius: 12px;
   outline: 0;
   cursor: pointer;
   -webkit-appearance: none;
