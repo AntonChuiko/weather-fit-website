@@ -13,6 +13,16 @@
   margin: 0 auto;
 }
 
+a {
+  color: #007AFF;
+  text-decoration: none;
+}
+
+p {
+  padding: 16px 16px 0 16px;
+  text-align: left;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -49,6 +59,10 @@
   margin-bottom: 16px;
 }
 
+.form .form__name {
+  margin-bottom: 16px;
+}
+
 .form .form__message {
   margin-bottom: 20px;
 }
@@ -80,5 +94,5 @@
 
 .success p {
   margin-top: 16px;
-  font-weight: bold;
+  text-align: center;
 }
