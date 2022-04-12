@@ -82,6 +82,11 @@ p {
   -webkit-appearance: none;
 }
 
+.form .form__button:focus {
+  border: 0;
+  background: #0040DD;
+}
+
 .form .form__button--active {
   background-color: rgba(17, 17, 17, 0.2);
   cursor: default;
