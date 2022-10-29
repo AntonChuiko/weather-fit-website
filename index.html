@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Sat Oct 29 2022 12:21:25 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Sat Oct 29 2022 12:53:13 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6124de955f725e2a8cbfc69a" data-wf-site="6124de945f725e79a3bfc68a" lang="en">
 <head>
   <meta charset="utf-8">
@@ -28,9 +28,33 @@
 (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
 for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
 MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
-// Enabling the debug mode flag is useful during implementation,
-// but it's recommended you remove it for production
-mixpanel.init('a7e3e55d260afe151cf13deabcac5663', {debug: false}); 
+mixpanel.init("a7e3e55d260afe151cf13deabcac5663");
+</script>
+  <script type="text/javascript">
+mixpanel.track('page viewed', {
+    'page name' : document.title,
+    'url' : window.location.pathname
+});</script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '[data-tracker]', function(e) {
+      var trackData = $(this).data('tracker');
+      if (!trackData) { return; }
+      var tagData = ParseTagData.tagData(trackData);
+      if (!tagData.action || !tagData.label ) { return; }
+      Track.trackEvent('click', { action: tagData.action , label:  tagData.label });
+      });
+    var ParseTagData = { tagData : function ( data ) {
+      var tmpData = data.split("|");
+      if (tmpData.length !=2 ) { return ""; }
+      return { "action": tmpData[0] ,"label": tmpData[1] };
+      }
+    };
+    var Track= { trackEvent: function (eventType, data) {
+      mixpanel.track( data.action );
+      }
+    };
+  });
 </script>
   <meta property="og:url" content="https://weatherfit.com/">
   <meta name="twitter:card" content="summary_large_image">
@@ -50,7 +74,7 @@ mixpanel.init('a7e3e55d260afe151cf13deabcac5663', {debug: false});
         <div class="hero-text-wrapper">
           <h1>Wear the Right Outfit Every Day</h1>
           <div><strong class="bold-text">Weather Fit</strong> doesn’t forget about the main idea behind weather apps. The app doesn’t just tell people the weather but answers the oh-so difficult question, ‘what should I wear today?’ And does it in an accurate and beautiful way for free.</div>
-          <a href="https://apps.apple.com/app/apple-store/id1194408342" target="_blank" class="app-store-link w-inline-block"><img src="images/app-store.svg" loading="lazy" alt="Download on the App Store." class="app-store-image"></a>
+          <a data-tracker="TOP_APPSTORE|HOME" href="https://apps.apple.com/app/apple-store/id1194408342" target="_blank" class="app-store-link w-inline-block"><img src="images/app-store.svg" loading="lazy" alt="Download on the App Store." class="app-store-image"></a>
         </div>
       </div>
       <div class="_6-col _6-col-last"><img src="images/hero-image2x.jpg" width="540" srcset="images/hero-image2x-p-500.jpg 500w, images/hero-image2x-p-800.jpg 800w, images/hero-image2x-p-1080.jpg 1080w, images/hero-image2x.jpg 1160w" sizes="(max-width: 767px) 92vw, (max-width: 991px) 540px, 460px" alt="" class="hero-image"></div>
@@ -240,7 +264,7 @@ mixpanel.init('a7e3e55d260afe151cf13deabcac5663', {debug: false});
             <h2>Download Now for Free</h2>
             <p class="marginb-20">No more frustrating and mood-killing clothing considerations, no more raw, boring data. Get the app, shoot a glance at the screen, and go on with enjoying your days in comfy clothes without getting cold, hot, or wet.</p>
             <p>Try it for yourself. Get it free on iPhone and iPad.</p>
-            <a href="https://apps.apple.com/app/apple-store/id1194408342" target="_blank" class="app-store-link w-inline-block"><img src="images/app-store.svg" loading="lazy" alt="Download on the App Store." class="app-store-image"></a>
+            <a data-tracker="BOTTOM_APPSTORE|HOME" href="https://apps.apple.com/app/apple-store/id1194408342" target="_blank" class="app-store-link w-inline-block"><img src="images/app-store.svg" loading="lazy" alt="Download on the App Store." class="app-store-image"></a>
           </div>
         </div>
         <div class="_5-col _5-col-last"><img src="images/footer-image2x.jpg" width="316" srcset="images/footer-image2x-p-500.jpg 500w, images/footer-image2x.jpg 632w" sizes="(max-width: 479px) 84vw, 316px" alt="" class="footer-image"></div>
