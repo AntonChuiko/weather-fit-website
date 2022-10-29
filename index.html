@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Sun Jul 03 2022 17:14:52 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Sat Oct 29 2022 11:54:33 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6124de955f725e2a8cbfc69a" data-wf-site="6124de945f725e79a3bfc68a" lang="en">
 <head>
   <meta charset="utf-8">
@@ -24,6 +24,14 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
   <script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-Y268716VCV', {'anonymize_ip': false});</script>
+  <script type="text/javascript">
+(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+// Enabling the debug mode flag is useful during implementation,
+// but it's recommended you remove it for production
+mixpanel.init('a7e3e55d260afe151cf13deabcac5663', {debug: false}); 
+</script>
   <meta property="og:url" content="https://weatherfit.com/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@weatherfitapp">
@@ -45,13 +53,13 @@
           <a href="https://apps.apple.com/app/apple-store/id1194408342" target="_blank" class="app-store-link w-inline-block"><img src="images/app-store.svg" loading="lazy" alt="Download on the App Store." class="app-store-image"></a>
         </div>
       </div>
-      <div class="_6-col _6-col-last"><img src="images/hero-image2x.jpg" width="540" srcset="images/hero-image2x-p-500.jpeg 500w, images/hero-image2x-p-800.jpeg 800w, images/hero-image2x-p-1080.jpeg 1080w, images/hero-image2x.jpg 1160w" sizes="(max-width: 767px) 92vw, (max-width: 991px) 540px, 460px" alt="" class="hero-image"></div>
+      <div class="_6-col _6-col-last"><img src="images/hero-image2x.jpg" width="540" srcset="images/hero-image2x-p-500.jpg 500w, images/hero-image2x-p-800.jpg 800w, images/hero-image2x-p-1080.jpg 1080w, images/hero-image2x.jpg 1160w" sizes="(max-width: 767px) 92vw, (max-width: 991px) 540px, 460px" alt="" class="hero-image"></div>
     </div>
   </div>
   <div class="section wf-section">
     <div class="wrap w100-center">
       <div class="_5-col">
-        <div class="feature-image-wrapper"><img src="images/feature-image-12x.jpg" width="380" srcset="images/feature-image-12x-p-500.jpeg 500w, images/feature-image-12x.jpg 688w" sizes="(max-width: 479px) 84vw, 380px" alt="" class="feature-image"></div>
+        <div class="feature-image-wrapper"><img src="images/feature-image-12x.jpg" sizes="(max-width: 479px) 84vw, 344px" srcset="images/feature-image-12x-p-500.jpg 500w, images/feature-image-12x.jpg 688w" loading="lazy" width="344" alt="" class="feature-image"></div>
       </div>
       <div class="_1-col"></div>
       <div class="_6-col _6-col-last">
@@ -67,21 +75,21 @@
     <div class="wrap w100-center reverse">
       <div class="_6-col _6-col-last">
         <div class="feature-text-wrapper">
-          <p class="tagline green">Home Screen Widgets</p>
+          <p class="tagline green">Home &amp; Lock Screen Widgets</p>
           <h2>Forecast at Your Fingertips</h2>
-          <p>Get timely information about weather conditions and clothing suggestions at a glance with the weather widget. Ensure you are well-prepared for the weather by keeping an eye on the Home Screen on your iPhone and iPad.</p>
+          <p>Get timely information about weather conditions and clothing suggestions at a glance with the weather widget. Ensure you are well-prepared for the weather by keeping an eye on the Home or Lock Screen on your iPhone and iPad.</p>
         </div>
       </div>
       <div class="_1-col"></div>
       <div class="_5-col">
-        <div class="feature-image-wrapper"><img src="images/feature-image-22x.jpg" width="380" srcset="images/feature-image-22x-p-500.jpeg 500w, images/feature-image-22x.jpg 688w" sizes="(max-width: 479px) 84vw, 380px" alt="" class="feature-image"></div>
+        <div class="feature-image-wrapper"><img src="images/feature-image-22x.jpg" width="344" srcset="images/feature-image-22x-p-500.jpg 500w, images/feature-image-22x.jpg 688w" loading="lazy" sizes="(max-width: 479px) 84vw, 344px" alt="" class="feature-image"></div>
       </div>
     </div>
   </div>
   <div class="section wf-section">
     <div class="wrap w100-center">
       <div class="_5-col">
-        <div class="feature-image-wrapper"><img src="images/feature-image-32x.jpg" width="380" srcset="images/feature-image-32x-p-500.jpeg 500w, images/feature-image-32x.jpg 688w" sizes="(max-width: 479px) 84vw, 380px" alt="" class="feature-image"></div>
+        <div class="feature-image-wrapper"><img src="images/feature-image-32x.jpg" width="344" srcset="images/feature-image-32x-p-500.jpg 500w, images/feature-image-32x.jpg 688w" loading="lazy" sizes="(max-width: 479px) 84vw, 344px" alt="" class="feature-image"></div>
       </div>
       <div class="_1-col"></div>
       <div class="_6-col _6-col-last">
@@ -104,14 +112,14 @@
       </div>
       <div class="_1-col"></div>
       <div class="_5-col">
-        <div class="feature-image-wrapper"><img src="images/feature-image-42x.jpg" width="380" srcset="images/feature-image-42x-p-500.jpeg 500w, images/feature-image-42x.jpg 688w" sizes="(max-width: 479px) 84vw, 380px" alt="" class="feature-image"></div>
+        <div class="feature-image-wrapper"><img src="images/feature-image-42x.jpg" width="344" srcset="images/feature-image-42x-p-500.jpg 500w, images/feature-image-42x.jpg 688w" loading="lazy" sizes="(max-width: 479px) 84vw, 344px" alt="" class="feature-image"></div>
       </div>
     </div>
   </div>
   <div class="section wf-section">
     <div class="wrap w100-center">
       <div class="_5-col">
-        <div class="feature-image-wrapper"><img src="images/feature-image-52x.jpg" width="380" srcset="images/feature-image-52x-p-500.jpeg 500w, images/feature-image-52x.jpg 688w" sizes="(max-width: 479px) 84vw, 380px" alt="" class="feature-image"></div>
+        <div class="feature-image-wrapper"><img src="images/feature-image-52x.jpg" width="344" srcset="images/feature-image-52x-p-500.jpg 500w, images/feature-image-52x.jpg 688w" loading="lazy" sizes="(max-width: 479px) 84vw, 344px" alt="" class="feature-image"></div>
       </div>
       <div class="_1-col"></div>
       <div class="_6-col _6-col-last">
@@ -157,14 +165,14 @@
         </div>
         <div class="_4-col">
           <div class="feature-item-wrap">
-            <div class="feature-icon-wrap green-bg"><img src="images/theme.svg" loading="lazy" alt=""></div>
-            <p class="left-align">Light and smooth dark modes</p>
+            <div class="feature-icon-wrap green-bg"><img src="images/moon.svg" loading="lazy" alt=""></div>
+            <p class="left-align">Moon phases data</p>
           </div>
         </div>
         <div class="_4-col _4-col-last">
           <div class="feature-item-wrap">
             <div class="feature-icon-wrap mint-bg"><img src="images/localization-1.svg" loading="lazy" alt=""></div>
-            <p class="left-align">Available in 13 languages</p>
+            <p class="left-align">Available in 14 languages</p>
           </div>
         </div>
       </div>
@@ -209,9 +217,9 @@
         </div>
         <div class="_4-col">
           <div class="premium-feature-item-wrap">
-            <div class="feature-icon-wrap mint-bg"><img src="images/refresh.svg" loading="lazy" alt=""></div>
-            <h3 class="white-text left-align">More Frequent Widget Updates</h3>
-            <p class="left-align">Stay on top of the weather with the latest weather conditions.</p>
+            <div class="feature-icon-wrap mint-bg"><img src="images/source.svg" loading="lazy" alt=""></div>
+            <h3 class="white-text left-align">More Data Sources</h3>
+            <p class="left-align">Switch between sources to get a more accurate forecast.</p>
           </div>
         </div>
         <div class="_4-col _4-col-last">
@@ -235,7 +243,7 @@
             <a href="https://apps.apple.com/app/apple-store/id1194408342" target="_blank" class="app-store-link w-inline-block"><img src="images/app-store.svg" loading="lazy" alt="Download on the App Store." class="app-store-image"></a>
           </div>
         </div>
-        <div class="_5-col _5-col-last"><img src="images/footer-image2x.jpg" width="316" srcset="images/footer-image2x-p-500.jpeg 500w, images/footer-image2x.jpg 632w" sizes="(max-width: 479px) 84vw, 316px" alt="" class="footer-image"></div>
+        <div class="_5-col _5-col-last"><img src="images/footer-image2x.jpg" width="316" srcset="images/footer-image2x-p-500.jpg 500w, images/footer-image2x.jpg 632w" sizes="(max-width: 479px) 84vw, 316px" alt="" class="footer-image"></div>
       </div>
     </div>
   </div>
