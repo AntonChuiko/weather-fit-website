@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Sat Oct 29 2022 12:53:13 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Tue Nov 01 2022 05:36:21 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6124de955f725e2a8cbfc69a" data-wf-site="6124de945f725e79a3bfc68a" lang="en">
 <head>
   <meta charset="utf-8">
@@ -35,27 +35,6 @@ mixpanel.track('page viewed', {
     'page name' : document.title,
     'url' : window.location.pathname
 });</script>
-  <script type="text/javascript">
-  $(document).ready(function() {
-    $(document).on('click', '[data-tracker]', function(e) {
-      var trackData = $(this).data('tracker');
-      if (!trackData) { return; }
-      var tagData = ParseTagData.tagData(trackData);
-      if (!tagData.action || !tagData.label ) { return; }
-      Track.trackEvent('click', { action: tagData.action , label:  tagData.label });
-      });
-    var ParseTagData = { tagData : function ( data ) {
-      var tmpData = data.split("|");
-      if (tmpData.length !=2 ) { return ""; }
-      return { "action": tmpData[0] ,"label": tmpData[1] };
-      }
-    };
-    var Track= { trackEvent: function (eventType, data) {
-      mixpanel.track( data.action );
-      }
-    };
-  });
-</script>
   <meta property="og:url" content="https://weatherfit.com/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@weatherfitapp">
@@ -289,6 +268,27 @@ mixpanel.track('page viewed', {
 Webflow.push(function() {
   $('.copyright-year').text(new Date().getFullYear());
 });
+</script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '[data-tracker]', function(e) {
+      var trackData = $(this).data('tracker');
+      if (!trackData) { return; }
+      var tagData = ParseTagData.tagData(trackData);
+      if (!tagData.action || !tagData.label ) { return; }
+      Track.trackEvent('click', { action: tagData.action , label:  tagData.label });
+      });
+    var ParseTagData = { tagData : function ( data ) {
+      var tmpData = data.split("|");
+      if (tmpData.length !=2 ) { return ""; }
+      return { "action": tmpData[0] ,"label": tmpData[1] };
+      }
+    };
+    var Track= { trackEvent: function (eventType, data) {
+      mixpanel.track( data.action );
+      }
+    };
+  });
 </script>
 </body>
 </html>
