@@ -157,6 +157,19 @@ blockquote {
   align-items: center;
 }
 
+.wrap.w0-spcbetween {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 0px;
+  padding-bottom: 50px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 .wrap.w100-center {
   display: -webkit-box;
   display: -webkit-flex;
@@ -624,6 +637,19 @@ blockquote {
     text-align: center;
   }
 
+  .wrap.w0-spcbetween {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+  }
+
   .wrap.w100-center {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -853,6 +879,7 @@ blockquote {
   .footer-link {
     margin-bottom: 16px;
     margin-left: 0px;
+    display: block;
   }
 
   .hero-wrap.w100-center.reverse {
