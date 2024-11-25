@@ -79,7 +79,9 @@ p {
   border-radius: 12px;
   outline: 0;
   cursor: pointer;
+  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .form .form__button:focus {
