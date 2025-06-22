@@ -1,26 +1,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://weatherfit.com/</loc>
-        <lastmod>2025-04-29</lastmod>
+        <lastmod>2025-06-22</lastmod>
     </url>
     <url>
         <loc>https://weatherfit.com/terms-and-conditions.html</loc>
-        <lastmod>2024-12-16</lastmod>
+        <lastmod>2025-06-22</lastmod>
     </url>
     <url>
         <loc>https://weatherfit.com/privacy-policy.html</loc>
-        <lastmod>2024-12-16</lastmod>
+        <lastmod>2025-06-22</lastmod>
     </url>
     <url>
         <loc>https://weatherfit.com/press-kit.html</loc>
-        <lastmod>2024-09-24</lastmod>
+        <lastmod>2025-06-22</lastmod>
     </url>
     <url>
         <loc>https://weatherfit.com/de/</loc>
-        <lastmod>2024-09-24</lastmod>
+        <lastmod>2025-06-22</lastmod>
     </url>
     <url>
         <loc>https://weatherfit.com/zh-Hans/</loc>
-        <lastmod>2024-09-24</lastmod>
+        <lastmod>2025-06-22</lastmod>
+    </url>
+    <url>
+        <loc>https://weatherfit.com/faq.html</loc>
+        <lastmod>2025-06-22</lastmod>
     </url>
 </urlset>

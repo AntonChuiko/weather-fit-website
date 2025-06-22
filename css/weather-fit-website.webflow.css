@@ -29,7 +29,8 @@ h2 {
   letter-spacing: -0.02em;
 }
 
-h3 {
+h3,
+.faq-list h2 {
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: 'SF Pro Display', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -856,9 +857,9 @@ blockquote {
 
 
 
-.feature-image {
-  max-width: 70%;
-}
+  .feature-image {
+    max-width: 70%;
+  }
 
   .wrap.w100-center.reverse {
     padding-top: 20px;
@@ -888,3 +889,6 @@ blockquote {
   }
 }
 
+.faq-item {
+  margin-bottom: 40px;
+}
