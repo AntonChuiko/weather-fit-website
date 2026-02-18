@@ -1,0 +1,27 @@
+# Weather Fit
+
+> Weather Fit is an iOS weather app that answers the everyday question "what should I wear today?" It combines accurate weather forecasts with personalized outfit recommendations through a customizable character that dresses according to current and forecasted conditions. Available on iPhone, iPad, Apple Watch, and macOS.
+
+## App
+
+- [App Store](https://apps.apple.com/app/apple-store/id1194408342): Download Weather Fit for iPhone and iPad. Free with optional Premium subscription.
+
+## Website
+
+- [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather visualization.
+- [FAQ](https://weatherfit.com/faq.html): Frequently asked questions about Weather Fit features, subscription, and usage.
+- [Press Kit](https://weatherfit.com/press-kit.html): Media assets, app description, and press information.
+
+## Legal
+
+- [Privacy Policy](https://weatherfit.com/privacy-policy.html): How Weather Fit handles user data.
+- [Terms and Conditions](https://weatherfit.com/terms-and-conditions.html): Terms of use for Weather Fit.
+
+## Social
+
+- [X / Twitter](https://x.com/weatherfitapp)
+- [Instagram](https://www.instagram.com/weatherfitapp/)
+
+## Contact
+
+- Support and general inquiries: hi@weatherfit.com
