@@ -14,8 +14,8 @@
   --accent-warm:  #FFB341;
 
   /* Typography */
-  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
-  --font-text:    -apple-system, BlinkMacSystemFont, "SF Pro Text",    "Inter", system-ui, sans-serif;
+  --font-display: ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  --font-text:    ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Text",    system-ui, sans-serif;
 
   /* Fluid type scale */
   --fs-display: clamp(2.375rem, 5vw + 1.25rem, 4.5rem); /* 38px → 72px */
