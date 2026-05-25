@@ -20,6 +20,10 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 
 Pure static HTML/CSS/JS — no build step, no framework, no jQuery. GitHub Pages compatible.
 
+## Skills
+
+- Always invoke the `frontend-design` skill (https://claude.com/plugins/frontend-design) before doing any HTML/CSS/JS work on this site.
+
 ## Design
 
 - Mobile-first; two breakpoints only: `768px` and `1024px`
