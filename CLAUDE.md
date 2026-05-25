@@ -1,0 +1,36 @@
+# Weather Fit Website
+
+Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub Pages from the `master` branch.
+
+## Git workflow
+
+- **Never commit automatically.** Wait for the user to explicitly say to commit before running `git commit`. Do not stage files or propose commit messages unprompted.
+- Active development branch: `redesign`. Do not merge to `master` until all critical sub-pages are rebuilt (privacy-policy, terms-and-conditions, support, faq, de, zh-Hans, 404).
+- The live site serves from `master` — changes there deploy immediately to weatherfit.com.
+
+## Project structure
+
+- `index.html` — homepage (currently: hero section only; more sections added one at a time)
+- `css/styles.css` — single tokenized stylesheet; all design tokens are CSS custom properties on `:root`
+- `js/site.js` — minimal vanilla JS (Mixpanel click tracker only)
+- `images/` — active assets for the new site
+- `_archive/` — the previous Webflow-exported site; kept for reference, disallowed in robots.txt
+
+## Tech stack
+
+Pure static HTML/CSS/JS — no build step, no framework, no jQuery. GitHub Pages compatible.
+
+## Design
+
+- Mobile-first; two breakpoints only: `768px` and `1024px`
+- Flighty-inspired: clean white, near-black text, iOS system blue accent (`#007AFF`), sunshine warm accent (`#FFB341`)
+- Typography: SF Pro system stack via `-apple-system, BlinkMacSystemFont`
+- Fluid type using `clamp()`; spacing via CSS custom properties
+
+## Copy source
+
+New homepage copy lives at `_source/homepage-copy.md`. Use it as the authoritative text source for all sections.
+
+## Analytics
+
+Click events use `data-tracker="ACTION|LABEL"` attributes routed through `js/site.js`.
