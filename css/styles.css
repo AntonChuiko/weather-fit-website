@@ -517,3 +517,146 @@ button:focus-visible {
     animation: pulse-soft 2.4s ease-in-out 1200ms infinite;
   }
 }
+
+
+/* ============================================================
+   PIVOT — SECTION 4: THE PROBLEM → THE PROMISE
+   ============================================================ */
+.pivot {
+  padding-block: var(--sp-20);
+  text-align: center;
+  background: var(--bg);
+}
+
+.pivot__question {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 14ch;
+  margin: 0 auto var(--sp-6);
+}
+
+.pivot__problem {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 44ch;
+  margin: 0 auto var(--sp-12);
+}
+
+.pivot__forecast {
+  width: 176px;
+  background: var(--bg-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--sp-8) var(--sp-6) var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0;
+}
+
+.pivot__temp {
+  font-family: var(--font-display);
+  font-size: 3.25rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.pivot__caption {
+  font-family: var(--font-text);
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.pivot__cloud {
+  margin-top: var(--sp-2);
+  color: var(--text-muted);
+  opacity: 0.5;
+  line-height: 0;
+}
+
+.pivot__chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-text);
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 3px var(--sp-4);
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+/* Mobile: card above chip row */
+.pivot__mobile-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-12);
+}
+
+.pivot__chips-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  justify-content: center;
+}
+
+/* Desktop: absolute-positioned chip stage */
+.pivot__stage { display: none; }
+
+@media (min-width: 768px) {
+  .pivot__mobile-layout { display: none; }
+
+  .pivot__stage {
+    display: block;
+    position: relative;
+    width: 480px;
+    height: 360px;
+    margin: 0 auto var(--sp-12);
+  }
+
+  .pivot__stage .pivot__forecast {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .pivot__stage .pivot__chip { position: absolute; }
+
+  .pivot__chip--tl { top: 24px;    left: 24px;  transform: rotate(-3deg);  }
+  .pivot__chip--tr { top: 40px;    right: 24px; transform: rotate(2.5deg); }
+  .pivot__chip--bl { bottom: 36px; left: 24px;  transform: rotate(-2deg);  }
+  .pivot__chip--br { bottom: 24px; right: 24px; transform: rotate(3deg);   }
+}
+
+.pivot__rule {
+  width: 48px;
+  height: 2px;
+  background: var(--accent-warm);
+  border: none;
+  margin: 0 auto var(--sp-8);
+}
+
+.pivot__promise {
+  font-family: var(--font-text);
+  font-size: clamp(1rem, 0.8vw + 0.875rem, 1.1875rem);
+  color: var(--text);
+  max-width: 34ch;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.pivot__promise strong { font-weight: 600; }
