@@ -110,6 +110,21 @@ button:focus-visible {
 
 
 /* ============================================================
+   UTILITIES
+   ============================================================ */
+.placeholder {
+  width: 100%;
+  padding: var(--sp-12) var(--sp-8);
+  background: var(--bg-soft);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: var(--fs-eyebrow);
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+/* ============================================================
    BUTTONS
    ============================================================ */
 .btn {
@@ -189,10 +204,7 @@ button:focus-visible {
   text-align: center;
   padding-top: var(--sp-16);
   padding-bottom: var(--sp-8);
-  /* Subtle sky gradient behind the headline */
-  background:
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(0,122,255,0.04) 0%, transparent 70%),
-    var(--bg);
+  background: var(--bg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -260,16 +272,6 @@ button:focus-visible {
   box-shadow: var(--shadow-phone);
 }
 
-.placeholder {
-  width: 100%;
-  padding: var(--sp-12) var(--sp-8);
-  background: var(--bg-soft);
-  border-radius: var(--radius-md);
-  color: var(--text-muted);
-  font-size: var(--fs-eyebrow);
-  line-height: 1.6;
-  text-align: center;
-}
 
 @media (min-width: 768px) {
   .hero {
