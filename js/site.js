@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 const _sentinel = document.getElementById('header-sentinel');
 const _header = document.querySelector('.site-header');
 if (_sentinel && _header && 'IntersectionObserver' in window) {
@@ -5,6 +7,16 @@ if (_sentinel && _header && 'IntersectionObserver' in window) {
     ([entry]) => _header.classList.toggle('is-scrolled', !entry.isIntersecting),
     { threshold: 0 }
   ).observe(_sentinel);
+}
+
+if ('IntersectionObserver' in window) {
+  const _revealObs = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); _revealObs.unobserve(e.target); }
+    }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('[data-reveal]').forEach(el => _revealObs.observe(el));
 }
 
 document.addEventListener('click', (e) => {
