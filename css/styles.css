@@ -146,12 +146,12 @@ button:focus-visible {
 .btn-nav {
   font-size: 0.9375rem;
   font-weight: 500;
-  padding: 0.6875rem 1.25rem;
+  padding: 0 1.25rem;
+  height: 32px;
   border-radius: var(--radius-pill);
   background: var(--text);
   color: var(--bg);
   white-space: nowrap;
-  min-height: 44px;
 }
 
 .btn-appstore {
@@ -333,15 +333,14 @@ button:focus-visible {
 
 .hero__visual {
   margin-inline: auto;
-  max-width: 300px;
   margin-top: var(--sp-12);
+  display: flex;
+  justify-content: center;
 }
 
 .hero__visual img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-phone);
+  height: 360px;
+  width: auto;
 }
 
 
@@ -351,8 +350,8 @@ button:focus-visible {
     padding-bottom: var(--sp-12);
   }
 
-  .hero__visual {
-    max-width: 340px;
+  .hero__visual img {
+    height: 460px;
   }
 }
 
@@ -382,6 +381,10 @@ button:focus-visible {
 
   .hero__visual {
     margin-top: 0;
-    max-width: 100%;
+    justify-content: center;
+  }
+
+  .hero__visual img {
+    height: 540px;
   }
 }
