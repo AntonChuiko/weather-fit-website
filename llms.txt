@@ -8,14 +8,7 @@
 
 ## Website
 
-- [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather visualization.
-- [FAQ](https://weatherfit.com/faq.html): Frequently asked questions about Weather Fit features, subscription, and usage.
-- [Press Kit](https://weatherfit.com/press-kit.html): Media assets, app description, and press information.
-
-## Legal
-
-- [Privacy Policy](https://weatherfit.com/privacy-policy.html): How Weather Fit handles user data.
-- [Terms and Conditions](https://weatherfit.com/terms-and-conditions.html): Terms of use for Weather Fit.
+- [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather data.
 
 ## Social
 
