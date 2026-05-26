@@ -759,3 +759,100 @@ button:focus-visible {
 }
 
 .pivot__promise strong { font-weight: 600; }
+
+/* ─── SECTION 5 — HOW IT WORKS ──────────────────────────────────────────────── */
+
+.howto {
+  padding-block: var(--sp-20);
+  text-align: center;
+  background: var(--bg);
+}
+
+.howto__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+  margin: 0 auto var(--sp-12);
+}
+
+.howto__steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--sp-12);
+}
+
+.howto__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  text-align: center;
+}
+
+.howto__visual {
+  margin: 0 0 var(--sp-4);
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.howto__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.howto__number {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-pill);
+  line-height: 1;
+}
+
+.howto__step-title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 18ch;
+}
+
+.howto__step-body {
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 32ch;
+}
+
+@media (min-width: 768px) {
+  .howto .container { max-width: 1000px; }
+
+  .howto__steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-8);
+    align-items: start;
+  }
+
+  .howto__visual { max-width: 260px; }
+}
+
+@media (min-width: 1024px) {
+  .howto__steps { gap: var(--sp-12); }
+}
