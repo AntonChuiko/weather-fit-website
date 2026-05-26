@@ -14,9 +14,9 @@ if ('IntersectionObserver' in window) {
     (entries) => entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('is-visible'); _revealObs.unobserve(e.target); }
     }),
-    { threshold: 0.1 }
+    { threshold: 0.15 }
   );
-  document.querySelectorAll('[data-reveal]').forEach(el => _revealObs.observe(el));
+  document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(el => _revealObs.observe(el));
 
   const _chipObs = new IntersectionObserver(
     (entries) => entries.forEach(e => {

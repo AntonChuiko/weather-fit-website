@@ -419,16 +419,49 @@ button:focus-visible {
 
 
 /* ============================================================
-   SCROLL REVEAL UTILITY
+   SCROLL REVEAL SYSTEM
+   ----
+   Tier 2 — section reveal: every block past the fold uses
+            the same fade-up via [data-reveal]. Triggered at
+            ~15% intersection in js/site.js.
+
+   Tier 2.5 — internal stagger: add [data-reveal-stagger] to
+              a section to cascade its direct children at
+              100ms intervals (up to 8 children).
+
+   Tier 1 (hero load) and Tier 3 (bespoke moments like the
+   pivot chips) live in their own keyframe blocks.
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
+  /* Tier 2 — fade-up primitive */
   [data-reveal] {
-    transition: opacity 600ms ease, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      opacity   700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .js [data-reveal]:not(.is-visible) {
     opacity: 0;
     transform: translateY(16px);
   }
+
+  /* Tier 2.5 — staggered children inside a [data-reveal-stagger] parent */
+  [data-reveal-stagger] > * {
+    transition:
+      opacity   700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .js [data-reveal-stagger]:not(.is-visible) > * {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  [data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:   0ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: 100ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 200ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 300ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 400ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 500ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay: 600ms; }
+  [data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay: 700ms; }
 }
 
 
