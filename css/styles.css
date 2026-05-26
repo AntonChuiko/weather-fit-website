@@ -856,3 +856,100 @@ button:focus-visible {
 @media (min-width: 1024px) {
   .howto__steps { gap: var(--sp-12); }
 }
+
+/* ─── SECTION 6 — CORE FEATURES ─────────────────────────────────────────────── */
+
+.features {
+  padding-block: var(--sp-20);
+  background: var(--bg);
+}
+
+.features__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-align: center;
+  max-width: 22ch;
+  margin: 0 auto var(--sp-16);
+}
+
+.features__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.features__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-8);
+  text-align: center;
+}
+
+.features__visual {
+  margin: 0;
+  width: 100%;
+  max-width: 240px;
+  flex-shrink: 0;
+}
+
+.features__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.features__item-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 1.5vw + 1rem, 1.625rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0 0 var(--sp-3);
+  max-width: 24ch;
+}
+
+.features__item-body {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 40ch;
+}
+
+@media (min-width: 768px) {
+  .features .container { max-width: 1000px; }
+
+  .features__list { gap: var(--sp-20); }
+
+  .features__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--sp-12);
+    align-items: center;
+    text-align: left;
+  }
+
+  .features__visual { max-width: 280px; justify-self: center; }
+
+  /* Flip even rows: image moves to the right */
+  .features__item:nth-child(even) .features__visual { order: 2; }
+
+  .features__copy { max-width: 36ch; }
+
+  .features__item-title { max-width: 20ch; }
+}
+
+@media (min-width: 1024px) {
+  .features__list { gap: var(--sp-24); }
+
+  .features__item { column-gap: var(--sp-20); }
+
+  .features__visual { max-width: 320px; }
+}
