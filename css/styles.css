@@ -549,7 +549,7 @@ button:focus-visible {
 
 .pivot__forecast {
   width: 176px;
-  background: var(--bg-soft);
+  background: #2C90BE;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: var(--sp-8) var(--sp-6) var(--sp-6);
@@ -566,7 +566,7 @@ button:focus-visible {
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.03em;
-  color: var(--text);
+  color: #fff;
 }
 
 .pivot__caption {
@@ -578,9 +578,11 @@ button:focus-visible {
 
 .pivot__cloud {
   margin-top: var(--sp-2);
-  color: var(--text-muted);
-  opacity: 0.5;
   line-height: 0;
+}
+
+.pivot__cloud img {
+  display: block;
 }
 
 .pivot__chip {
@@ -613,6 +615,27 @@ button:focus-visible {
   justify-content: center;
 }
 
+/* Mobile chip entrance — slide up from card */
+.pivot__chips-mobile .pivot__chip {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.85);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.pivot__chips-mobile.chips-visible .pivot__chip { opacity: 1; transform: none; }
+.pivot__chips-mobile.chips-visible .pivot__chip:nth-child(1) { transition-delay: 0ms;   }
+.pivot__chips-mobile.chips-visible .pivot__chip:nth-child(2) { transition-delay: 150ms; }
+.pivot__chips-mobile.chips-visible .pivot__chip:nth-child(3) { transition-delay: 300ms; }
+.pivot__chips-mobile.chips-visible .pivot__chip:nth-child(4) { transition-delay: 450ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pivot__chips-mobile .pivot__chip,
+  .pivot__stage .pivot__chip { transition: none; opacity: 1; transform: none !important; }
+  .pivot__stage .pivot__chip--tl { transform: rotate(-3deg)  !important; }
+  .pivot__stage .pivot__chip--tr { transform: rotate(2.5deg) !important; }
+  .pivot__stage .pivot__chip--bl { transform: rotate(-2deg)  !important; }
+  .pivot__stage .pivot__chip--br { transform: rotate(3deg)   !important; }
+}
+
 /* Desktop: absolute-positioned chip stage */
 .pivot__stage { display: none; }
 
@@ -634,12 +657,23 @@ button:focus-visible {
     transform: translate(-50%, -50%);
   }
 
-  .pivot__stage .pivot__chip { position: absolute; }
+  .pivot__stage .pivot__chip {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
 
-  .pivot__chip--tl { top: 24px;    left: 24px;  transform: rotate(-3deg);  }
-  .pivot__chip--tr { top: 40px;    right: 24px; transform: rotate(2.5deg); }
-  .pivot__chip--bl { bottom: 36px; left: 24px;  transform: rotate(-2deg);  }
-  .pivot__chip--br { bottom: 24px; right: 24px; transform: rotate(3deg);   }
+  /* Hidden: chips start near the card center */
+  .pivot__chip--tl { top: 24px;    left: 24px;  transform: rotate(-3deg)  translate(70px, 50px)  scale(0.75); }
+  .pivot__chip--tr { top: 40px;    right: 24px; transform: rotate(2.5deg) translate(-70px, 50px) scale(0.75); }
+  .pivot__chip--bl { bottom: 36px; left: 24px;  transform: rotate(-2deg)  translate(70px, -50px) scale(0.75); }
+  .pivot__chip--br { bottom: 24px; right: 24px; transform: rotate(3deg)   translate(-70px,-50px) scale(0.75); }
+
+  /* Revealed: fly out to corners */
+  .pivot__stage.chips-visible .pivot__chip--tl { opacity: 1; transform: rotate(-3deg);  transition-delay: 0ms;   }
+  .pivot__stage.chips-visible .pivot__chip--tr { opacity: 1; transform: rotate(2.5deg); transition-delay: 150ms; }
+  .pivot__stage.chips-visible .pivot__chip--bl { opacity: 1; transform: rotate(-2deg);  transition-delay: 300ms; }
+  .pivot__stage.chips-visible .pivot__chip--br { opacity: 1; transform: rotate(3deg);   transition-delay: 450ms; }
 }
 
 .pivot__rule {

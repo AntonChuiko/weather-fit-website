@@ -17,6 +17,14 @@ if ('IntersectionObserver' in window) {
     { threshold: 0.1 }
   );
   document.querySelectorAll('[data-reveal]').forEach(el => _revealObs.observe(el));
+
+  const _chipObs = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('chips-visible'); _chipObs.unobserve(e.target); }
+    }),
+    { threshold: 0.6 }
+  );
+  document.querySelectorAll('.pivot__stage, .pivot__chips-mobile').forEach(el => _chipObs.observe(el));
 }
 
 document.addEventListener('click', (e) => {
