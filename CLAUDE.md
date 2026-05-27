@@ -8,6 +8,12 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 - Active development branch: `redesign`. Do not merge to `master` until all critical sub-pages are rebuilt (privacy-policy, terms-and-conditions, support, faq, de, zh-Hans, 404).
 - The live site serves from `master` — changes there deploy immediately to weatherfit.com.
 
+## Testing
+
+- **Never run or test pages.** Do not start dev servers (`python3 -m http.server`, `npx serve`, etc.), launch headless browsers, take screenshots, or attempt to drive the page. The user tests everything manually in their own browser and reports back.
+- Do not invoke the `run` or `verify` skills for this project.
+- When you finish a change, describe what you did and stop — let the user verify visually.
+
 ## Project structure
 
 - `index.html` — homepage (currently: hero section only; more sections added one at a time)
