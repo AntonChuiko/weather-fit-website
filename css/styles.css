@@ -1566,3 +1566,62 @@ summary:focus-visible {
   color: var(--text);
   font-weight: 600;
 }
+
+/* ==========================================================================
+   404 page
+   ========================================================================== */
+
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100svh - 60px);
+  padding-block: var(--sp-20);
+  text-align: center;
+}
+
+.not-found .container {
+  max-width: 520px;
+}
+
+.not-found__code {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 20vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  opacity: 0.07;
+  margin: 0 0 var(--sp-4);
+  user-select: none;
+}
+
+.not-found__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw + 1rem, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 var(--sp-4);
+}
+
+.not-found__body {
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  margin: 0 0 var(--sp-8);
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.not-found__btn-home {
+  font-size: 0.9375rem;
+  height: 40px;
+  padding: 0 1.25rem;
+}
