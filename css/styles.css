@@ -36,6 +36,9 @@
   --sp-20: 5rem;
   --sp-24: 6rem;
 
+  /* Shared layout */
+  --phone-col: 300px; /* two-column phone mockup column width (hero + final-cta) */
+
   /* Radii */
   --radius-sm:   8px;
   --radius-md:   12px;
@@ -402,7 +405,7 @@ summary:focus-visible {
   .hero .container {
     max-width: 1000px;
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr var(--phone-col);
     align-items: start;
     gap: var(--sp-16);
   }
@@ -1252,4 +1255,166 @@ summary:focus-visible {
 
 @media (min-width: 768px) {
   .faq .container { max-width: 640px; }
+}
+
+
+/* ─── SECTION 11 — FINAL CTA ─────────────────────────────────────────────── */
+
+.final-cta {
+  padding-block: var(--sp-20);
+  /* Static gradient — not animated, so no prefers-reduced-motion gate needed */
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 100%, rgba(255,179,65,0.10) 0%, transparent 70%),
+    var(--bg);
+  text-align: center;
+}
+
+.final-cta__visual {
+  margin: var(--sp-8) auto 0; /* was var(--sp-10) — token didn't exist in scale */
+  width: 100%;
+  max-width: 240px;
+}
+
+.final-cta__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.final-cta__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 20ch;
+  margin: 0 auto var(--sp-6);
+  text-wrap: balance;
+}
+
+.final-cta__body {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 40ch;
+  margin: 0 auto var(--sp-8);
+  text-wrap: pretty;
+}
+
+/* Tablet (≥ 768px) — still single column, wider padding */
+@media (min-width: 768px) {
+  .final-cta { padding-block: var(--sp-24); }
+}
+
+/* Desktop (≥ 1024px) — two columns: copy left, phone right */
+@media (min-width: 1024px) {
+  .final-cta { text-align: left; }
+
+  .final-cta .container { max-width: 1000px; }
+
+  /* Grid lives on the dedicated wrapper, not the layout utility (.container) */
+  .final-cta__grid {
+    display: grid;
+    grid-template-columns: 1fr var(--phone-col);
+    align-items: center;
+    gap: var(--sp-16);
+  }
+
+  .final-cta__content { padding-top: var(--sp-4); }
+
+  .final-cta__title {
+    margin-inline: 0;
+    max-width: none;
+  }
+
+  .final-cta__body {
+    margin-inline: 0;
+    max-width: 38ch;
+  }
+
+  .final-cta__visual {
+    margin: 0;
+    justify-self: center;
+    max-width: 300px;
+  }
+}
+
+
+/* ─── SITE FOOTER ────────────────────────────────────────────────────────── */
+
+.site-footer {
+  padding-block: var(--sp-12);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.site-footer .container { max-width: 1000px; }
+
+.site-footer__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-8);
+}
+
+.site-footer__logo img {
+  height: 24px;
+  width: auto;
+}
+
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: var(--sp-4);
+  row-gap: var(--sp-2);
+}
+
+.site-footer__nav a {
+  position: relative;
+  padding-right: var(--sp-4);
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+  line-height: 1.4;
+  transition: color 0.15s ease;
+}
+
+.site-footer__nav a:not(:last-child)::after {
+  content: '·';
+  display: none; /* hidden on mobile where nav wraps — shown at ≥768px */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+  color: var(--border);
+  pointer-events: none;
+}
+
+.site-footer__nav a:hover { color: var(--accent); }
+
+.site-footer__legal {
+  text-align: center;
+  font-size: var(--fs-micro);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.site-footer__legal p { margin: 0; }
+.site-footer__legal p + p { margin-top: var(--sp-1); }
+
+@media (min-width: 768px) {
+  .site-footer { padding-block: var(--sp-16); }
+
+  .site-footer__top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-footer__nav { justify-content: flex-end; }
+  .site-footer__nav a:not(:last-child)::after { display: block; }
+  .site-footer__legal { text-align: left; }
 }

@@ -131,6 +131,9 @@ if ('IntersectionObserver' in window) {
   });
 })();
 
+const _yearEl = document.querySelector('.copyright-year');
+if (_yearEl) _yearEl.textContent = new Date().getFullYear();
+
 document.addEventListener('click', (e) => {
   const el = e.target.closest('[data-tracker]');
   if (!el) return;

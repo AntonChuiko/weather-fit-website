@@ -511,11 +511,63 @@
       </div>
     </section>
 
-    <!-- SECTIONS 11, 12 will be added here, one at a time -->
+    <!-- SECTION 11 — FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="final-cta__grid" data-reveal-stagger>
+
+          <div class="final-cta__content">
+            <h2 class="final-cta__title">Tomorrow morning, you'll know exactly what to wear.</h2>
+            <p class="final-cta__body">
+              Weather Fit is free to download and takes about two minutes to set up.
+              Your character is waiting.
+            </p>
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="FINAL_CTA_APPSTORE|HOME">
+              <img src="images/app-store.svg" alt="Download on the App Store" width="156" height="44">
+            </a>
+          </div>
+
+          <figure class="final-cta__visual" aria-hidden="true">
+            <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12 will be added here -->
 
   </main>
 
-  <!-- FOOTER placeholder — will be rebuilt in a later pass -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="site-footer__top">
+        <a class="site-footer__logo" href="/" aria-label="Weather Fit home">
+          <img src="images/weather-fit-logo.webp" alt="Weather Fit" width="120" height="28">
+        </a>
+
+        <nav class="site-footer__nav" aria-label="Footer">
+          <a href="mailto:hi@weatherfit.com"                                  data-tracker="FOOTER_CONTACT|HOME">hi@weatherfit.com</a>
+          <a href="https://www.instagram.com/weatherfitapp/" target="_blank"  rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME">Instagram</a>
+          <a href="https://x.com/weatherfitapp"              target="_blank"  rel="noopener" data-tracker="FOOTER_X|HOME">X</a>
+          <a href="/privacy-policy"                                            data-tracker="FOOTER_PRIVACY|HOME">Privacy Policy</a>
+          <a href="/terms-of-use"                                              data-tracker="FOOTER_TERMS|HOME">Terms of Use</a>
+        </nav>
+      </div>
+
+      <div class="site-footer__legal">
+        <p>© <span class="copyright-year">2026</span> Weather Fit. All rights reserved.</p>
+        <p>Apple, iPhone, iPad, Apple Watch, and App Store are trademarks of Apple Inc.</p>
+        <p>Weather data provided by Apple Weather.</p>
+      </div>
+
+    </div>
+  </footer>
 
   <!-- Tracker -->
   <script src="js/site.js"></script>

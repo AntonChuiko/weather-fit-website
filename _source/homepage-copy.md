@@ -376,9 +376,6 @@ Weather Fit is free to download and takes about two minutes to set up. Your char
 **CTA button:**
 Download on the App Store  →  `[APP_STORE_URL]`
 
-**Micro-copy:**
-Free · iOS 16+ · No account required
-
 ---
 
 `[SCREENSHOT: Character from onboarding welcome screen — two characters under umbrella, village background. Warm, inviting.]`
