@@ -1261,12 +1261,14 @@ summary:focus-visible {
 /* ─── SECTION 11 — FINAL CTA ─────────────────────────────────────────────── */
 
 .final-cta {
-  padding-block: var(--sp-20);
+  padding-block-start: var(--sp-20);
+  padding-block-end: 0; /* image bleeds flush into footer */
   /* Static gradient — not animated, so no prefers-reduced-motion gate needed */
   background:
     radial-gradient(ellipse 90% 50% at 50% 100%, rgba(255,179,65,0.10) 0%, transparent 70%),
     var(--bg);
   text-align: center;
+  overflow: hidden; /* keep any overflow clean */
 }
 
 .final-cta__visual {
@@ -1302,9 +1304,9 @@ summary:focus-visible {
   text-wrap: pretty;
 }
 
-/* Tablet (≥ 768px) — still single column, wider padding */
+/* Tablet (≥ 768px) — still single column, wider top padding */
 @media (min-width: 768px) {
-  .final-cta { padding-block: var(--sp-24); }
+  .final-cta { padding-block-start: var(--sp-24); padding-block-end: 0; }
 }
 
 /* Desktop (≥ 1024px) — two columns: copy left, phone right */
@@ -1313,15 +1315,27 @@ summary:focus-visible {
 
   .final-cta .container { max-width: 1000px; }
 
-  /* Grid lives on the dedicated wrapper, not the layout utility (.container) */
+  /* Grid lives on the dedicated wrapper, not the layout utility (.container).
+     Visual column is sized explicitly (image is ~0.86 aspect — wider column
+     → taller image, so it can reach up to the heading's top edge). */
   .final-cta__grid {
     display: grid;
-    grid-template-columns: 1fr var(--phone-col);
-    align-items: center;
-    gap: var(--sp-16);
+    grid-template-columns: 1fr 460px;
+    align-items: end;          /* bottom-anchor the image to the section/footer edge */
+    gap: var(--sp-8);
   }
 
-  .final-cta__content { padding-top: var(--sp-4); }
+  /* Copy column: flex-center so the heading sits vertically opposite the image.
+     align-items: flex-start keeps the App Store button hugged to the left edge
+     instead of stretching full-width (and centring its badge image inside). */
+  .final-cta__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: var(--sp-4);
+    padding-bottom: var(--sp-20);
+  }
 
   .final-cta__title {
     margin-inline: 0;
@@ -1333,10 +1347,18 @@ summary:focus-visible {
     max-width: 38ch;
   }
 
+  /* Visual column: explicit width — drives the image height via aspect ratio */
   .final-cta__visual {
     margin: 0;
-    justify-self: center;
-    max-width: 300px;
+    width: 100%;
+    max-width: 460px;
+    justify-self: end;
+  }
+
+  .final-cta__visual img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
 
