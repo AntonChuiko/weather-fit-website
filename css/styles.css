@@ -1093,3 +1093,47 @@ button:focus-visible {
 @media (min-width: 1024px) {
   .widgets__col { max-width: 300px; }
 }
+
+
+/* ─── SECTION 8 — APPLE WATCH ───────────────────────────────────────────── */
+
+.watch {
+  padding-block: var(--sp-20);
+  background: var(--bg);
+  text-align: center;
+}
+
+.watch__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 26ch;
+  margin: 0 auto var(--sp-8);
+  text-wrap: balance;
+}
+
+.watch__lead {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 52ch;
+  margin: 0 auto var(--sp-12);
+  text-wrap: pretty;
+}
+
+.watch__visual {
+  max-width: 360px;
+  margin-inline: auto;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .watch .container { max-width: 1000px; }
+  .watch__visual { max-width: 480px; }
+}
