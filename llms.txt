@@ -10,6 +10,11 @@
 
 - [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather data.
 
+## Legal
+
+- [Privacy Policy](https://weatherfit.com/privacy-policy): How Weather Fit collects, uses, and safeguards user data.
+- [Terms of Use](https://weatherfit.com/terms-and-conditions): Terms governing use of the Weather Fit app, including subscriptions and intellectual property.
+
 ## Social
 
 - [X / Twitter](https://x.com/weatherfitapp)
