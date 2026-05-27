@@ -378,9 +378,30 @@ summary:focus-visible {
   justify-content: center;
 }
 
-.hero__visual img {
+.phone-bezel {
+  position: relative;
+  display: block;
   height: 360px;
-  width: auto;
+  aspect-ratio: 1800 / 3680;
+}
+
+.phone-bezel__screen {
+  position: absolute;
+  top: 2.5272%;
+  left: 5.3889%;
+  width: 89.2222%;
+  height: 94.9457%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 7%;
+}
+
+.phone-bezel__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 
@@ -390,7 +411,7 @@ summary:focus-visible {
     padding-bottom: var(--sp-12);
   }
 
-  .hero__visual img {
+  .phone-bezel {
     height: 460px;
   }
 }
@@ -432,7 +453,7 @@ summary:focus-visible {
     justify-content: center;
   }
 
-  .hero__visual img {
+  .phone-bezel {
     height: 540px;
   }
 }
