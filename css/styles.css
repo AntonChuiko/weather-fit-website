@@ -1625,3 +1625,121 @@ summary:focus-visible {
   height: 40px;
   padding: 0 1.25rem;
 }
+
+
+/* ============================================================
+   SUPPORT FORM  (chrome-less in-app WebView page)
+   ============================================================ */
+
+.support {
+  padding-block: var(--sp-12) var(--sp-16);
+  min-height: 100svh;
+}
+
+.support .container {
+  max-width: 560px;
+}
+
+.support__intro {
+  color: var(--text-muted);
+  margin-bottom: var(--sp-6);
+}
+
+.support__intro a {
+  color: var(--accent);
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+
+.support__intro a:hover {
+  opacity: 0.75;
+}
+
+/* Form layout */
+.support .form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+/* Inputs & textarea */
+.support .form input[type="text"],
+.support .form input[type="email"],
+.support .form textarea {
+  width: 100%;
+  font-family: var(--font-text);
+  font-size: 1rem; /* ≥16px prevents iOS auto-zoom on focus */
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 13px 18px;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  resize: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.support .form input[type="text"]::placeholder,
+.support .form input[type="email"]::placeholder,
+.support .form textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1; /* Firefox normalisation */
+}
+
+.support .form input[type="text"]:focus,
+.support .form input[type="email"]:focus,
+.support .form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
+}
+
+/* Submit button */
+.support .form__button {
+  width: 100%;
+  height: 48px;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  margin-top: var(--sp-2);
+}
+
+.support .form__button:hover  { opacity: 0.82; }
+.support .form__button:active { transform: scale(0.98); }
+
+.support .form__button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+/* Success confirmation — success.html */
+.support .success {
+  min-height: 80svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--sp-4);
+}
+
+.support .success img {
+  width: 88px;
+  height: 88px;
+}
+
+.support .success p {
+  color: var(--text-muted);
+}

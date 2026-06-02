@@ -5,7 +5,7 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 ## Git workflow
 
 - **Never commit automatically.** Wait for the user to explicitly say to commit before running `git commit`. Do not stage files or propose commit messages unprompted.
-- Active development branch: `redesign`. Do not merge to `master` until all critical sub-pages are rebuilt (privacy-policy, terms-and-conditions, support, faq, de, zh-Hans, 404).
+- Active development branch: `redesign`. Do not merge to `master` until all critical sub-pages are rebuilt (privacy-policy, terms-and-conditions, faq, de, zh-Hans, 404).
 - The live site serves from `master` — changes there deploy immediately to weatherfit.com.
 
 ## Testing
@@ -20,6 +20,7 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 - `css/styles.css` — single tokenized stylesheet; all design tokens are CSS custom properties on `:root`
 - `js/site.js` — minimal vanilla JS (Mixpanel click tracker only)
 - `images/` — active assets for the new site
+- `support/` — chrome-less in-app contact form loaded by the iOS app's WKWebView at `weatherfit.com/support/`; reuses the global `css/styles.css` (form styles in the "Support form" section); analytics-free, `noindex`
 - `_archive/` — the previous Webflow-exported site; kept for reference, disallowed in robots.txt
 
 ## Tech stack
