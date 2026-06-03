@@ -31,6 +31,115 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
 
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "email": "hi@weatherfit.com",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "applicationCategory": "Weather",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "description": "Weather Fit reads today's forecast and shows your character dressed for the weather. Know what to wear today, whether that's shorts, a jacket, or anything in between.",
+        "isAccessibleForFree": true,
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Free",
+            "price": "0",
+            "priceCurrency": "USD",
+            "category": "free"
+          },
+          {
+            "@type": "Offer",
+            "name": "Premium Monthly",
+            "price": "3.99",
+            "priceCurrency": "USD",
+            "category": "subscription",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "3.99",
+              "priceCurrency": "USD",
+              "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "MON" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Premium Yearly",
+            "price": "19.99",
+            "priceCurrency": "USD",
+            "category": "subscription",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "19.99",
+              "priceCurrency": "USD",
+              "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "ANN" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Premium Lifetime",
+            "price": "99.99",
+            "priceCurrency": "USD",
+            "category": "one-time purchase"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/press-kit#webpage",
+        "url": "https://weatherfit.com/press-kit",
+        "name": "Press Kit — Weather Fit",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://weatherfit.com/press-kit#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://weatherfit.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Press Kit", "item": "https://weatherfit.com/press-kit" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y268716VCV',{'anonymize_ip':true});</script>

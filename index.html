@@ -42,95 +42,68 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "Weather Fit",
-    "operatingSystem": "iOS",
-    "applicationCategory": "WeatherApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "category": "free",
-      "description": "Free to download with optional premium subscriptions available (monthly, yearly, and lifetime)."
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.64",
-      "reviewCount": "3590"
-    },
-    "author":    { "@type": "Person", "name": "Anton Chuiko" },
-    "publisher": { "@type": "Person", "name": "Anton Chuiko" },
-    "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
-    "description": "Weather Fit reads today's forecast and shows your character dressed for the weather. Know what to wear today, whether that's shorts, a jacket, or anything in between.",
-    "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt","zh-Hans","es","zh-Hant","tr","uk"],
-    "isAccessibleForFree": true
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "Is Weather Fit free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The core app is free with no time limit: forecasts, outfit recommendations, your character, and one home screen widget. The free version includes light in-app ads. Premium unlocks extra widgets, landscapes, the Apple Watch app, unlimited wardrobe items, and removes ads." }
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "email": "hi@weatherfit.com",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Why does Premium cost money?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Weather data is expensive, especially with frequent updates for widgets and Apple Watch complications. Weather Fit is built by a solo developer with no outside funding. The free tier is supported by light ads. A Premium subscription helps keep the app running, improving, and ad-free." }
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
       },
       {
-        "@type": "Question",
-        "name": "Does Weather Fit support Family Sharing?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. A Family Plan lets you share Premium with up to 5 family members through Apple Family Sharing." }
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
       },
       {
-        "@type": "Question",
-        "name": "What devices does it support?",
-        "acceptedAnswer": { "@type": "Answer", "text": "iPhone and iPad running iOS 16 or later. Apple Watch running watchOS 10 or later." }
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/#webpage",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit — What to Wear Today, Based on the Weather",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "inLanguage": "en"
       },
       {
-        "@type": "Question",
-        "name": "How accurate is the weather data?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit is powered by Apple Weather, the same forecast engine used in iOS. It provides hourly forecasts, 10-day outlooks, and minute-by-minute precipitation. Weather Maps use radar data from Rainbow.ai." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I cancel a subscription anytime?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can cancel anytime from the App Store in Settings → Subscriptions. You keep access to Premium until the end of your billing period." }
-      },
-      {
-        "@type": "Question",
-        "name": "What languages does the app support?",
-        "acceptedAnswer": { "@type": "Answer", "text": "14 languages: English, German, French, Spanish, Italian, Dutch, Polish, Portuguese (Brazil), Japanese, Korean, Simplified Chinese, Traditional Chinese, Turkish, and Ukrainian." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use Weather Fit for multiple cities?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Add as many locations as you like — home, work, cities you travel to. Each one gets its own landscape and character outfit." }
-      },
-      {
-        "@type": "Question",
-        "name": "Should I wear shorts today?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Open Weather Fit and your character will tell you. The app reads today’s temperature, factors in your personal comfort level, and shows you whether shorts are the right call — or whether you’ll want pants. It also covers tomorrow and the next 10 days, so no more guessing the night before." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need a jacket today?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit shows your character dressed for today’s weather. If a jacket is needed, your character is wearing one. If not, they’re not. No math, no second-guessing." }
-      },
-      {
-        "@type": "Question",
-        "name": "What should I wear today based on the weather?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit reads today’s forecast and dresses your character in clothes you actually own. You see the outfit before you leave the house — and it updates through the day as conditions change." }
-      },
-      {
-        "@type": "Question",
-        "name": "How does Weather Fit decide what to wear?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It combines today’s forecast with your wardrobe and a comfort level setting you control. If you run warm, you can shift the threshold so the app suggests lighter clothes. If you run cold, it layers up sooner. Your character only ever wears things from your wardrobe — not generic suggestions." }
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "applicationCategory": "Weather",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "installUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "screenshot": [
+          "https://weatherfit.com/images/screen-home.webp",
+          "https://weatherfit.com/images/watch-app.webp"
+        ],
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "description": "Weather Fit reads today's forecast and shows your character dressed for the weather. Know what to wear today, whether that's shorts, a jacket, or anything in between.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "16000" },
+        "author": { "@id": "https://weatherfit.com/#anton" },
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt-BR","es","zh-Hans","zh-Hant","tr","uk"],
+        "isAccessibleForFree": true
       }
     ]
   }

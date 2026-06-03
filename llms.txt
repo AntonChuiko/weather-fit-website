@@ -9,6 +9,7 @@
 ## Website
 
 - [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather data.
+- [FAQ](https://weatherfit.com/faq): Answers to common questions about pricing, devices, languages, subscriptions, and how outfit suggestions work.
 - [Press Kit](https://weatherfit.com/press-kit): Press resources including app highlights, pricing, media coverage, creator bio, and downloadable assets.
 
 ## Legal
