@@ -23,7 +23,7 @@ if ('IntersectionObserver' in window) {
     }),
     { threshold: 0.6 }
   );
-  document.querySelectorAll('.pivot__stage, .pivot__chips-mobile').forEach(el => _chipObs.observe(el));
+  document.querySelectorAll('.pivot__stage, .pivot__mobile-layout').forEach(el => _chipObs.observe(el));
 }
 
 // FAQ accordion — animates the <details> wrapper (not its content child).
@@ -130,6 +130,29 @@ if ('IntersectionObserver' in window) {
     });
   });
 })();
+
+if ('IntersectionObserver' in window) {
+  const _countEls = document.querySelectorAll('[data-count]');
+  if (_countEls.length) {
+    const _countObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        _countObs.unobserve(e.target);
+        const end = parseInt(e.target.dataset.count, 10);
+        const duration = 1200;
+        const start = performance.now();
+        function step(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          e.target.textContent = Math.round(eased * end);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.5 });
+    _countEls.forEach(el => _countObs.observe(el));
+  }
+}
 
 const _yearEl = document.querySelector('.copyright-year');
 if (_yearEl) _yearEl.textContent = new Date().getFullYear();

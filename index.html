@@ -131,14 +131,14 @@
   <header class="site-header">
     <div class="container">
       <a class="site-logo" href="/">
-        <img src="images/weather-fit-logo.webp" alt="Weather Fit" width="120" height="28">
+        <img src="images/logo.svg" alt="Weather Fit">
       </a>
       <a class="btn btn-nav"
          href="https://apps.apple.com/app/apple-store/id1194408342"
          target="_blank"
          rel="noopener"
          data-tracker="TOP_APPSTORE|HOME">
-        Download free
+        <span>Download free</span>
       </a>
     </div>
   </header>
@@ -150,6 +150,13 @@
     <section class="hero">
       <div class="container">
         <div class="hero__content">
+          <!-- Apps We Love badge -->
+          <div class="hero__award">
+            <img src="images/award-apps-we-love.webp"
+                 alt="Featured in Apps We Love on the App Store"
+                 width="1434" height="316"
+                 loading="eager" decoding="async">
+          </div>
           <h1 class="hero__eyebrow">What to wear today, based on the weather</h1>
           <h2 class="hero__headline">Stop guessing.<br>Start dressing.</h2>
           <p class="hero__subhead">
@@ -164,13 +171,14 @@
                data-tracker="HERO_APPSTORE|HOME">
               <img src="images/app-store.svg" alt="Download on the App Store" width="156" height="44">
             </a>
-<div class="hero__trust">
+            <div class="hero__trust">
               <div class="hero__trust-top">
                 <span class="hero__stars" role="img" aria-label="Rated 4.6 out of 5 stars"></span>
                 <span class="hero__trust-score"><strong>4.6</strong> out of 5</span>
               </div>
               <span class="hero__trust-count">16K+ ratings on the App Store</span>
             </div>
+
           </div>
         </div>
         <figure class="hero__visual">
@@ -187,60 +195,134 @@
           </div>
         </figure>
       </div>
-    </section>
 
-    <!-- SOCIAL PROOF BAR -->
-    <section class="proof-bar" data-reveal>
-      <div class="container">
-        <blockquote class="proof-bar__quote">
-          <div class="proof-bar__avatar" aria-hidden="true">
-            <img src="images/avatar.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
+      <!-- Testimonials marquee -->
+      <div class="proof-bar">
+        <div class="proof-bar__track" role="marquee" aria-label="App Store reviews">
+
+          <div class="proof-bar__card">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>I open Weather Fit every morning before I decide what to wear. It's become part of my routine.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars" role="img" aria-label="5 stars"></span><span class="proof-bar__attr">App Store review</span></div>
           </div>
-          <p>I open Weather Fit every morning before I decide what to wear. It's become part of my routine.</p>
-          <footer>
-            <span class="proof-bar__quote-stars" role="img" aria-label="5 stars"></span>
-            <span class="proof-bar__quote-attr">— App Store review</span>
-          </footer>
-        </blockquote>
-      </div>
-    </section>
+
+          <div class="proof-bar__card">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Finally stopped showing up to work overdressed. This app actually gets it.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars" role="img" aria-label="5 stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>The character is adorable and somehow always nails the vibe. Genuinely obsessed.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars" role="img" aria-label="5 stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Glanced at my widget, grabbed my jacket. That's the whole review.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars" role="img" aria-label="5 stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Used to Google the weather and still guess wrong. Not anymore.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars" role="img" aria-label="5 stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Recommended it to my whole family. Everyone uses it now.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars" role="img" aria-label="5 stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <!-- Duplicate set for seamless loop -->
+          <div class="proof-bar__card" aria-hidden="true">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>I open Weather Fit every morning before I decide what to wear. It's become part of my routine.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card" aria-hidden="true">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Finally stopped showing up to work overdressed. This app actually gets it.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card" aria-hidden="true">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>The character is adorable and somehow always nails the vibe. Genuinely obsessed.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card" aria-hidden="true">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Glanced at my widget, grabbed my jacket. That's the whole review.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card" aria-hidden="true">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Used to Google the weather and still guess wrong. Not anymore.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+          <div class="proof-bar__card" aria-hidden="true">
+            <div class="proof-bar__icon" aria-hidden="true"><svg viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 20V12.5C0 8.833 1.083 5.833 3.25 3.5 5.417 1.167 8.25 0 11.75 0v4C9.583 4 8 4.833 7 6.5 6 8.167 5.5 10.167 5.5 12.5H10V20H0ZM13.5 20V12.5C13.5 8.833 14.583 5.833 16.75 3.5 18.917 1.167 21.75 0 25.25 0v4C23.083 4 21.5 4.833 20.5 6.5c-1 1.667-1.5 3.667-1.5 6H23.5V20H13.5Z"/></svg></div>
+            <p class="proof-bar__text"><em>Recommended it to my whole family. Everyone uses it now.</em></p>
+            <div class="proof-bar__meta"><span class="proof-bar__stars"></span><span class="proof-bar__attr">App Store review</span></div>
+          </div>
+
+        </div>
+      </div><!-- /.proof-bar -->
+
+    </section><!-- /.hero -->
 
     <!-- SECTION 4 — THE PROBLEM → THE PROMISE -->
-    <section class="pivot" data-reveal>
+    <section class="pivot">
       <div class="container">
 
         <h2 class="pivot__question">What should I wear today?</h2>
 
         <p class="pivot__problem">Every morning, you check the weather. You see 54°F or 12°C and a cloud icon and still can't tell if that means shorts, a light jacket, a heavy coat, or just boots.</p>
 
-        <!-- Mobile: card above chip row -->
-        <div class="pivot__mobile-layout" role="img" aria-label="Weather forecast card surrounded by clothing questions">
-          <figure class="pivot__forecast">
-            <div class="pivot__temp">54°</div>
-            <div class="pivot__cloud">
-              <img src="images/cloud.sun.webp" alt="" aria-hidden="true" width="60" height="60">
-            </div>
-          </figure>
-          <div class="pivot__chips-mobile" aria-hidden="true">
-            <span class="pivot__chip">shorts?</span>
-            <span class="pivot__chip">light jacket?</span>
-            <span class="pivot__chip">heavy coat?</span>
-            <span class="pivot__chip">boots?</span>
+        <div class="pivot__temp-badge">
+          <img src="images/cloud.sun.webp" alt="" aria-hidden="true" width="22" height="22">
+          <span class="pivot__temp-badge-num">54°</span>
+        </div>
+
+        <!-- Mobile: chips left + character + chips right -->
+        <div class="pivot__mobile-layout" aria-label="Character surrounded by clothing questions">
+          <div class="pivot__chips-left" aria-hidden="true">
+            <span class="pivot__chip">Shorts?</span>
+            <span class="pivot__chip">Light jacket?</span>
+            <span class="pivot__chip">Heavy coat?</span>
+            <span class="pivot__chip">Umbrella?</span>
+            <span class="pivot__chip">Hat?</span>
+          </div>
+          <img class="pivot__character" src="images/character-rain.webp" alt="Weather Fit character dressed for rainy weather" width="1680" height="3092" loading="lazy">
+          <div class="pivot__chips-right" aria-hidden="true">
+            <span class="pivot__chip">T-shirt?</span>
+            <span class="pivot__chip">Sweater?</span>
+            <span class="pivot__chip">Boots?</span>
+            <span class="pivot__chip">Scarf?</span>
+            <span class="pivot__chip">Sunglasses?</span>
           </div>
         </div>
 
-        <!-- Desktop: chips floating around card -->
+        <!-- Desktop: chips floating around character -->
         <div class="pivot__stage" aria-hidden="true">
-          <figure class="pivot__forecast">
-            <div class="pivot__temp">54°</div>
-            <div class="pivot__cloud">
-              <img src="images/cloud.sun.webp" alt="" aria-hidden="true" width="60" height="60">
-            </div>
-          </figure>
-          <span class="pivot__chip pivot__chip--tl">shorts?</span>
-          <span class="pivot__chip pivot__chip--tr">light jacket?</span>
-          <span class="pivot__chip pivot__chip--bl">heavy coat?</span>
-          <span class="pivot__chip pivot__chip--br">boots?</span>
+          <img class="pivot__character" src="images/character-rain.webp" alt="" width="1680" height="3092" loading="lazy">
+          <span class="pivot__chip pivot__chip--tl">Shorts?</span>
+          <span class="pivot__chip pivot__chip--tl2">Hat?</span>
+          <span class="pivot__chip pivot__chip--tc">T-shirt?</span>
+          <span class="pivot__chip pivot__chip--tr">Light jacket?</span>
+          <span class="pivot__chip pivot__chip--tr2">Sunglasses?</span>
+          <span class="pivot__chip pivot__chip--ml">Umbrella?</span>
+          <span class="pivot__chip pivot__chip--mr">Sweater?</span>
+          <span class="pivot__chip pivot__chip--bl">Heavy coat?</span>
+          <span class="pivot__chip pivot__chip--bc">Scarf?</span>
+          <span class="pivot__chip pivot__chip--br">Boots?</span>
         </div>
 
         <p class="pivot__promise"><strong>Weather Fit closes that gap.</strong> It reads the forecast, knows your wardrobe, and shows you what to wear.</p>
@@ -252,7 +334,7 @@
     <section class="howto">
       <div class="container">
 
-        <h2 class="howto__title" data-reveal>Get dressed in three steps.</h2>
+        <h2 class="howto__title" data-reveal>Get dressed in three steps</h2>
 
         <ol class="howto__steps" data-reveal-stagger>
 
@@ -260,8 +342,8 @@
             <figure class="howto__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
-            <span class="howto__number" aria-hidden="true">1</span>
-            <h3 class="howto__step-title">Build your character.</h3>
+            <span class="howto__number" aria-hidden="true">01</span>
+            <h3 class="howto__step-title">Build your character</h3>
             <p class="howto__step-body">Pick your gender, skin tone, hairstyle, hair color, eyebrows, glasses, and beard.</p>
           </li>
 
@@ -269,8 +351,8 @@
             <figure class="howto__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
-            <span class="howto__number" aria-hidden="true">2</span>
-            <h3 class="howto__step-title">Set up your wardrobe.</h3>
+            <span class="howto__number" aria-hidden="true">02</span>
+            <h3 class="howto__step-title">Set up your wardrobe</h3>
             <p class="howto__step-body">Add the clothes you own and tell the app what you actually like to wear. It won't suggest anything you don't have.</p>
           </li>
 
@@ -278,8 +360,8 @@
             <figure class="howto__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
-            <span class="howto__number" aria-hidden="true">3</span>
-            <h3 class="howto__step-title">Open the app, see what to wear.</h3>
+            <span class="howto__number" aria-hidden="true">03</span>
+            <h3 class="howto__step-title">Open the app, see what to wear</h3>
             <p class="howto__step-body">Your character shows up dressed for the forecast, for every part of the day.</p>
           </li>
 
@@ -289,61 +371,78 @@
 
     <!-- SECTION 6 — CORE FEATURES -->
     <section class="features">
-      <div class="container">
 
-        <h2 class="features__title" data-reveal>Outfit recommendations based on the weather.</h2>
+      <div class="features__header container" data-reveal>
+        <h2 class="features__title">Outfit recommendations based on the weather</h2>
+      </div>
 
-        <ul class="features__list">
-
-          <li class="features__item" data-reveal>
+      <!-- Block 1: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
             <figure class="features__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
             <div class="features__copy">
-              <h3 class="features__item-title">Your character, dressed for the forecast.</h3>
+              <h3 class="features__item-title">Your character, dressed for the forecast</h3>
               <p class="features__item-body">Every morning, your character reflects today's weather: shorts when it warms up, a puffer jacket when temperatures drop, sunglasses on sunny afternoons, an umbrella before it rains. It updates for morning, afternoon, evening, and night.</p>
             </div>
-          </li>
+          </div>
+        </div>
+      </div>
 
-          <li class="features__item" data-reveal>
+      <!-- Block 2: warm yellow gradient -->
+      <div class="features__block features__block--warm" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
             <figure class="features__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
             <div class="features__copy">
-              <h3 class="features__item-title">It wears what you actually own.</h3>
+              <h3 class="features__item-title">It wears what you actually own</h3>
               <p class="features__item-body">Add your clothes by category: tops, bottoms, outerwear, footwear, accessories. Adjust your comfort level so the app runs warm or cool. Disable items you never wear. The app only ever suggests things you'd actually put on.</p>
             </div>
-          </li>
+          </div>
+        </div>
+      </div>
 
-          <li class="features__item" data-reveal>
+      <!-- Block 3: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
             <figure class="features__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
             <div class="features__copy">
-              <h3 class="features__item-title">The same forecast as your iPhone's weather app.</h3>
-              <p class="features__item-body">Weather Fit is powered by Apple Weather. Today's forecast, tomorrow's outlook, and the next 10 days, plus minute-by-minute precipitation, UV index, wind, humidity, air quality, moon phase, sunrise and sunset. Plus weather warnings and alerts when severe conditions are forecast. Tap any hour or day for wind, UV, humidity, pressure, the works.</p>
+              <h3 class="features__item-title">The same forecast as your iPhone's weather app</h3>
+              <p class="features__item-body">Weather Fit is powered by Apple Weather. Today's forecast, tomorrow's outlook, and the next 10 days, plus minute-by-minute precipitation, UV index, wind, humidity, air quality, moon phase, sunrise and sunset. Plus weather warnings and alerts when severe conditions are forecast.</p>
             </div>
-          </li>
+          </div>
+        </div>
+      </div>
 
-          <li class="features__item" data-reveal>
+      <!-- Block 4: cool blue gradient -->
+      <div class="features__block features__block--cool" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
             <figure class="features__visual" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
             <div class="features__copy">
-              <h3 class="features__item-title">Weather for everywhere you go.</h3>
+              <h3 class="features__item-title">Weather for everywhere you go</h3>
               <p class="features__item-body">Save unlimited locations. Your current location updates automatically. Each location gets its own landscape — City, Mountains, Sea, or Village — and the sky changes color with the time of day.</p>
             </div>
-          </li>
-
-        </ul>
+          </div>
+        </div>
       </div>
+
     </section>
 
     <!-- SECTION 7 — WIDGETS & LOCK SCREEN -->
     <section class="widgets">
       <div class="container">
 
-        <h2 class="widgets__title" data-reveal>Your outfit, before you even unlock your phone.</h2>
+        <h2 class="widgets__title" data-reveal>Your outfit, before you even unlock your phone</h2>
 
         <p class="widgets__lead" data-reveal>
           Weather Fit adds your character and forecast to your iPhone home screen and lock screen. Your character is right there, dressed for the day. One look is all you need.
@@ -351,22 +450,22 @@
 
         <div class="widgets__grid" data-reveal>
           <div class="widgets__col">
-            <figure class="widgets__phone" aria-hidden="true">
-              <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
-            </figure>
             <div class="widgets__stat widgets__stat--home">
-              <span class="widgets__stat-num">10</span>
+              <span class="widgets__stat-num" data-count="10">0</span>
               <span class="widgets__stat-label">home screen widget styles</span>
             </div>
-          </div>
-          <div class="widgets__col">
             <figure class="widgets__phone" aria-hidden="true">
               <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
             </figure>
+          </div>
+          <div class="widgets__col">
             <div class="widgets__stat widgets__stat--lock">
-              <span class="widgets__stat-num">19</span>
+              <span class="widgets__stat-num" data-count="19">0</span>
               <span class="widgets__stat-label">lock screen widget variations</span>
             </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img src="images/iphone-bezel.webp" alt="" width="1800" height="3680" loading="lazy">
+            </figure>
           </div>
         </div>
 
@@ -379,7 +478,7 @@
       <div class="container">
 
         <h2 class="watch__title" data-reveal>
-          Know if you need a jacket. Without reaching for your phone.
+          Know if you need a jacket. Without reaching for your phone
         </h2>
 
         <p class="watch__lead" data-reveal>
@@ -400,10 +499,11 @@
     <!-- SECTION 10 — FAQ -->
     <section class="faq" id="faq">
       <div class="container">
+        <div class="faq__glass" data-reveal>
 
-        <h2 class="faq__title" data-reveal>Questions, answered.</h2>
+        <h2 class="faq__title">Questions, answered</h2>
 
-        <ul class="faq__list" data-reveal>
+        <ul class="faq__list">
 
           <li class="faq__item">
             <details class="faq__details">
@@ -421,43 +521,8 @@
 
           <li class="faq__item">
             <details class="faq__details">
-              <summary class="faq__question">Does Weather Fit support Family Sharing?</summary>
-              <div class="faq__answer"><p>Yes. A Family Plan lets you share Premium with up to 5 family members through Apple Family Sharing.</p></div>
-            </details>
-          </li>
-
-          <li class="faq__item">
-            <details class="faq__details">
               <summary class="faq__question">What devices does it support?</summary>
               <div class="faq__answer"><p>iPhone and iPad running iOS 16 or later. Apple Watch running watchOS 10 or later.</p></div>
-            </details>
-          </li>
-
-          <li class="faq__item">
-            <details class="faq__details">
-              <summary class="faq__question">How accurate is the weather data?</summary>
-              <div class="faq__answer"><p>Weather Fit is powered by Apple Weather, the same forecast engine used in iOS. It provides hourly forecasts, 10-day outlooks, and minute-by-minute precipitation. Weather Maps use radar data from Rainbow.ai.</p></div>
-            </details>
-          </li>
-
-          <li class="faq__item">
-            <details class="faq__details">
-              <summary class="faq__question">Can I cancel a subscription anytime?</summary>
-              <div class="faq__answer"><p>Yes. You can cancel anytime from the App Store in Settings → Subscriptions. You keep access to Premium until the end of your billing period.</p></div>
-            </details>
-          </li>
-
-          <li class="faq__item">
-            <details class="faq__details">
-              <summary class="faq__question">What languages does the app support?</summary>
-              <div class="faq__answer"><p>14 languages: English, German, French, Spanish, Italian, Dutch, Polish, Portuguese (Brazil), Japanese, Korean, Simplified Chinese, Traditional Chinese, Turkish, and Ukrainian.</p></div>
-            </details>
-          </li>
-
-          <li class="faq__item">
-            <details class="faq__details">
-              <summary class="faq__question">Can I use Weather Fit for multiple cities?</summary>
-              <div class="faq__answer"><p>Yes. Add as many locations as you like — home, work, cities you travel to. Each one gets its own landscape and character outfit.</p></div>
             </details>
           </li>
 
@@ -482,19 +547,13 @@
             </details>
           </li>
 
-          <li class="faq__item">
-            <details class="faq__details">
-              <summary class="faq__question">How does Weather Fit decide what to wear?</summary>
-              <div class="faq__answer"><p>It combines today's forecast with your wardrobe and a comfort level setting you control. If you run warm, you can shift the threshold so the app suggests lighter clothes. If you run cold, it layers up sooner. Your character only ever wears things from your wardrobe — not generic suggestions.</p></div>
-            </details>
-          </li>
-
         </ul>
 
-        <div class="faq__footer" data-reveal>
+        <div class="faq__footer">
           <a class="btn btn-ghost" href="/faq" data-tracker="FAQ_SEE_ALL|HOME">See all FAQs</a>
         </div>
 
+        </div><!-- /.faq__glass -->
       </div>
     </section>
 
@@ -504,7 +563,7 @@
         <div class="final-cta__grid" data-reveal-stagger>
 
           <div class="final-cta__content">
-            <h2 class="final-cta__title">Tomorrow morning, you'll know exactly what to wear.</h2>
+            <h2 class="final-cta__title">Tomorrow morning, you'll know exactly what to wear</h2>
             <p class="final-cta__body">
               Weather Fit is free to download and takes about two minutes to set up.
               Your character is waiting.
@@ -533,25 +592,34 @@
   <footer class="site-footer">
     <div class="container">
 
-      <div class="site-footer__top">
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
         <a class="site-footer__logo" href="/" aria-label="Weather Fit home">
-          <img src="images/weather-fit-logo.webp" alt="Weather Fit" width="120" height="28">
+          <img src="images/logo.svg" alt="Weather Fit">
         </a>
+        <div class="site-footer__social">
+          <a href="mailto:hi@weatherfit.com" data-tracker="FOOTER_CONTACT|HOME">hi@weatherfit.com</a>
+          <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME">Instagram</a>
+          <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|HOME">X</a>
+        </div>
+      </div>
 
-        <nav class="site-footer__nav" aria-label="Footer">
-          <a href="mailto:hi@weatherfit.com"                                  data-tracker="FOOTER_CONTACT|HOME">hi@weatherfit.com</a>
-          <a href="https://www.instagram.com/weatherfitapp/" target="_blank"  rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME">Instagram</a>
-          <a href="https://x.com/weatherfitapp"              target="_blank"  rel="noopener" data-tracker="FOOTER_X|HOME">X</a>
-          <a href="/privacy-policy"                                            data-tracker="FOOTER_PRIVACY|HOME">Privacy Policy</a>
-          <a href="/terms-and-conditions"                                        data-tracker="FOOTER_TERMS|HOME">Terms of Use</a>
-          <a href="/press-kit"                                                  data-tracker="FOOTER_PRESSKIT|HOME">Press Kit</a>
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer legal">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|HOME">Privacy Policy</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|HOME">Terms of Use</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|HOME">Press Kit</a>
         </nav>
       </div>
 
-      <div class="site-footer__legal">
-        <p>© <span class="copyright-year">2026</span> Weather Fit. All rights reserved.</p>
-        <p>Apple, iPhone, iPad, Apple Watch, and App Store are trademarks of Apple Inc.</p>
-        <p>Weather data provided by Apple Weather.</p>
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple, iPhone, iPad, Apple Watch, and App Store are trademarks of Apple Inc</p>
+        <p>Weather data provided by Apple Weather</p>
       </div>
 
     </div>
