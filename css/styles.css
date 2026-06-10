@@ -707,11 +707,6 @@ summary:focus-visible {
   to   { opacity: 1; transform: translateY(0)    scale(1);    }
 }
 
-@keyframes pulse-soft {
-  0%, 100% { transform: scale(1);    opacity: 1;    }
-  50%       { transform: scale(1.2); opacity: 0.65; }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   /* Eyebrow: pure fade, it's a label not an event */
   .hero__eyebrow {
