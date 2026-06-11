@@ -592,9 +592,7 @@ summary:focus-visible {
 
 @keyframes proof-marquee {
   from { transform: translateX(0); }
-  /* -50% == width of the first 6-card set (each card owns its trailing gap),
-     so the duplicate set lands exactly where the original began — no jump */
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-100%); }
 }
 
 .proof-bar__card {
