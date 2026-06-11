@@ -604,7 +604,7 @@ summary:focus-visible {
   margin-right: 16px;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
+  gap: 4px;
   background: rgba(255,255,255,0.76);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -614,44 +614,42 @@ summary:focus-visible {
   box-shadow: 0 4px 24px rgba(0,70,200,0.05), 0 1px 3px rgba(0,0,0,0.04);
 }
 
-.proof-bar__icon {
-  display: flex;
-}
-
-.proof-bar__icon svg {
-  width: 17px;
-  height: 14px;
-  fill: rgba(0,122,255,0.28);
-  flex-shrink: 0;
-}
-
-.proof-bar__text {
+.proof-bar__title {
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text);
-  line-height: 1.55;
   letter-spacing: -0.01em;
-  flex: 1;
+  margin: 0;
 }
 
-.proof-bar__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: auto;
+.proof-bar__handle {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 .proof-bar__stars::before {
   content: '★★★★★';
-  font-size: 14px;
+  font-size: 13px;
   color: var(--accent-warm);
   letter-spacing: 1px;
+  display: block;
 }
 
-.proof-bar__attr {
-  font-size: var(--fs-micro);
-  color: var(--text-muted);
-  font-weight: 500;
+.proof-bar__divider {
+  border: none;
+  border-top: 1px dashed rgba(0,0,0,0.15);
+  margin: 4px 0;
+}
+
+.proof-bar__text {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  flex: 1;
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1017,19 +1015,45 @@ summary:focus-visible {
 }
 
 .howto__visual {
+  position: relative;
   margin: 0 0 var(--sp-4);
   width: 100%;
-  max-width: 240px;
-  aspect-ratio: 3 / 4;
+  max-width: 212px;
+  aspect-ratio: 53 / 88; /* 212/352 reduced */
   overflow: hidden;
+  border-radius: 20px 20px 0 0;
 }
 
-.howto__visual img {
+/* Phone frame in-flow so it establishes container height; max-height + overflow:hidden clips the bottom */
+.howto__frame {
+  display: block;
+  position: relative;
   width: 100%;
   height: auto;
-  display: block;
+  z-index: 1;
+}
+
+/* Shared: screenshot absolutely placed inside any phone bezel screen area */
+.howto__screen,
+.features__screen,
+.widgets__screen {
+  position: absolute;
+  top: 2.5272%;
+  left: 5.3889%;
+  width: 89.2222%;
+  height: 94.9457%;
   object-fit: cover;
   object-position: top center;
+}
+
+.howto__screen {
+  /* .howto__visual uses aspect-ratio 53/88, not the bezel's 45/92, so the shared
+     top/height values (bezel-relative) resolve incorrectly against the container.
+     Corrected: top = 2.5272% × (92/45)÷(88/53) ≈ 3.11%; bottom:0 fills to the clip edge. */
+  top: 3.11%;
+  height: unset;
+  bottom: 0;
+  z-index: 0;
 }
 
 .howto__number {
@@ -1068,7 +1092,10 @@ summary:focus-visible {
     align-items: start;
   }
 
-  .howto__visual { max-width: 260px; }
+  .howto__visual {
+    max-width: none;
+    /* aspect-ratio and overflow already set; let width:100% fill the grid column */
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1133,6 +1160,7 @@ summary:focus-visible {
   margin: 0;
   width: 100%;
   max-width: 200px;
+  aspect-ratio: 45 / 92; /* bezel natural ratio 1800/3680 reduced → gives absolute children a definite height */
   flex-shrink: 0;
   position: relative;
 }
@@ -1150,9 +1178,17 @@ summary:focus-visible {
   z-index: 0;
 }
 
-.features__visual img {
-  position: relative;
+/* Screenshot placed inside the bezel screen area */
+.features__screen {
+  border-radius: 7%;
   z-index: 1;
+}
+
+/* Frame sits on top of the screenshot */
+.features__visual img:not(.features__screen),
+.widgets__phone img:not(.widgets__screen) {
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: auto;
   display: block;
@@ -1299,12 +1335,11 @@ summary:focus-visible {
   z-index: 0;
 }
 
-.widgets__phone img {
-  position: relative;
+.widgets__screen {
+  height: unset; /* override .phone-screen height; bottom:0 fills to clip edge instead */
+  bottom: 0;
+  border-radius: 7% 7% 0 0;
   z-index: 1;
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* Stat sits directly beneath its phone ----------------------------------- */
@@ -1395,6 +1430,11 @@ summary:focus-visible {
     height: 94.9457%;
     bottom: auto;
   }
+
+  .widgets__screen {
+    height: 94.9457%;
+    bottom: auto;
+  }
 }
 
 /* Desktop (≥ 1024px) — larger columns ------------------------------------ */
@@ -1436,22 +1476,18 @@ summary:focus-visible {
 .watch__visual {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
-  height: 420px;
-  overflow: hidden;
   margin-top: var(--sp-12);
   background: var(--bg-soft);
+  max-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .watch__visual img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  height: auto;
   display: block;
-}
-
-@media (min-width: 768px) {
-  .watch__visual { height: 560px; }
 }
 
 @media (min-width: 768px) {
