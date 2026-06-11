@@ -592,12 +592,14 @@ summary:focus-visible {
 
 @keyframes proof-marquee {
   from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
+  /* -50% == one card set's width (site.js clones the set to fill the other half),
+     so the clone lands exactly where the original began — seamless, no jump */
+  to   { transform: translateX(-50%); }
 }
 
 .proof-bar__card {
   flex: 0 0 280px;
-  /* gap lives on the card (not the track) so each 6-card set is exactly half
+  /* gap lives on the card (not the track) so each card set is exactly half
      the track width — translateX(-50%) then lands seamlessly on the loop seam */
   margin-right: 16px;
   display: flex;

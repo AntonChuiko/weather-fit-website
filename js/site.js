@@ -154,6 +154,24 @@ if ('IntersectionObserver' in window) {
   }
 }
 
+// Seamless review marquee: clone the card set so translateX(-50%) loops with no
+// gap. Done in JS so the HTML source holds a single set of 12 reviews.
+const _marqueeTrack = document.querySelector('.proof-bar__track');
+if (_marqueeTrack) {
+  const _origCount = _marqueeTrack.children.length;
+  Array.from(_marqueeTrack.children).forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    _marqueeTrack.appendChild(clone);
+  });
+  // Safari sizes a `width: max-content` flex track to the cards' *unwrapped* text
+  // width (~27000px), not the sum of their fixed 280px widths (~7100px), so
+  // translateX(-50%) overshoots and the marquee scrolls several times too fast.
+  // Pin the track to its real width: the first clone's offset == one card set.
+  const _oneSet = _marqueeTrack.children[_origCount].offsetLeft;
+  if (_oneSet) _marqueeTrack.style.width = _oneSet * 2 + 'px';
+}
+
 const _yearEl = document.querySelector('.copyright-year');
 if (_yearEl) _yearEl.textContent = new Date().getFullYear();
 
