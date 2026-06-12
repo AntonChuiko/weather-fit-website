@@ -29,7 +29,7 @@
   <link rel="apple-touch-icon" href="images/webclip.png">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=1">
 
   <!-- FAQ page overrides: flat Q&A, no accordion -->
   <style>
@@ -198,7 +198,7 @@
   <header class="site-header">
     <div class="container">
       <a class="site-logo" href="/">
-        <img src="images/weather-fit-logo.webp" alt="Weather Fit" width="120" height="28">
+        <img src="images/logo.svg" alt="Weather Fit">
       </a>
       <a class="btn btn-nav"
          href="https://apps.apple.com/app/apple-store/id1194408342"
@@ -299,32 +299,59 @@
   <footer class="site-footer">
     <div class="container">
 
-      <div class="site-footer__top">
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
         <a class="site-footer__logo" href="/" aria-label="Weather Fit home">
-          <img src="images/weather-fit-logo.webp" alt="Weather Fit" width="120" height="28">
+          <img src="images/logo.svg" alt="Weather Fit">
         </a>
+        <div class="site-footer__nav">
+          <div class="lang-select" data-lang-select>
+            <button type="button" class="lang-select__trigger" aria-expanded="false" aria-label="Language: English">
+              <svg class="lang-select__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path>
+                <path d="M12 3c2.6 2.7 4 6 4 9s-1.4 6.3-4 9c-2.6-2.7-4-6-4-9s1.4-6.3 4-9z"></path>
+              </svg>
+              <span class="lang-select__label">English</span>
+              <svg class="lang-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <div class="lang-select__menu">
+              <a class="lang-select__option" href="/" hreflang="en" lang="en" aria-current="page" data-tracker="FOOTER_LANG_EN|FAQ"><span>English</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/de/" hreflang="de" lang="de" data-tracker="FOOTER_LANG_DE|FAQ"><span>Deutsch</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans" data-tracker="FOOTER_LANG_ZH|FAQ"><span>简体中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+            </div>
+          </div>
+          <span class="site-footer__nav-sep" aria-hidden="true"></span>
+          <div class="site-footer__social">
+            <a href="mailto:hi@weatherfit.com" data-tracker="FOOTER_CONTACT|FAQ">hi@weatherfit.com</a>
+            <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|FAQ">Instagram</a>
+            <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|FAQ">X</a>
+          </div>
+        </div>
+      </div>
 
-        <nav class="site-footer__nav" aria-label="Footer">
-          <a href="mailto:hi@weatherfit.com"                                  data-tracker="FOOTER_CONTACT|FAQ">hi@weatherfit.com</a>
-          <a href="https://www.instagram.com/weatherfitapp/" target="_blank"  rel="noopener" data-tracker="FOOTER_INSTAGRAM|FAQ">Instagram</a>
-          <a href="https://x.com/weatherfitapp"              target="_blank"  rel="noopener" data-tracker="FOOTER_X|FAQ">X</a>
-          <a href="/privacy-policy"                                            data-tracker="FOOTER_PRIVACY|FAQ">Privacy Policy</a>
-          <a href="/terms-and-conditions"                                      data-tracker="FOOTER_TERMS|FAQ">Terms of Use</a>
-          <a href="/press-kit"                                                data-tracker="FOOTER_PRESSKIT|FAQ">Press Kit</a>
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer legal">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|FAQ">Privacy Policy</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|FAQ">Terms of Use</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|FAQ">Press Kit</a>
         </nav>
       </div>
 
-      <div class="site-footer__legal">
-        <p>© <span class="copyright-year">2026</span> Weather Fit. All rights reserved.</p>
-        <p>Apple, iPhone, iPad, Apple Watch, and App Store are trademarks of Apple Inc.</p>
-        <p>Weather data provided by Apple Weather.</p>
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple, iPhone, iPad, Apple Watch, and App Store are trademarks of Apple Inc</p>
+        <p>Weather data provided by Apple Weather</p>
       </div>
 
     </div>
   </footer>
 
   <!-- Tracker -->
-  <script src="js/site.js"></script>
+  <script src="js/site.js?v=1"></script>
 
 </body>
 </html>
