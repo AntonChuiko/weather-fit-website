@@ -13,7 +13,7 @@
 Weather Fit — What to Wear Today, Based on the Weather
 
 **Meta description (≤155 chars):**
-Weather Fit reads today's forecast and shows your character dressed for the weather. Know what to wear today, whether that's shorts, a jacket, or anything in between.
+Weather Fit is a free iOS app that shows your character dressed for today's forecast. Know what to wear today, whether that's shorts, a jacket, or anything in between.
 
 **H1 recommendation:**
 The page H1 (visually de-emphasized, above the hero headline) should be:
@@ -338,6 +338,16 @@ Yes. Add as many locations as you like — home, work, cities you travel to. Eac
 
 **Should I wear shorts today?**
 Open Weather Fit and your character will tell you. The app reads today's temperature, factors in your personal comfort level, and shows you whether shorts are the right call — or whether you'll want pants. It also covers tomorrow and the next 10 days, so no more guessing the night before.
+
+---
+
+**Is it shorts weather today?**
+One look at your character answers it. If it's shorts weather, your character is in shorts; if not, you'll see pants or warmer layers instead. The same goes for t-shirt weather: when the day is warm enough, that's what your character has on.
+
+---
+
+**What should I wear tomorrow?**
+Weather Fit covers tomorrow and the next 10 days, not just today. Check it the night before and you'll know whether tomorrow is shorts weather or jacket weather, so you can lay out your clothes in advance.
 
 ---
 
