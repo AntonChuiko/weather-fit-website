@@ -1,6 +1,6 @@
 # Weather Fit
 
-> Weather Fit is an iOS weather app that answers the everyday question "what should I wear today?" It combines accurate weather forecasts with personalized outfit recommendations through a customizable character that dresses according to current and forecasted conditions. Available on iPhone, iPad, Apple Watch, and macOS.
+> Weather Fit is an iOS weather app that answers the everyday question "what should I wear today?" It combines accurate weather forecasts with personalized outfit recommendations through a customizable character that dresses according to current and forecasted conditions. Available on iPhone, iPad, and Apple Watch.
 
 ## App
 
