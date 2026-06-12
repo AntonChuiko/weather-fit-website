@@ -175,6 +175,24 @@ if (_marqueeTrack) {
 const _yearEl = document.querySelector('.copyright-year');
 if (_yearEl) _yearEl.textContent = new Date().getFullYear();
 
+// Footer language dropdown — disclosure: toggle, outside-click + Escape close.
+// Option links navigate on their own; closed menu is visibility:hidden so its
+// links drop out of the tab order.
+document.querySelectorAll('[data-lang-select]').forEach((root) => {
+  const trigger = root.querySelector('.lang-select__trigger');
+  if (!trigger) return;
+  const open  = () => { root.classList.add('is-open');    trigger.setAttribute('aria-expanded', 'true');  };
+  const close = () => { root.classList.remove('is-open'); trigger.setAttribute('aria-expanded', 'false'); };
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    root.classList.contains('is-open') ? close() : open();
+  });
+  document.addEventListener('click', (e) => { if (!root.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && root.classList.contains('is-open')) { close(); trigger.focus(); }
+  });
+});
+
 document.addEventListener('click', (e) => {
   const el = e.target.closest('[data-tracker]');
   if (!el) return;
