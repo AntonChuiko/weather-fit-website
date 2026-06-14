@@ -193,6 +193,21 @@ document.querySelectorAll('[data-lang-select]').forEach((root) => {
   });
 });
 
+// Email links — assembled client-side so the address never ships as a plaintext
+// `user@domain` pattern in the served HTML (defeats simple spam-harvesting bots).
+// `data-etext` opts a link into showing the full address as its label too.
+document.querySelectorAll('a.js-email').forEach((a) => {
+  const user = a.getAttribute('data-eu');
+  const domain = a.getAttribute('data-ed');
+  if (!user || !domain) return;
+  const addr = user + '@' + domain;
+  a.setAttribute('href', 'mailto:' + addr);
+  if (a.hasAttribute('data-etext')) a.textContent = addr;
+  a.removeAttribute('data-eu');
+  a.removeAttribute('data-ed');
+  a.removeAttribute('data-etext');
+});
+
 document.addEventListener('click', (e) => {
   const el = e.target.closest('[data-tracker]');
   if (!el) return;

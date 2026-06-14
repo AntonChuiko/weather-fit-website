@@ -12,7 +12,7 @@
 <body>
   <section class="support">
     <div class="container">
-      <p class="support__intro">Fill in the form below or reach us at <a href="mailto:hi@weatherfit.com">hi@weatherfit.com</a>.</p>
+      <p class="support__intro">Fill in the form below, or <a class="js-email" data-eu="hi" data-ed="weatherfit.com">email us</a> directly.</p>
       <form action="https://formsubmit.co/75ed0fdc07bbceb1c755588ecf718a76" method="POST" class="form">
         <input type="hidden" name="_next" value="https://weatherfit.com/support/success.html">
         <input type="text"  name="name"    placeholder="Name"    class="form__name"    autocomplete="name"  required>
@@ -55,6 +55,13 @@
         button.textContent = 'Sending…';
         button.disabled    = true;
       });
+    });
+
+    // Assemble the contact link client-side so the address isn't served as
+    // plaintext in the HTML (keeps spam harvesters out).
+    document.querySelectorAll('a.js-email').forEach(function (a) {
+      var user = a.getAttribute('data-eu'), domain = a.getAttribute('data-ed');
+      if (user && domain) a.setAttribute('href', 'mailto:' + user + '@' + domain);
     });
   </script>
 </body>
