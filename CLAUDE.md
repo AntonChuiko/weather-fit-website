@@ -5,7 +5,7 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 ## Git workflow
 
 - **Never commit automatically.** Wait for the user to explicitly say to commit before running `git commit`. Do not stage files or propose commit messages unprompted.
-- Active development branch: `redesign`. Do not merge to `master` until all critical sub-pages are rebuilt (privacy-policy, terms-and-conditions, faq, de, zh-Hans, 404).
+- Active development branch: `redesign`, being prepared for release to `master`. The critical sub-pages have all been rebuilt (privacy-policy, terms-and-conditions, faq, press-kit, 404, and the `de`/`zh-Hans` localized homepages).
 - The live site serves from `master` — changes there deploy immediately to weatherfit.com.
 
 ## Testing
@@ -16,16 +16,20 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 
 ## Project structure
 
-- `index.html` — homepage (currently: hero section only; more sections added one at a time)
+- `index.html` — homepage; full multi-section page (hero, problem→promise, how-it-works, core features, widgets & lock screen, Apple Watch, FAQ, final CTA). A "Free vs Premium" section and one more are still planned (see the `SECTION 9` / `SECTION 12` placeholder comments).
+- `privacy-policy.html`, `terms-and-conditions.html`, `faq.html`, `press-kit.html`, `404.html` — standalone pages
+- `de/`, `zh-Hans/` — localized homepages (AI-translated, not human-reviewed)
 - `css/styles.css` — single tokenized stylesheet; all design tokens are CSS custom properties on `:root`
-- `js/site.js` — minimal vanilla JS (Mixpanel click tracker only)
+- `js/site.js` — vanilla JS: sticky-header state, scroll-reveal animations, FAQ accordion, testimonials marquee, and the Mixpanel click tracker
 - `images/` — active assets for the new site
+- `files/` — downloadable assets (e.g. `WeatherFit-PressKit.zip`)
 - `support/` — chrome-less in-app contact form loaded by the iOS app's WKWebView at `weatherfit.com/support/`; reuses the global `css/styles.css` (form styles in the "Support form" section); analytics-free, `noindex`
-- `_archive/` — the previous Webflow-exported site; kept for reference, disallowed in robots.txt
+- `_config.yml` — Jekyll config; `exclude:` list keeps dev-only files (e.g. `CLAUDE.md`) out of the published site
+- SEO/meta: `sitemap.xml`, `robots.txt`, `llms.txt`, `app-ads.txt`, `CNAME`
 
 ## Tech stack
 
-Pure static HTML/CSS/JS — no build step, no framework, no jQuery. GitHub Pages compatible.
+Pure static HTML/CSS/JS — no framework, no jQuery, no local build step. GitHub Pages serves it through its default Jekyll build, configured by `_config.yml` (used only to exclude dev files from the published site).
 
 ## Skills
 
@@ -38,10 +42,6 @@ Pure static HTML/CSS/JS — no build step, no framework, no jQuery. GitHub Pages
 - Typography: SF Pro system stack via `-apple-system, BlinkMacSystemFont`
 - Fluid type using `clamp()`; spacing via CSS custom properties
 
-## Copy source
-
-New homepage copy lives at `_source/homepage-copy.md`. Use it as the authoritative text source for all sections.
-
 ## Analytics
 
-Click events use `data-tracker="ACTION|LABEL"` attributes routed through `js/site.js`.
+Click events use `data-tracker="ACTION|LABEL"` attributes routed through `js/site.js` to Mixpanel. The homepage also loads Google Analytics (gtag) and a PromptWatch snippet; the `support/` form is analytics-free.
