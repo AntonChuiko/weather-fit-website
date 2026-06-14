@@ -1944,53 +1944,53 @@ summary:focus-visible {
 }
 
 /* --------------------------------------------------------------------------
-   Footer v2 — refined mobile layout (homepage only for now)
+   Footer — refined mobile layout
    Single centered column with one consistent vertical rhythm, matching the
-   centered page content above. Scoped to .site-footer--v2 + mobile so desktop
-   and other pages are untouched.
+   centered page content above. Mobile-only overrides; desktop (>=768px) keeps
+   the rules above.
    -------------------------------------------------------------------------- */
 @media (max-width: 767.98px) {
   /* Brand stacks: logo → social → language pill, centered, even rhythm */
-  .site-footer--v2 .site-footer__row--brand {
+  .site-footer__row--brand {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: var(--sp-4);
     margin-bottom: var(--sp-4);
   }
-  .site-footer--v2 .site-footer__nav {
+  .site-footer__nav {
     flex-direction: column;
     align-items: center;
     gap: var(--sp-4);
   }
   /* contact/social row sits above the language pill, centered */
-  .site-footer--v2 .site-footer__social {
+  .site-footer__social {
     order: -1;
     justify-content: center;
   }
 
   /* Legal links: centered with even gaps (no edge-to-edge justify) */
-  .site-footer--v2 .site-footer__links {
+  .site-footer__links {
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--sp-3) var(--sp-6);
   }
 
   /* Links stay above copyright; tighten copyright into the fine-print cluster */
-  .site-footer--v2 .site-footer__row--legal {
+  .site-footer__row--legal {
     align-items: center;
     gap: var(--sp-4);
     margin-bottom: var(--sp-3);
   }
 
   /* Disclaimers: stacked, centered, even breathing room */
-  .site-footer--v2 .site-footer__row--disclaimers {
+  .site-footer__row--disclaimers {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--sp-3);
   }
-  .site-footer--v2 .site-footer__row--disclaimers p { text-align: center; }
+  .site-footer__row--disclaimers p { text-align: center; }
 }
 
 /* ==========================================================================
