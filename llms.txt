@@ -1,6 +1,6 @@
 # Weather Fit
 
-> Weather Fit is an iOS weather app that answers the everyday question "what should I wear today?" It combines accurate weather forecasts with personalized outfit recommendations through a customizable character that dresses according to current and forecasted conditions. Available on iPhone, iPad, Apple Watch, and macOS.
+> Weather Fit is an iOS weather app that answers the everyday question "what should I wear today?" It combines accurate weather forecasts with personalized outfit recommendations through a customizable character that dresses according to current and forecasted conditions. Available on iPhone, iPad, and Apple Watch.
 
 ## App
 
@@ -8,14 +8,14 @@
 
 ## Website
 
-- [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather visualization.
-- [FAQ](https://weatherfit.com/faq.html): Frequently asked questions about Weather Fit features, subscription, and usage.
-- [Press Kit](https://weatherfit.com/press-kit.html): Media assets, app description, and press information.
+- [Home](https://weatherfit.com/): Overview of features including outfit recommendations, widgets, character customization, and weather data.
+- [FAQ](https://weatherfit.com/faq): Answers to common questions about pricing, devices, languages, subscriptions, and how outfit suggestions work.
+- [Press Kit](https://weatherfit.com/press-kit): Press resources including app highlights, pricing, media coverage, creator bio, and downloadable assets.
 
 ## Legal
 
-- [Privacy Policy](https://weatherfit.com/privacy-policy.html): How Weather Fit handles user data.
-- [Terms and Conditions](https://weatherfit.com/terms-and-conditions.html): Terms of use for Weather Fit.
+- [Privacy Policy](https://weatherfit.com/privacy-policy): How Weather Fit collects, uses, and safeguards user data.
+- [Terms of Use](https://weatherfit.com/terms-and-conditions): Terms governing use of the Weather Fit app, including subscriptions and intellectual property.
 
 ## Social
 

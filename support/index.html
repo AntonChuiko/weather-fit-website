@@ -1,68 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
   <title>Weather Fit Support</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="robots" content="noindex">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
-
 <body>
-  <div id="app">
-    <p>Fill in the form below or reach us at <a href="mailto:hi@weatherfit.com">hi@weatherfit.com</a>.</p>
-    <form action="https://formsubmit.co/75ed0fdc07bbceb1c755588ecf718a76" method="POST" class="form">
-      <input type="hidden" name="_next" value="https://weatherfit.com/support/success.html">
-
-      <input type="text" name="name" placeholder="Name" class="form__name" required>
-      <input type="email" name="email" placeholder="Email" class="form__email" required>
-      <textarea name="message" cols="30" rows="5" placeholder="Message" class="form__message" spellcheck="false"
-        required></textarea>
-      <input type="submit" class="form__button" value="Send">
-
-      <input type="hidden" name="_subject">
-      <input type="hidden" name="_captcha" value="false">
-    </form>
-  </div>
-
-  <script>
-    document.querySelector('input[name="_subject"]').value = `Weather Fit Support (Ticket #${Math.floor(Math.random() * (999999 - 100000) + 100000)})`;
-
-    const urlParamsNames = [
-      'system_version',
-      'device_model',
-      'app_version',
-      'revenuecat_id',
-      'mixpanel_id'
-    ];
-
-    const urlParams = new URL(window.location.href).searchParams;
-
-    urlParamsNames.forEach(paramName => {
-      const value = urlParams.get(paramName);
-      if (value) {
-        const hiddenField = document.createElement('input');
-        hiddenField.type = 'hidden';
-        hiddenField.value = urlParams.get(paramName);
-        hiddenField.name = paramName;
-        document.querySelector('.form').appendChild(hiddenField);
-      }
-    });
-  </script>
+  <section class="support">
+    <div class="container">
+      <p class="support__intro">Fill in the form below or reach us at <a href="mailto:hi@weatherfit.com">hi@weatherfit.com</a>.</p>
+      <form action="https://formsubmit.co/75ed0fdc07bbceb1c755588ecf718a76" method="POST" class="form">
+        <input type="hidden" name="_next" value="https://weatherfit.com/support/success.html">
+        <input type="text"  name="name"    placeholder="Name"    class="form__name"    autocomplete="name"  required>
+        <input type="email" name="email"   placeholder="Email"   class="form__email"   autocomplete="email" required>
+        <textarea name="message" rows="5" placeholder="Message" class="form__message" spellcheck="false" required></textarea>
+        <button type="submit" class="form__button">Send</button>
+        <input type="hidden" name="_subject">
+        <input type="hidden" name="_captcha" value="false">
+      </form>
+    </div>
+  </section>
 
   <script>
+    // Generate ticket subject
+    document.querySelector('input[name="_subject"]').value =
+      'Weather Fit Support (Ticket #' + Math.floor(Math.random() * (999999 - 100000) + 100000) + ')';
+
+    // Inject URL params as hidden fields (XSS-safe: createElement + .value/.name assignment only)
+    ;(function () {
+      var names = ['system_version', 'device_model', 'app_version', 'revenuecat_id', 'mixpanel_id'];
+      var urlParams = new URL(window.location.href).searchParams;
+      var form = document.querySelector('.form');
+      names.forEach(function (name) {
+        var value = urlParams.get(name);
+        if (value) {
+          var input = document.createElement('input');
+          input.type  = 'hidden';
+          input.name  = name;
+          input.value = value;
+          form.appendChild(input);
+        }
+      });
+    })();
+
+    // Disable button on submit to prevent double-sends
     document.addEventListener('DOMContentLoaded', function () {
-      const form = document.querySelector('.form');
-      const button = document.querySelector('.form__button');
-
+      var form   = document.querySelector('.form');
+      var button = document.querySelector('.form__button');
       form.addEventListener('submit', function () {
-        button.value = 'Sending...';
-        button.disabled = true;
-        button.style.opacity = '0.5';
+        button.textContent = 'Sending…';
+        button.disabled    = true;
       });
     });
   </script>
 </body>
-
 </html>

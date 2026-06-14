@@ -1,0 +1,8 @@
+# Jekyll configuration for GitHub Pages.
+# Files/directories starting with _ (e.g. _archive, _source) are already
+# excluded from the built site by default. This list drops dev-only files
+# that would otherwise be served publicly at weatherfit.com.
+exclude:
+  - CLAUDE.md
+  - .htaccess
+  - README.md
