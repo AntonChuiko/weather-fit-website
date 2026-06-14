@@ -104,6 +104,17 @@ img, svg {
   height: auto;
 }
 
+/* Avoid orphans (a lone word on the last line):
+   balance equalizes heading lines; pretty fixes body last-line wrapping.
+   Progressive enhancement — ignored where unsupported. */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -179,35 +190,14 @@ summary:focus-visible {
   color: var(--bg);
   white-space: nowrap;
   position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease, transform 0.15s ease;
-}
-
-/* radial blue glow blooms from the left on hover */
-.btn-nav::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 95% 120% at 18% 50%, rgba(0,45,175,0.55) 0%, transparent 62%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  border-radius: inherit;
-}
-
-/* span wraps the text so it stacks above the ::before pseudo-element */
-.btn-nav span {
-  position: relative;
-  z-index: 1;
+  transition: background 0.2s ease, box-shadow 0.3s ease, transform 0.15s ease;
 }
 
 .btn-nav:hover {
   opacity: 1;
+  background: var(--accent);
   box-shadow: 0 4px 20px rgba(0,50,170,0.28);
   transform: translateY(-1px);
-}
-
-.btn-nav:hover::before {
-  opacity: 1;
 }
 
 .btn-nav:active {
@@ -234,6 +224,7 @@ summary:focus-visible {
   border: 1.5px solid var(--accent);
   color: var(--accent);
   background: transparent;
+  transition: background 0.2s ease, opacity 0.15s ease, transform 0.15s ease;
 }
 
 .btn-ghost:hover {
@@ -472,9 +463,6 @@ summary:focus-visible {
   .phone-bezel {
     height: 460px;
   }
-
-  /* Award badge left-aligned on tablet & desktop */
-  .hero__award img { margin-inline: 0; }
 }
 
 @media (min-width: 1024px) {
@@ -495,6 +483,9 @@ summary:focus-visible {
   .hero__content {
     padding-top: var(--sp-4);
   }
+
+  /* Award badge left-aligned once the hero layout goes left-aligned */
+  .hero__award img { margin-inline: 0; }
 
   .hero__subhead {
     margin-inline: 0;
@@ -1297,7 +1288,9 @@ summary:focus-visible {
   flex-direction: column;
   align-items: center;
   gap: var(--sp-8);
-  margin: 0 auto var(--sp-4);
+  /* no bottom margin on mobile so the section ends flush with the cropped
+     phone (desktop restores spacing below) */
+  margin: 0 auto;
 }
 
 .widgets__col {
@@ -1313,11 +1306,14 @@ summary:focus-visible {
   margin: 0;
   width: 100%;
   /*
-   * max-height clips at ~85% of the phone's natural height (300px col →
-   * 613px full phone → clip at 520px). Bottom rounded corners sit in the
-   * last ~6% (~37px), so they're never visible. overflow:hidden enforces it.
+   * Proportional crop: aspect-ratio sets the container height to ~70% of the
+   * phone's natural height (the in-flow bezel image is taller and gets clipped
+   * by overflow:hidden). Cutting at ~70% lands just below the widgets, hiding
+   * the empty home-screen bottom, the Search pill and the rounded corners —
+   * matching desktop's tighter crop, and staying consistent across device
+   * widths (a fixed max-height clipped at a different % per screen size).
    */
-  max-height: 520px;
+  aspect-ratio: 7 / 10;
   overflow: hidden;
   position: relative;
   /* no order override — stat stays above phone (DOM order) */
@@ -1420,6 +1416,7 @@ summary:focus-visible {
 
   /* Restore original desktop phone treatment */
   .widgets__phone {
+    aspect-ratio: auto;
     max-height: none;
     margin-bottom: -220px;
     overflow: visible;
