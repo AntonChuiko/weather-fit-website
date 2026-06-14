@@ -44,4 +44,4 @@ Pure static HTML/CSS/JS — no framework, no jQuery, no local build step. GitHub
 
 ## Analytics
 
-Click events use `data-tracker="ACTION|LABEL"` attributes routed through `js/site.js` to Mixpanel. The homepage also loads Google Analytics (gtag) and a PromptWatch snippet; the `support/` form is analytics-free.
+Click events use `data-tracker="ACTION|LABEL"` attributes routed through `js/site.js` to Mixpanel. The homepage also loads Google Analytics (gtag); the `support/` form is analytics-free.
