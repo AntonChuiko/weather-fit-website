@@ -79,7 +79,12 @@
         "name": "What to Wear Today, Based on the Weather – Weather Fit",
         "isPartOf": { "@id": "https://weatherfit.com/#website" },
         "about": { "@id": "https://weatherfit.com/#app" },
-        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "@id": "https://weatherfit.com/#primaryimage",
+          "url": "https://weatherfit.com/images/wf-og-image.jpg",
+          "contentUrl": "https://weatherfit.com/images/wf-og-image.jpg"
+        },
         "inLanguage": "en"
       },
       {
