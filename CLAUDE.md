@@ -16,7 +16,7 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 
 ## Project structure
 
-- `index.html` — homepage; full multi-section page (hero, problem→promise, how-it-works, core features, widgets & lock screen, Apple Watch, FAQ, final CTA). A "Free vs Premium" section and one more are still planned (see the `SECTION 9` / `SECTION 12` placeholder comments).
+- `index.html` — homepage; full multi-section page (hero, problem→promise, how-it-works, core features, widgets & lock screen, Apple Watch, FAQ, final CTA).
 - `privacy-policy.html`, `terms-and-conditions.html`, `faq.html`, `press-kit.html`, `404.html` — standalone pages
 - `de/`, `zh-Hans/` — localized homepages (AI-translated, not human-reviewed)
 - `css/styles.css` — single tokenized stylesheet; all design tokens are CSS custom properties on `:root`
