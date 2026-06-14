@@ -35,6 +35,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css?v=1">
 
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner -->
+  <link rel="preload" as="image" href="images/screen-home.webp" fetchpriority="high">
+
   <!-- Structured data -->
   <script type="application/ld+json">
   {
@@ -242,7 +245,8 @@
             <img class="phone-bezel__screen"
                  src="images/screen-home.webp"
                  alt="Weather Fit home screen showing a character dressed for cloudy 73° weather in New York City"
-                 width="1179" height="2556">
+                 width="1179" height="2556"
+                 fetchpriority="high" decoding="async">
             <img class="phone-bezel__frame"
                  src="images/iphone-bezel.webp"
                  alt=""
