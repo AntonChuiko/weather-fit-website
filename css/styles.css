@@ -795,7 +795,7 @@ summary:focus-visible {
 
 .pivot__character {
   display: block;
-  height: 340px;
+  height: clamp(220px, 58vw, 340px);
   width: auto;
   margin: 0 auto;
 }
@@ -825,14 +825,13 @@ summary:focus-visible {
 /* Mobile: chips left | character | chips right */
 .pivot__mobile-layout {
   display: grid;
-  grid-template-columns: 1fr 140px 1fr;
+  /* Center track hugs the character image; side tracks (minmax floor 0) are free
+     to shrink, so the whole composition scales down to fit narrow screens instead
+     of overflowing. Replaces the old fixed 1fr 140px 1fr / 480px bump. */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: var(--sp-3);
+  gap: clamp(8px, 2.4vw, 12px);
   margin-bottom: var(--sp-12);
-}
-
-@media (min-width: 480px) {
-  .pivot__mobile-layout { grid-template-columns: 1fr 180px 1fr; gap: var(--sp-4); }
 }
 
 .pivot__chips-left,
@@ -843,6 +842,17 @@ summary:focus-visible {
 }
 .pivot__chips-left  { align-items: flex-end; }
 .pivot__chips-right { align-items: flex-start; }
+
+/* Fluid pill sizing — chips shrink with the viewport (em padding tracks the
+   font) so the row never gets cut off. wrap/break-word are a safety net for the
+   narrowest phones only; on 375px+ the longest pill stays on one line. Desktop
+   chips (.pivot__stage) keep the base sizing untouched. */
+.pivot__mobile-layout .pivot__chip {
+  font-size: clamp(0.72rem, 3.05vw, 0.9375rem);
+  padding: 0.4em 0.78em;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
 
 /* Remove Hat? and Sunglasses? on mobile (too long for narrow layout) */
 .pivot__chips-left  .pivot__chip:nth-child(5),
