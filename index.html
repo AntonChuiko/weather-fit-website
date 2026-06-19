@@ -35,8 +35,13 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css?v=2">
 
-  <!-- Preload the LCP hero image so it starts downloading early and paints sooner -->
-  <link rel="preload" as="image" href="images/screen-home.webp" fetchpriority="high">
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
+       The LCP element differs by layout: below 1024px the hero is single-column and
+       the "Apps We Love" badge sits on top (it's the LCP); at >=1024px the phone
+       screenshot moves beside the text and becomes the LCP. Scope each preload to its
+       breakpoint so we never high-priority-fetch the wrong, below-the-fold image. -->
+  <link rel="preload" as="image" href="images/award-apps-we-love.webp" fetchpriority="high" media="(max-width: 1023.98px)">
+  <link rel="preload" as="image" href="images/screen-home.webp" fetchpriority="high" media="(min-width: 1024px)">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -215,7 +220,7 @@
             <img src="images/award-apps-we-love.webp"
                  alt="Featured in Apps We Love on the App Store"
                  width="1434" height="316"
-                 loading="eager" decoding="async">
+                 loading="eager" fetchpriority="high" decoding="async">
           </div>
           <h1 class="hero__eyebrow">What to wear today, based on the weather</h1>
           <h2 class="hero__headline">Stop guessing.<br>Start dressing.</h2>
@@ -247,7 +252,7 @@
                  src="images/screen-home.webp"
                  alt="Weather Fit home screen showing a character dressed for cloudy 73° weather in New York City"
                  width="1179" height="2556"
-                 fetchpriority="high" decoding="async">
+                 decoding="async">
             <img class="phone-bezel__frame"
                  src="images/iphone-bezel.webp"
                  alt="" role="presentation"
