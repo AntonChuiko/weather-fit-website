@@ -27,6 +27,12 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 - `_config.yml` — Jekyll config; `exclude:` list keeps dev-only files (e.g. `CLAUDE.md`) out of the published site
 - SEO/meta: `sitemap.xml`, `robots.txt`, `llms.txt`, `app-ads.txt`, `CNAME`
 
+## Localized homepages
+
+- `de/index.html` and `zh-Hans/index.html` are structural mirrors of the root `index.html` — same markup, same classes, same section order; only the visible copy and `alt` text are translated, and asset/href paths are prefixed with `../`.
+- **Always mirror non-content changes from `index.html` to both localized homepages.** Any edit to structure, markup, classes, attributes (e.g. `fetchpriority`, `loading`, `preload` hints), `<head>` meta, or scripts must be applied to `de/index.html` and `zh-Hans/index.html` in the same change — adjusting only the relative paths (`images/…` → `../images/…`). Do **not** translate or alter their existing copy/`alt` text while doing so.
+- Exceptions that are intentionally root-only: `hreflang`/`canonical` URLs, locale-specific copy, and Celsius-vs-Fahrenheit unit choices.
+
 ## Tech stack
 
 Pure static HTML/CSS/JS — no framework, no jQuery, no local build step. GitHub Pages serves it through its default Jekyll build, configured by `_config.yml` (used only to exclude dev files from the published site).
