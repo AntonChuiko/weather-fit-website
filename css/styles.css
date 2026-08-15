@@ -1502,6 +1502,61 @@ summary:focus-visible {
 }
 
 
+/* ─── SECTION 9 — NOTIFICATIONS ─────────────────────────────────────────── */
+
+/*
+ * Layout is borrowed wholesale from Section 6: the markup uses
+ * .features__block / .features__item / .features__visual, so the device size,
+ * column widths and gaps match the core feature rows exactly. Only the headline
+ * scale and the list of notification types below are specific to this section.
+ */
+
+/* Section headline runs at full display scale, matching .watch__title —
+   this is a section heading, not one of Section 6's per-row feature titles. */
+.notify .features__item-title {
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  margin-bottom: var(--sp-6);
+  text-wrap: balance;
+}
+
+.notify__list {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-6) auto 0;
+  max-width: 42ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  text-align: left;
+}
+
+.notify__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-3);
+  align-items: start;
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.notify__item-icon {
+  font-size: 1.15em;
+  line-height: 1.35;
+}
+
+.notify__item strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .notify__list { max-width: none; margin-inline: 0; }
+}
+
+
 /* ─── SECTION 10 — FAQ ───────────────────────────────────────────────────── */
 
 .faq {
