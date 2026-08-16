@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>今日の服装は天気でわかる – Weather Fit 天気コーデアプリ</title>
+  <meta name="description" content="今日の服装が一目でわかります。Weather Fitは、その日の天気予報を読み取ってキャラクターに合った服を着せる無料のiOSアプリ。ショートパンツかアウターか、その中間かまで教えてくれます。">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://weatherfit.com/ja/">
+  <meta property="og:locale"      content="ja_JP">
+  <meta property="og:title"       content="今日の服装は天気でわかる – Weather Fit 天気コーデアプリ">
+  <meta property="og:description" content="今日の服装が一目でわかります。Weather Fitは、その日の天気予報を読み取ってキャラクターに合った服を着せる無料のiOSアプリ。ショートパンツかアウターか、その中間かまで教えてくれます。">
+  <meta property="og:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@weatherfitapp">
+  <meta name="twitter:title"       content="今日の服装は天気でわかる – Weather Fit 天気コーデアプリ">
+  <meta name="twitter:description" content="今日の服装が一目でわかります。Weather Fitは、その日の天気予報を読み取ってキャラクターに合った服を着せる無料のiOSアプリ。ショートパンツかアウターか、その中間かまで教えてくれます。">
+  <meta name="twitter:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://weatherfit.com/ja/">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="en">
+  <link rel="alternate" href="https://weatherfit.com/de/"     hreflang="de">
+  <link rel="alternate" href="https://weatherfit.com/ja/"     hreflang="ja">
+  <link rel="alternate" href="https://weatherfit.com/ko/"     hreflang="ko">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hans/" hreflang="zh-Hans">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hant/" hreflang="zh-Hant">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="x-default">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon"    href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/webclip.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
+       The LCP element differs by layout: below 1024px the hero is single-column and
+       the "Apps We Love" badge sits on top (it's the LCP); at >=1024px the phone
+       screenshot moves beside the text and becomes the LCP. Scope each preload to its
+       breakpoint so we never high-priority-fetch the wrong, below-the-fold image. -->
+  <link rel="preload" as="image" href="../images/award-apps-we-love.webp" fetchpriority="high" media="(max-width: 1023.98px)">
+  <link rel="preload" as="image" href="../images/screen-home.webp" fetchpriority="high" media="(min-width: 1024px)">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/ja/#webpage",
+        "url": "https://weatherfit.com/ja/",
+        "name": "今日の服装は天気でわかる – Weather Fit 天気コーデアプリ",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "applicationCategory": "Weather",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "installUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "screenshot": [
+          "https://weatherfit.com/images/screen-home.webp",
+          "https://weatherfit.com/images/watch-app.webp"
+        ],
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "description": "今日の服装が一目でわかります。Weather Fitは、その日の天気予報を読み取ってキャラクターに合った服を着せる無料のiOSアプリ。ショートパンツかアウターか、その中間かまで教えてくれます。",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "16000" },
+        "author": { "@id": "https://weatherfit.com/#anton" },
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt-BR","es","zh-Hans","zh-Hant","tr","uk"],
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://weatherfit.com/ja/#faq",
+        "isPartOf": { "@id": "https://weatherfit.com/ja/#webpage" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "inLanguage": "ja",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "今日は何を着ればいいですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitを開けば、今日の服装が一目でわかります。キャラクターはワードローブにある実際の服を着ていて、その日の予報とぴったり合っています。気温を読み解く必要も、迷う必要もありません。キャラクターが着ているものを見て、そのまま出かけられます。" }
+          },
+          {
+            "@type": "Question",
+            "name": "今日の天気には何を着ればいいですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitは今日の予報を読み取り、実際に持っている服をキャラクターに着せます。家を出る前に服装を確認でき、天気が変わればその日のうちに更新され続けます。" }
+          },
+          {
+            "@type": "Question",
+            "name": "今日はどんな種類の服を着ればいいですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitがその日に合う組み合わせを選びます。Tシャツかセーターか、ショートパンツかパンツか、アウターが要るかどうか。あなたの好みに合わせて調整されるので、寒がりか暑がりかも反映されます。おすすめされるのは、すべてすでに持っている服です。" }
+          },
+          {
+            "@type": "Question",
+            "name": "今日の天気にはどう着ればいいですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitは今日の予報と、あなたのワードローブ、そして自分で決める好みを組み合わせます。暑がりなら薄着寄りに、寒がりなら早めに厚着に。キャラクターが着るのは実際に持っている服だけで、ありきたりなアドバイスではありません。" }
+          },
+          {
+            "@type": "Question",
+            "name": "今日はショートパンツでも大丈夫ですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitを開けば、キャラクターが教えてくれます。アプリが今日の気温を読み取り、あなたの好みも踏まえて、ショートパンツがいいのか、パンツのほうがいいのかを示します。明日とこの先10日間もカバーするので、前の晩に迷うこともありません。" }
+          },
+          {
+            "@type": "Question",
+            "name": "今日はアウターが必要ですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitは今日の天気に合わせてキャラクターに服を着せます。アウターが必要ならキャラクターは着ていますし、必要なければ着ていません。計算も迷いも要りません。" }
+          },
+          {
+            "@type": "Question",
+            "name": "今日はワンピースを着られますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fitが気温と風と雨を合わせて判断し、ワンピースの日かどうか、上に何か羽織ったほうがいいかを教えてくれます。ワンピースやスカートをワードローブに追加しておけば、天気が合うときにキャラクターが着ます。" }
+          },
+          {
+            "@type": "Question",
+            "name": "Weather Fitは無料ですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。基本機能は期間の制限なく無料です。天気予報、服装のおすすめ、あなたのキャラクター、そしてホーム画面ウィジェットが1つ。プレミアムにアップグレードすると、ウィジェットと風景が増え、毎日の通知、Apple Watchアプリ、無制限のワードローブが使えます。" }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y268716VCV',{'anonymize_ip':true});</script>
+
+  <!-- Mixpanel -->
+  <script type="text/javascript">
+    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+    mixpanel.init("a7e3e55d260afe151cf13deabcac5663");
+  </script>
+  <script>mixpanel.track('page viewed',{'page name':document.title,'url':window.location.pathname});</script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div id="header-sentinel" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-logo" href="/ja/">
+        <img src="../images/logo.svg" alt="Weather Fit">
+      </a>
+      <a class="btn btn-nav"
+         href="https://apps.apple.com/app/apple-store/id1194408342"
+         target="_blank"
+         rel="noopener"
+         data-tracker="TOP_APPSTORE|HOME_JA">
+        <span>無料でダウンロード</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <!-- Apps We Love badge -->
+          <div class="hero__award">
+            <img src="../images/award-apps-we-love.webp"
+                 alt="App Store「Apps We Love」に選出"
+                 width="1434" height="316"
+                 loading="eager" fetchpriority="high" decoding="async">
+          </div>
+          <h1 class="hero__eyebrow">今日の服装は天気でわかる</h1>
+          <h2 class="hero__headline">もう迷わない。<br>着る服は決まっています。</h2>
+          <p class="hero__subhead">
+            自分に似たキャラクターが、今日の天気に合った服を着ています。
+            毎朝アプリを開くだけで、何を着ればいいかがわかります。
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="HERO_APPSTORE|HOME_JA">
+              <img src="../images/app-store.svg" alt="App Storeからダウンロード" width="156" height="44">
+            </a>
+            <div class="hero__trust">
+              <div class="hero__trust-top">
+                <span class="hero__stars" role="img" aria-label="5段階中4.6"></span>
+                <span class="hero__trust-score"><strong>4.6</strong> / 5</span>
+              </div>
+              <span class="hero__trust-count">App Storeの評価16,000件以上</span>
+            </div>
+
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <div class="phone-bezel">
+            <img class="phone-bezel__screen"
+                 src="../images/screen-home.webp"
+                 alt="ニューヨークの曇りの天気に合わせた服装のキャラクターが表示されたWeather Fitのホーム画面"
+                 width="1179" height="2556"
+                 decoding="async">
+            <img class="phone-bezel__frame"
+                 src="../images/iphone-bezel.webp"
+                 alt="" role="presentation"
+                 width="1800" height="3680"
+                 aria-hidden="true">
+          </div>
+        </figure>
+      </div>
+
+      <!-- Testimonials marquee -->
+      <div class="proof-bar">
+        <div class="proof-bar__track" role="marquee" aria-label="App Storeのレビュー">
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Weather Fitは最高です！</p>
+            <p class="proof-bar__handle">Z-Finnley</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">朝起きて何を着ればいいかわからないことがよくありました。Weather Fitのおかげで、毎日その日の服装がはっきりわかります。もう何人にもすすめていて、本当におすすめです。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">便利で楽しい</p>
+            <p class="proof-bar__handle">MaiaPanthera</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">服選びが楽しく、気楽になりました。晴れるつもりで着て出かけて雨に濡れることも、もうありません！開発者の対応も早く、リクエストした機能を実際に追加してくれます。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">クリエイティブな人にぴったり！</p>
+            <p class="proof-bar__handle">GnomesR-us</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">ADHDのある方やクリエイティブな方に強くおすすめします。天気に合った服装を目で見てわかるように教えてくれるので、使っていて楽しく、しかも本当に役立ちます。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">いちばん使いやすい天気アプリ</p>
+            <p class="proof-bar__handle">Jake2000000</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">驚くほど便利なのに、まったく複雑ではありません。何を着ればいいか教えてくれるので、毎日時間が浮きます。サポートの返信も早く、予報もたいていの天気アプリより正確です。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">ずっと欲しかったアプリ</p>
+            <p class="proof-bar__handle">Bromeo192</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">学生の頃は、天気がどうなるか母にいつも電話で聞いていました。このアプリは誰にも迷惑をかけずに何を着ればいいか教えてくれます。とても気に入っています。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">服選びのストレスがなくなりました</p>
+            <p class="proof-bar__handle">PikaPika-Choooooooo</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">自閉症の当事者として、このアプリのおかげで最小限のストレスで着るものを決められています。開発者は質問にもとても早く答えてくれます。10点満点で10点、友人にもすすめています。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">すばらしいアプリ！</p>
+            <p class="proof-bar__handle">happysimplemodern</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">ホーム画面にウィジェットを置いて、メインの天気アプリとして使っています。ワードローブの機能がとても気に入っていますし、デザインもかわいいです。もう毎日の習慣になりました。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">とてもいい天気アプリ！</p>
+            <p class="proof-bar__handle">Daisy Field</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">デザインが美しく、動きもなめらかです。自分で選んだ服を着たキャラクターを見るたびにうれしくなります。開発者の返信も修正もとても早いです。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">毎朝、出勤前に確認しています</p>
+            <p class="proof-bar__handle">나토토토</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">季節の変わり目はいつも服装を間違えていました。このアプリのおかげで今はちょうどよく着られていて、服装の失敗もありません。すっかり朝の習慣です。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">とても役立ちます</p>
+            <p class="proof-bar__handle">BDGReview</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">季節の変わり目の服装まで提案してくれるのがとても気に入っています。冬のコートからいきなりショートパンツに飛ぶのではなく、その間をきちんと押さえてくれます。この細やかさが本当に違います。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">大好きです！！</p>
+            <p class="proof-bar__handle">LenaM720</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">とても便利でかわいいです。ウィジェットを使うにはサブスクリプションが必要ですが、その価値は十分にあると思います。機能もすばらしいです。</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">私のコーデ係</p>
+            <p class="proof-bar__handle">teamazwhi</p>
+            <span class="proof-bar__stars" role="img" aria-label="星5つ"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">外に出なくても、天気に合わせて何を着るか手早く決められます。天気アプリはまさにこうあるべきです。</p>
+          </div>
+
+
+        </div>
+      </div><!-- /.proof-bar -->
+
+    </section><!-- /.hero -->
+
+    <!-- SECTION 4 - THE PROBLEM → THE PROMISE -->
+    <section class="pivot">
+      <div class="container">
+
+        <h2 class="pivot__question">今日は何を着る？</h2>
+
+        <p class="pivot__problem">毎朝、天気を確認しますよね。12°Cとやや曇りのアイコンを見ても、ショートパンツなのか、薄手のジャケットなのか、厚手のコートなのか、それともブーツなのかは結局わかりません。</p>
+
+        <div class="pivot__temp-badge">
+          <img src="../images/cloud.sun.webp" alt="" role="presentation" aria-hidden="true" width="22" height="22">
+          <span class="pivot__temp-badge-num">12°</span>
+        </div>
+
+        <!-- Mobile: chips left + character + chips right -->
+        <div class="pivot__mobile-layout" aria-label="服装の悩みに囲まれたキャラクター">
+          <div class="pivot__chips-left" aria-hidden="true">
+            <span class="pivot__chip">ショートパンツ？</span>
+            <span class="pivot__chip">薄手ジャケット？</span>
+            <span class="pivot__chip">厚手コート？</span>
+            <span class="pivot__chip">傘？</span>
+            <span class="pivot__chip">帽子？</span>
+          </div>
+          <img class="pivot__character" src="../images/character-rain.webp" alt="雨の天気に合わせた服装のWeather Fitのキャラクター" width="896" height="2431" loading="lazy">
+          <div class="pivot__chips-right" aria-hidden="true">
+            <span class="pivot__chip">Tシャツ？</span>
+            <span class="pivot__chip">セーター？</span>
+            <span class="pivot__chip">ブーツ？</span>
+            <span class="pivot__chip">マフラー？</span>
+            <span class="pivot__chip">サングラス？</span>
+          </div>
+        </div>
+
+        <!-- Desktop: chips floating around character -->
+        <div class="pivot__stage" aria-hidden="true">
+          <img class="pivot__character" src="../images/character-rain.webp" alt="雨の天気に合わせた服装のWeather Fitのキャラクター" width="896" height="2431" loading="lazy">
+          <span class="pivot__chip pivot__chip--tl">ショートパンツ？</span>
+          <span class="pivot__chip pivot__chip--tl2">帽子？</span>
+          <span class="pivot__chip pivot__chip--tc">Tシャツ？</span>
+          <span class="pivot__chip pivot__chip--tr">薄手ジャケット？</span>
+          <span class="pivot__chip pivot__chip--tr2">サングラス？</span>
+          <span class="pivot__chip pivot__chip--ml">傘？</span>
+          <span class="pivot__chip pivot__chip--mr">セーター？</span>
+          <span class="pivot__chip pivot__chip--bl">厚手コート？</span>
+          <span class="pivot__chip pivot__chip--bc">マフラー？</span>
+          <span class="pivot__chip pivot__chip--br">ブーツ？</span>
+        </div>
+
+        <p class="pivot__promise"><strong>Weather Fitが、その差を埋めます。</strong>天気予報を読み取り、あなたのワードローブを把握して、着る服を教えてくれます。</p>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5 - HOW IT WORKS -->
+    <section class="howto">
+      <div class="container">
+
+        <h2 class="howto__title" data-reveal>3ステップで今日の服装が決まる</h2>
+
+        <ol class="howto__steps" data-reveal-stagger>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-character.webp" alt="Weather Fitのキャラクター作成画面" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">01</span>
+            <h3 class="howto__step-title">キャラクターを作る</h3>
+            <p class="howto__step-body">性別、肌の色、ヘアスタイル、髪の色、眉毛、眼鏡、ひげを選びます。</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-wardrobe.webp" alt="Weather Fitのワードローブ設定画面" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">02</span>
+            <h3 class="howto__step-title">ワードローブを揃える</h3>
+            <p class="howto__step-body">持っている服を追加して、普段よく着るものをアプリに教えます。持っていない服はおすすめされません。</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-forecast.webp" alt="予報に合わせた服装のWeather Fitのキャラクター" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">03</span>
+            <h3 class="howto__step-title">アプリを開いて確認する</h3>
+            <p class="howto__step-body">キャラクターが予報に合わせて着替えて待っています。一日のどの時間帯もカバーします。</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 6 - CORE FEATURES -->
+    <section class="features">
+
+      <div class="features__header container" data-reveal>
+        <h2 class="features__title">天気に合わせた服装のおすすめ</h2>
+      </div>
+
+      <!-- Block 1: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-character.webp" alt="現在の天気に合わせた服装のWeather Fitのキャラクター" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">予報に合わせて着替えるキャラクター</h3>
+              <p class="features__item-body">毎朝、キャラクターがその日の天気に合わせて着替えます。暖かくなればショートパンツ、気温が下がればダウン、晴れた午後はサングラス、雨が降る前には傘。午前、午後、夕方、夜間それぞれに更新されます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 2: warm yellow gradient -->
+      <div class="features__block features__block--warm" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-wardrobe.webp" alt="カテゴリごとに服が並んだWeather Fitのワードローブ画面" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">持っている服だけを着ます</h3>
+              <p class="features__item-body">カテゴリごとに服を追加します。トップス、ボトムス、アウター、靴、ファッション雑貨。好みを調整すれば、厚着寄りにも薄着寄りにもできます。着ない服はオフにしておきましょう。実際に着る服だけをおすすめします。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 3: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-weather.webp" alt="Apple 天気のデータを使ったWeather Fitの予報画面" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">iPhoneの天気アプリと同じ予報</h3>
+              <p class="features__item-body">Weather FitはApple 天気のデータを使っています。今日と明日の予報、そしてこの先10日間。さらに分単位の降水、UV指数、風、湿度、空気の質、月の位相、日の出と日の入りまで。荒天が予報されているときは、気象警報とお知らせも届きます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 4: cool blue gradient -->
+      <div class="features__block features__block--cool" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-locations.webp" alt="保存した場所が並んだWeather Fitの画面" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">どこへ行っても天気がわかる</h3>
+              <p class="features__item-body">場所は無制限に保存できます。現在地は自動で更新されます。場所ごとに専用の風景があります。都市、山、浜辺、郊外。空の色は時間帯によって変わります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 7 - WIDGETS & LOCK SCREEN -->
+    <section class="widgets">
+      <div class="container">
+
+        <h2 class="widgets__title" data-reveal>ロックを解除する前に、今日の服装を</h2>
+
+        <p class="widgets__lead" data-reveal>
+          Weather Fitが、キャラクターと予報をiPhoneのホーム画面とロック画面に表示します。キャラクターはもう今日の服を着て、そこにいます。一目見るだけで十分です。
+        </p>
+
+        <div class="widgets__grid" data-reveal>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--home">
+              <span class="widgets__stat-num" data-count="10">0</span>
+              <span class="widgets__stat-label">スタイルのホーム画面ウィジェット</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-home-dark.webp" alt="キャラクターと予報を表示するWeather Fitのホーム画面ウィジェット" width="1608" height="3496" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--lock">
+              <span class="widgets__stat-num" data-count="19">0</span>
+              <span class="widgets__stat-label">種類のロック画面ウィジェット</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-lock.webp" alt="キャラクターと予報を表示するWeather Fitのロック画面ウィジェット" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- SECTION 8 - APPLE WATCH -->
+    <section class="watch">
+      <div class="container">
+
+        <h2 class="watch__title" data-reveal>
+          iPhoneを取り出さなくても、アウターが必要かわかります
+        </h2>
+
+        <p class="watch__lead" data-reveal>
+          Weather FitのApple Watchアプリは、服を着たキャラクターと現在の気温、
+          体感温度、降水予報を表示します。文字盤にコンプリケーションを追加すれば、
+          腕を上げるだけで朝の確認は完了です。
+        </p>
+
+        <div class="watch__visual" data-reveal>
+          <img src="../images/screen-watch.webp" alt="服装のキャラクターと気温を表示するWeather FitのApple Watchアプリ" width="3344" height="1322" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 9 - NOTIFICATIONS -->
+    <section class="notify features__block" data-reveal>
+      <div class="container">
+        <div class="features__item">
+          <figure class="features__visual" aria-hidden="true">
+            <img class="features__screen" src="../images/screen-notifications.webp" alt="iPhoneのロック画面に表示されたWeather Fitの通知。朝の服装レポート、夜のレポート、傘リマインダー、日焼け止めリマインダー" width="1179" height="2556" loading="lazy">
+            <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+          </figure>
+          <div class="features__copy">
+            <h2 class="features__item-title">聞く前に、先に教えてくれます</h2>
+            <p class="features__item-body">一日2回、好きな時刻にレポートが届きます。どちらにも、予報に合わせて着替えたキャラクターが一緒です。さらにリマインダーが2つありますが、天気に何もなければ静かなままです。</p>
+            <ul class="notify__list">
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☀️</span>
+                <span><strong>朝のレポート：</strong>今日の最高気温と最低気温、一日の天気の移り変わり、そして何を着ればいいか。</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🌧️</span>
+                <span><strong>夜のレポート：</strong>同じ内容を明日について。前の晩に知っておけます。</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☔️</span>
+                <span><strong>傘リマインダー：</strong>雨の日だけ、いつ降りそうかも合わせてお知らせします。</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🧴</span>
+                <span><strong>日焼け止めリマインダー：</strong>UV指数が設定した値を超えそうなときだけ届きます。</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 - FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__glass" data-reveal>
+
+        <h2 class="faq__title">よくある質問</h2>
+
+        <ul class="faq__list">
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日は何を着ればいいですか？</summary>
+              <div class="faq__answer"><p>Weather Fitを開けば、今日の服装が一目でわかります。キャラクターはワードローブにある実際の服を着ていて、その日の予報とぴったり合っています。気温を読み解く必要も、迷う必要もありません。キャラクターが着ているものを見て、そのまま出かけられます。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日の天気には何を着ればいいですか？</summary>
+              <div class="faq__answer"><p>Weather Fitは今日の予報を読み取り、実際に持っている服をキャラクターに着せます。家を出る前に服装を確認でき、天気が変わればその日のうちに更新され続けます。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日はどんな種類の服を着ればいいですか？</summary>
+              <div class="faq__answer"><p>Weather Fitがその日に合う組み合わせを選びます。Tシャツかセーターか、ショートパンツかパンツか、アウターが要るかどうか。あなたの好みに合わせて調整されるので、寒がりか暑がりかも反映されます。おすすめされるのは、すべてすでに持っている服です。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日の天気にはどう着ればいいですか？</summary>
+              <div class="faq__answer"><p>Weather Fitは今日の予報と、あなたのワードローブ、そして自分で決める好みを組み合わせます。暑がりなら薄着寄りに、寒がりなら早めに厚着に。キャラクターが着るのは実際に持っている服だけで、ありきたりなアドバイスではありません。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日はショートパンツでも大丈夫ですか？</summary>
+              <div class="faq__answer"><p>Weather Fitを開けば、キャラクターが教えてくれます。アプリが今日の気温を読み取り、あなたの好みも踏まえて、ショートパンツがいいのか、パンツのほうがいいのかを示します。明日とこの先10日間もカバーするので、前の晩に迷うこともありません。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日はアウターが必要ですか？</summary>
+              <div class="faq__answer"><p>Weather Fitは今日の天気に合わせてキャラクターに服を着せます。アウターが必要ならキャラクターは着ていますし、必要なければ着ていません。計算も迷いも要りません。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">今日はワンピースを着られますか？</summary>
+              <div class="faq__answer"><p>Weather Fitが気温と風と雨を合わせて判断し、ワンピースの日かどうか、上に何か羽織ったほうがいいかを教えてくれます。ワンピースやスカートをワードローブに追加しておけば、天気が合うときにキャラクターが着ます。</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Weather Fitは無料ですか？</summary>
+              <div class="faq__answer"><p>はい。基本機能は期間の制限なく無料です。天気予報、服装のおすすめ、あなたのキャラクター、そしてホーム画面ウィジェットが1つ。プレミアムにアップグレードすると、ウィジェットと風景が増え、毎日の通知、Apple Watchアプリ、無制限のワードローブが使えます。</p></div>
+            </details>
+          </li>
+
+        </ul>
+
+        <div class="faq__footer">
+          <a class="btn btn-ghost" href="/faq" data-tracker="FAQ_SEE_ALL|HOME_JA">よくある質問をすべて見る</a>
+        </div>
+
+        </div><!-- /.faq__glass -->
+      </div>
+    </section>
+
+    <!-- SECTION 11 - FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="final-cta__grid" data-reveal-stagger>
+
+          <div class="final-cta__content">
+            <h2 class="final-cta__title">明日の朝は、何を着ればいいかがはっきりわかります</h2>
+            <p class="final-cta__body">
+              Weather Fitは無料でダウンロードでき、設定は2分ほどで終わります。
+              キャラクターがもう待っています。
+            </p>
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="FINAL_CTA_APPSTORE|HOME_JA">
+              <img src="../images/app-store.svg" alt="App Storeからダウンロード" width="156" height="44">
+            </a>
+          </div>
+
+          <figure class="final-cta__visual" aria-hidden="true">
+            <img src="../images/screen-final-cta.webp" alt="その日の天気に合わせた服装のWeather Fitのキャラクター" width="4420" height="5120" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
+        <a class="site-footer__logo" href="/ja/" aria-label="Weather Fit ホーム">
+          <img src="../images/logo.svg" alt="Weather Fit">
+        </a>
+        <div class="site-footer__nav">
+          <div class="lang-select" data-lang-select>
+            <button type="button" class="lang-select__trigger" aria-expanded="false" aria-label="言語：日本語">
+              <svg class="lang-select__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path>
+                <path d="M12 3c2.6 2.7 4 6 4 9s-1.4 6.3-4 9c-2.6-2.7-4-6-4-9s1.4-6.3 4-9z"></path>
+              </svg>
+              <span class="lang-select__label">日本語</span>
+              <svg class="lang-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <div class="lang-select__menu">
+              <a class="lang-select__option" href="/" hreflang="en" lang="en" data-tracker="FOOTER_LANG_EN|HOME_JA"><span>English</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/de/" hreflang="de" lang="de" data-tracker="FOOTER_LANG_DE|HOME_JA"><span>Deutsch</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ja/" hreflang="ja" lang="ja" aria-current="page" data-tracker="FOOTER_LANG_JA|HOME_JA"><span>日本語</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ko/" hreflang="ko" lang="ko" data-tracker="FOOTER_LANG_KO|HOME_JA"><span>한국어</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans" data-tracker="FOOTER_LANG_ZH|HOME_JA"><span>简体中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-tracker="FOOTER_LANG_ZHT|HOME_JA"><span>繁體中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+            </div>
+          </div>
+          <span class="site-footer__nav-sep" aria-hidden="true"></span>
+          <div class="site-footer__social">
+            <a class="js-email" data-eu="hi" data-ed="weatherfit.com" data-etext data-tracker="FOOTER_CONTACT|HOME_JA">メール</a>
+            <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME_JA">Instagram</a>
+            <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|HOME_JA">X</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. 無断複写・転載を禁じます。</p>
+        <nav class="site-footer__links" aria-label="法律情報">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|HOME_JA">プライバシーポリシー</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|HOME_JA">利用規約</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|HOME_JA">プレスキット</a>
+        </nav>
+      </div>
+
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple、iPhone、iPad、Apple Watch、App StoreはApple Inc.の商標です。</p>
+        <p>天気データ提供：Apple 天気</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Tracker -->
+  <script src="../js/site.js?v=1"></script>
+
+</body>
+</html>
