@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>오늘 뭐 입지? 날씨가 알려줘요 – Weather Fit 날씨 코디 앱</title>
+  <meta name="description" content="오늘 뭘 입을지 한눈에 알 수 있어요. Weather Fit은 오늘의 예보를 읽고 내 캐릭터에게 날씨에 맞는 옷을 입혀주는 무료 iOS 앱이에요. 반바지든 아우터든, 애매한 간절기 옷차림까지.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://weatherfit.com/ko/">
+  <meta property="og:locale"      content="ko_KR">
+  <meta property="og:title"       content="오늘 뭐 입지? 날씨가 알려줘요 – Weather Fit 날씨 코디 앱">
+  <meta property="og:description" content="오늘 뭘 입을지 한눈에 알 수 있어요. Weather Fit은 오늘의 예보를 읽고 내 캐릭터에게 날씨에 맞는 옷을 입혀주는 무료 iOS 앱이에요. 반바지든 아우터든, 애매한 간절기 옷차림까지.">
+  <meta property="og:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@weatherfitapp">
+  <meta name="twitter:title"       content="오늘 뭐 입지? 날씨가 알려줘요 – Weather Fit 날씨 코디 앱">
+  <meta name="twitter:description" content="오늘 뭘 입을지 한눈에 알 수 있어요. Weather Fit은 오늘의 예보를 읽고 내 캐릭터에게 날씨에 맞는 옷을 입혀주는 무료 iOS 앱이에요. 반바지든 아우터든, 애매한 간절기 옷차림까지.">
+  <meta name="twitter:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://weatherfit.com/ko/">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="en">
+  <link rel="alternate" href="https://weatherfit.com/de/"     hreflang="de">
+  <link rel="alternate" href="https://weatherfit.com/ko/"     hreflang="ko">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hans/" hreflang="zh-Hans">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hant/" hreflang="zh-Hant">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="x-default">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon"    href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/webclip.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
+       The LCP element differs by layout: below 1024px the hero is single-column and
+       the "Apps We Love" badge sits on top (it's the LCP); at >=1024px the phone
+       screenshot moves beside the text and becomes the LCP. Scope each preload to its
+       breakpoint so we never high-priority-fetch the wrong, below-the-fold image. -->
+  <link rel="preload" as="image" href="../images/award-apps-we-love.webp" fetchpriority="high" media="(max-width: 1023.98px)">
+  <link rel="preload" as="image" href="../images/screen-home.webp" fetchpriority="high" media="(min-width: 1024px)">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/ko/#webpage",
+        "url": "https://weatherfit.com/ko/",
+        "name": "오늘 뭐 입지? 날씨가 알려줘요 – Weather Fit 날씨 코디 앱",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "inLanguage": "ko"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "applicationCategory": "Weather",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "installUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "screenshot": [
+          "https://weatherfit.com/images/screen-home.webp",
+          "https://weatherfit.com/images/watch-app.webp"
+        ],
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "description": "오늘 뭘 입을지 한눈에 알 수 있어요. Weather Fit은 오늘의 예보를 읽고 내 캐릭터에게 날씨에 맞는 옷을 입혀주는 무료 iOS 앱이에요. 반바지든 아우터든, 애매한 간절기 옷차림까지.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "16000" },
+        "author": { "@id": "https://weatherfit.com/#anton" },
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt-BR","es","zh-Hans","zh-Hant","tr","uk"],
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://weatherfit.com/ko/#faq",
+        "isPartOf": { "@id": "https://weatherfit.com/ko/#webpage" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "inLanguage": "ko",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "오늘 뭘 입어야 하나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit을 열면 오늘 옷차림이 한눈에 보여요. 캐릭터가 내 옷장에 있는 진짜 옷을 입고, 실제 예보와 딱 맞춰져 있어요. 온도를 해석할 필요도, 짐작할 필요도 없어요. 캐릭터가 뭘 입었는지만 보고 나가면 돼요." }
+          },
+          {
+            "@type": "Question",
+            "name": "오늘 날씨에 뭘 입어야 하나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit은 오늘 예보를 읽고, 실제로 가지고 있는 옷을 캐릭터에게 입혀요. 집을 나서기 전에 옷차림을 확인할 수 있고, 날씨가 바뀌면 하루 동안 계속 업데이트돼요." }
+          },
+          {
+            "@type": "Question",
+            "name": "오늘은 어떤 옷을 입어야 하나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit이 그날에 맞는 옷을 골라줘요. 티셔츠인지 스웨터인지, 반바지인지 긴바지인지, 아우터가 필요한지까지. 내 선호도에 맞춰 조정되니까 추위를 타는지 더위를 타는지도 반영돼요. 추천하는 옷은 모두 이미 가지고 있는 것들이에요." }
+          },
+          {
+            "@type": "Question",
+            "name": "오늘 날씨에는 어떻게 입어야 할까요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit은 오늘 예보와 내 옷장, 그리고 직접 조절하는 선호도를 함께 고려해요. 더위를 타면 더 가볍게, 추위를 타면 더 일찍 따뜻하게 입혀줘요. 캐릭터는 실제로 가지고 있는 옷만 입어요. 뻔한 조언이 아니에요." }
+          },
+          {
+            "@type": "Question",
+            "name": "오늘 반바지 입어도 될까요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit을 열면 캐릭터가 알려줘요. 앱이 오늘 기온을 읽고 내 선호도를 반영해서, 반바지가 좋을지 긴바지가 나을지 알려줘요. 내일과 앞으로 10일치도 볼 수 있어서 전날 밤에 짐작할 필요가 없어요." }
+          },
+          {
+            "@type": "Question",
+            "name": "오늘 아우터가 필요할까요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit은 오늘 날씨에 맞춰 캐릭터에게 옷을 입혀요. 아우터가 필요하면 캐릭터가 입고 있고, 필요 없으면 입지 않아요. 계산할 필요도, 망설일 필요도 없어요." }
+          },
+          {
+            "@type": "Question",
+            "name": "오늘 원피스를 입어도 될까요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit이 기온과 바람, 비를 함께 따져서 원피스를 입기 좋은 날인지, 위에 뭘 걸치는 게 좋을지 알려줘요. 원피스와 스커트를 옷장에 추가해두면 날씨가 맞을 때 캐릭터가 입어요." }
+          },
+          {
+            "@type": "Question",
+            "name": "Weather Fit은 무료인가요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "네. 핵심 기능은 기간 제한 없이 무료예요. 예보, 옷차림 추천, 내 캐릭터, 그리고 홈 화면 위젯 하나까지. Premium을 구독하면 위젯과 풍경이 더 열리고, 매일 알림, Apple Watch 앱, 무제한 옷장까지 사용할 수 있어요." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y268716VCV',{'anonymize_ip':true});</script>
+
+  <!-- Mixpanel -->
+  <script type="text/javascript">
+    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+    mixpanel.init("a7e3e55d260afe151cf13deabcac5663");
+  </script>
+  <script>mixpanel.track('page viewed',{'page name':document.title,'url':window.location.pathname});</script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div id="header-sentinel" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-logo" href="/ko/">
+        <img src="../images/logo.svg" alt="Weather Fit">
+      </a>
+      <a class="btn btn-nav"
+         href="https://apps.apple.com/app/apple-store/id1194408342"
+         target="_blank"
+         rel="noopener"
+         data-tracker="TOP_APPSTORE|HOME_KO">
+        <span>무료로 받기</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <!-- Apps We Love badge -->
+          <div class="hero__award">
+            <img src="../images/award-apps-we-love.webp"
+                 alt="App Store ‘Apps We Love’ 선정"
+                 width="1434" height="316"
+                 loading="eager" fetchpriority="high" decoding="async">
+          </div>
+          <h1 class="hero__eyebrow">오늘 뭐 입지? 날씨가 알려줘요</h1>
+          <h2 class="hero__headline">고민은 그만,<br>제대로 입고 나가요.</h2>
+          <p class="hero__subhead">
+            나를 닮은 캐릭터가 오늘 날씨에 맞는 옷을 입고 있어요.
+            매일 아침 앱만 열면 뭘 입을지 바로 알 수 있어요.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="HERO_APPSTORE|HOME_KO">
+              <img src="../images/app-store.svg" alt="App Store에서 다운로드" width="156" height="44">
+            </a>
+            <div class="hero__trust">
+              <div class="hero__trust-top">
+                <span class="hero__stars" role="img" aria-label="5점 만점에 4.6점"></span>
+                <span class="hero__trust-score"><strong>4.6</strong> / 5</span>
+              </div>
+              <span class="hero__trust-count">App Store 평가 16,000개 이상</span>
+            </div>
+
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <div class="phone-bezel">
+            <img class="phone-bezel__screen"
+                 src="../images/screen-home.webp"
+                 alt="뉴욕의 흐린 날씨에 맞춰 옷을 입은 캐릭터가 있는 Weather Fit 홈 화면"
+                 width="1179" height="2556"
+                 decoding="async">
+            <img class="phone-bezel__frame"
+                 src="../images/iphone-bezel.webp"
+                 alt="" role="presentation"
+                 width="1800" height="3680"
+                 aria-hidden="true">
+          </div>
+        </figure>
+      </div>
+
+      <!-- Testimonials marquee -->
+      <div class="proof-bar">
+        <div class="proof-bar__track" role="marquee" aria-label="App Store 리뷰">
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Weather Fit 최고예요!</p>
+            <p class="proof-bar__handle">Z-Finnley</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">아침에 일어나면 뭘 입어야 할지 모를 때가 많았어요. Weather Fit 덕분에 매일 뭘 입을지 확실히 알게 됐어요. 여러 사람에게 소개했고 정말 추천해요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">유용하고 즐거워요</p>
+            <p class="proof-bar__handle">MaiaPanthera</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">옷 고르는 게 재미있고 편해졌어요. 맑은 날인 줄 알고 입고 나갔다가 비 맞는 일도 이제 없어요! 개발자가 바로바로 답해주고, 요청한 기능도 실제로 추가해줘요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">창의적인 사람에게 딱!</p>
+            <p class="proof-bar__handle">GnomesR-us</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">ADHD가 있거나 창의적인 분들께 강력 추천해요. 날씨에 맞는 옷차림을 시각적으로 알려줘서, 쓰는 재미도 있고 실제로 유용해요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">최고의 날씨 앱</p>
+            <p class="proof-bar__handle">Jake2000000</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">놀랄 만큼 유용한데 복잡하지 않아요. 뭘 입을지 알려주니 매일 시간이 절약돼요. 고객 지원도 빠르게 답해줬고, 예보도 웬만한 날씨 앱보다 정확해요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">늘 바라던 앱</p>
+            <p class="proof-bar__handle">Bromeo192</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">학생 때는 날씨가 어떤지 엄마한테 늘 전화해서 물어봤어요. 이 앱은 누구를 귀찮게 하지 않아도 뭘 입을지 바로 알려줘요. 정말 좋아요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">옷 고르는 스트레스 끝</p>
+            <p class="proof-bar__handle">PikaPika-Choooooooo</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">자폐 당사자로서, 이 앱 덕분에 스트레스를 최소화하면서 뭘 입을지 정할 수 있어요. 개발자가 질문에도 정말 빠르게 답해줘요. 10점 만점에 10점, 친구들에게도 추천하고 있어요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">훌륭한 앱!</p>
+            <p class="proof-bar__handle">happysimplemodern</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">홈 화면에 위젯을 두고 주요 날씨 앱으로 쓰고 있어요. 옷장 기능이 정말 마음에 들고 디자인도 너무 귀여워요. 이제는 하루 일과가 됐어요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">정말 좋은 날씨 앱!</p>
+            <p class="proof-bar__handle">Daisy Field</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">디자인이 아름답고 동작도 매끄러워요. 직접 고른 옷을 입은 캐릭터를 볼 때마다 기분이 좋아져요. 개발자가 답변과 수정도 아주 빨라요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">매일 출근 전에 확인해요</p>
+            <p class="proof-bar__handle">나토토토</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">간절기마다 옷을 잘못 입기 일쑤였어요. 이 앱 덕분에 요즘은 딱 맞게 입고, 옷차림 실패도 없어요. 이제 아침 루틴이 됐어요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">아주 유용해요</p>
+            <p class="proof-bar__handle">BDGReview</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">간절기 옷차림까지 챙겨주는 점이 정말 마음에 들어요. 겨울 코트에서 반바지로 건너뛰지 않고, 그 사이를 정확하게 짚어줘요. 이런 세심함이 확실히 달라요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">너무 좋아요!!</p>
+            <p class="proof-bar__handle">LenaM720</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">엄청 유용하고 귀여워요. 위젯을 쓰려면 구독을 해야 하지만, 그만한 값어치는 충분해요. 기능이 훌륭해요.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">내 코디 도우미</p>
+            <p class="proof-bar__handle">teamazwhi</p>
+            <span class="proof-bar__stars" role="img" aria-label="별 5개"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">밖에 나가보지 않아도 날씨에 맞게 뭘 입을지 빠르게 정할 수 있어요. 날씨 앱이라면 바로 이래야죠.</p>
+          </div>
+
+
+        </div>
+      </div><!-- /.proof-bar -->
+
+    </section><!-- /.hero -->
+
+    <!-- SECTION 4 - THE PROBLEM → THE PROMISE -->
+    <section class="pivot">
+      <div class="container">
+
+        <h2 class="pivot__question">오늘 뭐 입지?</h2>
+
+        <p class="pivot__problem">매일 아침 날씨를 확인하죠. 12°C와 구름 조금 아이콘을 봐도, 이게 반바지인지 가벼운 아우터인지 두꺼운 코트인지 부츠인지는 여전히 알 수 없어요.</p>
+
+        <div class="pivot__temp-badge">
+          <img src="../images/cloud.sun.webp" alt="" role="presentation" aria-hidden="true" width="22" height="22">
+          <span class="pivot__temp-badge-num">12°</span>
+        </div>
+
+        <!-- Mobile: chips left + character + chips right -->
+        <div class="pivot__mobile-layout" aria-label="옷차림 고민에 둘러싸인 캐릭터">
+          <div class="pivot__chips-left" aria-hidden="true">
+            <span class="pivot__chip">반바지?</span>
+            <span class="pivot__chip">가벼운 아우터?</span>
+            <span class="pivot__chip">두꺼운 코트?</span>
+            <span class="pivot__chip">우산?</span>
+            <span class="pivot__chip">모자?</span>
+          </div>
+          <img class="pivot__character" src="../images/character-rain.webp" alt="비 오는 날씨에 맞춰 옷을 입은 Weather Fit 캐릭터" width="896" height="2431" loading="lazy">
+          <div class="pivot__chips-right" aria-hidden="true">
+            <span class="pivot__chip">티셔츠?</span>
+            <span class="pivot__chip">스웨터?</span>
+            <span class="pivot__chip">부츠?</span>
+            <span class="pivot__chip">목도리?</span>
+            <span class="pivot__chip">선글라스?</span>
+          </div>
+        </div>
+
+        <!-- Desktop: chips floating around character -->
+        <div class="pivot__stage" aria-hidden="true">
+          <img class="pivot__character" src="../images/character-rain.webp" alt="비 오는 날씨에 맞춰 옷을 입은 Weather Fit 캐릭터" width="896" height="2431" loading="lazy">
+          <span class="pivot__chip pivot__chip--tl">반바지?</span>
+          <span class="pivot__chip pivot__chip--tl2">모자?</span>
+          <span class="pivot__chip pivot__chip--tc">티셔츠?</span>
+          <span class="pivot__chip pivot__chip--tr">가벼운 아우터?</span>
+          <span class="pivot__chip pivot__chip--tr2">선글라스?</span>
+          <span class="pivot__chip pivot__chip--ml">우산?</span>
+          <span class="pivot__chip pivot__chip--mr">스웨터?</span>
+          <span class="pivot__chip pivot__chip--bl">두꺼운 코트?</span>
+          <span class="pivot__chip pivot__chip--bc">목도리?</span>
+          <span class="pivot__chip pivot__chip--br">부츠?</span>
+        </div>
+
+        <p class="pivot__promise"><strong>Weather Fit이 그 사이를 채워줘요.</strong> 예보를 읽고, 내 옷장을 파악해서, 뭘 입을지 알려줘요.</p>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5 - HOW IT WORKS -->
+    <section class="howto">
+      <div class="container">
+
+        <h2 class="howto__title" data-reveal>세 단계면 오늘 옷차림 끝</h2>
+
+        <ol class="howto__steps" data-reveal-stagger>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-character.webp" alt="Weather Fit 캐릭터 만들기 화면" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">01</span>
+            <h3 class="howto__step-title">캐릭터를 만드세요</h3>
+            <p class="howto__step-body">성별, 피부톤, 헤어스타일, 머리 색, 눈썹, 안경, 수염을 고르세요.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-wardrobe.webp" alt="Weather Fit 옷장 설정 화면" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">02</span>
+            <h3 class="howto__step-title">옷장을 채우세요</h3>
+            <p class="howto__step-body">가지고 있는 옷을 추가하고, 평소에 즐겨 입는 스타일을 알려주세요. 없는 옷은 추천하지 않아요.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-forecast.webp" alt="예보에 맞춰 옷을 입은 Weather Fit 캐릭터" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">03</span>
+            <h3 class="howto__step-title">앱을 열고 확인하세요</h3>
+            <p class="howto__step-body">캐릭터가 예보에 맞춰 옷을 다 입고 기다려요 — 하루의 모든 시간대까지.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 6 - CORE FEATURES -->
+    <section class="features">
+
+      <div class="features__header container" data-reveal>
+        <h2 class="features__title">날씨에 맞춘 옷차림 추천</h2>
+      </div>
+
+      <!-- Block 1: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-character.webp" alt="현재 날씨에 맞춰 옷을 입은 Weather Fit 캐릭터" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">예보에 맞춰 입은 내 캐릭터</h3>
+              <p class="features__item-body">매일 아침, 캐릭터가 그날 날씨에 맞춰 옷을 갈아입어요. 따뜻해지면 반바지, 기온이 떨어지면 패딩, 화창한 오후엔 선글라스, 비 오기 전엔 우산까지. 아침, 오후, 저녁, 밤 시간대별로 업데이트돼요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 2: warm yellow gradient -->
+      <div class="features__block features__block--warm" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-wardrobe.webp" alt="카테고리별로 옷이 정리된 Weather Fit 옷장 화면" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">내가 가진 옷만 입어요</h3>
+              <p class="features__item-body">카테고리별로 옷을 추가하세요: 상의, 하의, 아우터, 신발, 액세서리. 선호도를 조절하면 더 따뜻하게 또는 더 가볍게 입혀줘요. 절대 안 입는 옷은 꺼두세요. 실제로 입을 옷만 추천해요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 3: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-weather.webp" alt="Apple 날씨를 사용하는 Weather Fit 예보 화면" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">iPhone 날씨 앱과 똑같은 예보</h3>
+              <p class="features__item-body">Weather Fit은 Apple 날씨를 사용해요. 오늘과 내일 예보, 그리고 앞으로 10일치는 물론 분 단위 강수량, 자외선 지수, 바람, 습도, 대기 질, 문페이즈, 일출과 일몰까지. 악천후가 예보되면 기상 경보와 알림도 보내드려요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 4: cool blue gradient -->
+      <div class="features__block features__block--cool" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-locations.webp" alt="저장된 위치가 있는 Weather Fit 화면" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">어디를 가든 날씨를 확인해요</h3>
+              <p class="features__item-body">위치를 무제한으로 저장하세요. 현재 위치는 자동으로 업데이트돼요. 위치마다 고유한 풍경이 있어요: 도시, 산, 해변, 교외. 하늘 색은 시간대에 따라 바뀌어요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 7 - WIDGETS & LOCK SCREEN -->
+    <section class="widgets">
+      <div class="container">
+
+        <h2 class="widgets__title" data-reveal>잠금을 풀기도 전에 오늘 옷차림을</h2>
+
+        <p class="widgets__lead" data-reveal>
+          Weather Fit이 캐릭터와 예보를 iPhone 홈 화면과 잠금 화면에 올려줘요. 캐릭터가 오늘 옷을 다 입고 거기 있어요. 한 번 보면 끝이에요.
+        </p>
+
+        <div class="widgets__grid" data-reveal>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--home">
+              <span class="widgets__stat-num" data-count="10">0</span>
+              <span class="widgets__stat-label">가지 홈 화면 위젯 스타일</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-home-dark.webp" alt="캐릭터와 예보를 보여주는 Weather Fit 홈 화면 위젯" width="1608" height="3496" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--lock">
+              <span class="widgets__stat-num" data-count="19">0</span>
+              <span class="widgets__stat-label">가지 잠금 화면 위젯 변형</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-lock.webp" alt="캐릭터와 예보를 보여주는 Weather Fit 잠금 화면 위젯" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- SECTION 8 - APPLE WATCH -->
+    <section class="watch">
+      <div class="container">
+
+        <h2 class="watch__title" data-reveal>
+          휴대폰을 꺼내지 않고도 아우터가 필요한지 알 수 있어요
+        </h2>
+
+        <p class="watch__lead" data-reveal>
+          Weather Fit의 Apple Watch 앱은 옷을 갖춰 입은 캐릭터와 현재 온도,
+          체감 온도, 강수 예보를 보여줘요. 시계 페이스에 컴플리케이션을 추가하면,
+          손목을 들어 보는 것만으로 아침 확인은 끝이에요.
+        </p>
+
+        <div class="watch__visual" data-reveal>
+          <img src="../images/screen-watch.webp" alt="옷을 입은 캐릭터와 온도를 보여주는 Weather Fit Apple Watch 앱" width="3344" height="1322" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 9 - NOTIFICATIONS -->
+    <section class="notify features__block" data-reveal>
+      <div class="container">
+        <div class="features__item">
+          <figure class="features__visual" aria-hidden="true">
+            <img class="features__screen" src="../images/screen-notifications.webp" alt="iPhone 잠금 화면에 표시된 Weather Fit 알림: 아침 옷차림 리포트, 저녁 리포트, 우산 알림, 자외선 차단제 알림" width="1179" height="2556" loading="lazy">
+            <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+          </figure>
+          <div class="features__copy">
+            <h2 class="features__item-title">묻기 전에 먼저 알려줘요</h2>
+            <p class="features__item-body">하루 두 번, 원하는 시간에 리포트가 와요. 예보에 맞춰 옷을 다 입은 캐릭터와 함께요. 여기에 알림 두 가지가 더해지는데, 날씨가 조용한 날에는 방해하지 않아요.</p>
+            <ul class="notify__list">
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☀️</span>
+                <span><strong>아침 리포트:</strong> 오늘의 최고·최저 기온, 하루 동안 날씨가 어떻게 바뀌는지, 그리고 뭘 입으면 좋을지.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🌧️</span>
+                <span><strong>저녁 리포트:</strong> 내일에 대한 같은 내용이라, 전날 밤에 미리 알 수 있어요.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☔️</span>
+                <span><strong>우산 알림:</strong> 비 오는 날에만, 언제쯤 올지까지 알려줘요.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🧴</span>
+                <span><strong>자외선 차단제 알림:</strong> 자외선 지수가 설정한 값을 넘을 것으로 예상될 때만 와요.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 - FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__glass" data-reveal>
+
+        <h2 class="faq__title">자주 묻는 질문</h2>
+
+        <ul class="faq__list">
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘 뭘 입어야 하나요?</summary>
+              <div class="faq__answer"><p>Weather Fit을 열면 오늘 옷차림이 한눈에 보여요. 캐릭터가 내 옷장에 있는 진짜 옷을 입고, 실제 예보와 딱 맞춰져 있어요. 온도를 해석할 필요도, 짐작할 필요도 없어요. 캐릭터가 뭘 입었는지만 보고 나가면 돼요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘 날씨에 뭘 입어야 하나요?</summary>
+              <div class="faq__answer"><p>Weather Fit은 오늘 예보를 읽고, 실제로 가지고 있는 옷을 캐릭터에게 입혀요. 집을 나서기 전에 옷차림을 확인할 수 있고, 날씨가 바뀌면 하루 동안 계속 업데이트돼요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘은 어떤 옷을 입어야 하나요?</summary>
+              <div class="faq__answer"><p>Weather Fit이 그날에 맞는 옷을 골라줘요. 티셔츠인지 스웨터인지, 반바지인지 긴바지인지, 아우터가 필요한지까지. 내 선호도에 맞춰 조정되니까 추위를 타는지 더위를 타는지도 반영돼요. 추천하는 옷은 모두 이미 가지고 있는 것들이에요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘 날씨에는 어떻게 입어야 할까요?</summary>
+              <div class="faq__answer"><p>Weather Fit은 오늘 예보와 내 옷장, 그리고 직접 조절하는 선호도를 함께 고려해요. 더위를 타면 더 가볍게, 추위를 타면 더 일찍 따뜻하게 입혀줘요. 캐릭터는 실제로 가지고 있는 옷만 입어요. 뻔한 조언이 아니에요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘 반바지 입어도 될까요?</summary>
+              <div class="faq__answer"><p>Weather Fit을 열면 캐릭터가 알려줘요. 앱이 오늘 기온을 읽고 내 선호도를 반영해서, 반바지가 좋을지 긴바지가 나을지 알려줘요. 내일과 앞으로 10일치도 볼 수 있어서 전날 밤에 짐작할 필요가 없어요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘 아우터가 필요할까요?</summary>
+              <div class="faq__answer"><p>Weather Fit은 오늘 날씨에 맞춰 캐릭터에게 옷을 입혀요. 아우터가 필요하면 캐릭터가 입고 있고, 필요 없으면 입지 않아요. 계산할 필요도, 망설일 필요도 없어요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">오늘 원피스를 입어도 될까요?</summary>
+              <div class="faq__answer"><p>Weather Fit이 기온과 바람, 비를 함께 따져서 원피스를 입기 좋은 날인지, 위에 뭘 걸치는 게 좋을지 알려줘요. 원피스와 스커트를 옷장에 추가해두면 날씨가 맞을 때 캐릭터가 입어요.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Weather Fit은 무료인가요?</summary>
+              <div class="faq__answer"><p>네. 핵심 기능은 기간 제한 없이 무료예요. 예보, 옷차림 추천, 내 캐릭터, 그리고 홈 화면 위젯 하나까지. Premium을 구독하면 위젯과 풍경이 더 열리고, 매일 알림, Apple Watch 앱, 무제한 옷장까지 사용할 수 있어요.</p></div>
+            </details>
+          </li>
+
+        </ul>
+
+        <div class="faq__footer">
+          <a class="btn btn-ghost" href="/faq" data-tracker="FAQ_SEE_ALL|HOME_KO">자주 묻는 질문 전체 보기</a>
+        </div>
+
+        </div><!-- /.faq__glass -->
+      </div>
+    </section>
+
+    <!-- SECTION 11 - FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="final-cta__grid" data-reveal-stagger>
+
+          <div class="final-cta__content">
+            <h2 class="final-cta__title">내일 아침, 뭘 입을지 정확히 알게 돼요</h2>
+            <p class="final-cta__body">
+              Weather Fit은 무료로 다운로드할 수 있고, 설정은 2분이면 끝나요.
+              캐릭터가 기다리고 있어요.
+            </p>
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="FINAL_CTA_APPSTORE|HOME_KO">
+              <img src="../images/app-store.svg" alt="App Store에서 다운로드" width="156" height="44">
+            </a>
+          </div>
+
+          <figure class="final-cta__visual" aria-hidden="true">
+            <img src="../images/screen-final-cta.webp" alt="그날 날씨에 맞춰 옷을 입은 Weather Fit 캐릭터" width="4420" height="5120" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
+        <a class="site-footer__logo" href="/ko/" aria-label="Weather Fit 홈">
+          <img src="../images/logo.svg" alt="Weather Fit">
+        </a>
+        <div class="site-footer__nav">
+          <div class="lang-select" data-lang-select>
+            <button type="button" class="lang-select__trigger" aria-expanded="false" aria-label="언어: 한국어">
+              <svg class="lang-select__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path>
+                <path d="M12 3c2.6 2.7 4 6 4 9s-1.4 6.3-4 9c-2.6-2.7-4-6-4-9s1.4-6.3 4-9z"></path>
+              </svg>
+              <span class="lang-select__label">한국어</span>
+              <svg class="lang-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <div class="lang-select__menu">
+              <a class="lang-select__option" href="/" hreflang="en" lang="en" data-tracker="FOOTER_LANG_EN|HOME_KO"><span>English</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/de/" hreflang="de" lang="de" data-tracker="FOOTER_LANG_DE|HOME_KO"><span>Deutsch</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ko/" hreflang="ko" lang="ko" aria-current="page" data-tracker="FOOTER_LANG_KO|HOME_KO"><span>한국어</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans" data-tracker="FOOTER_LANG_ZH|HOME_KO"><span>简体中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-tracker="FOOTER_LANG_ZHT|HOME_KO"><span>繁體中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+            </div>
+          </div>
+          <span class="site-footer__nav-sep" aria-hidden="true"></span>
+          <div class="site-footer__social">
+            <a class="js-email" data-eu="hi" data-ed="weatherfit.com" data-etext data-tracker="FOOTER_CONTACT|HOME_KO">이메일</a>
+            <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME_KO">Instagram</a>
+            <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|HOME_KO">X</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. 모든 권리 보유.</p>
+        <nav class="site-footer__links" aria-label="법률 정보">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|HOME_KO">개인정보 보호정책</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|HOME_KO">이용 약관</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|HOME_KO">프레스 킷</a>
+        </nav>
+      </div>
+
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple, iPhone, iPad, Apple Watch, App Store는 Apple Inc.의 상표입니다.</p>
+        <p>날씨 데이터 제공: Apple 날씨</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Tracker -->
+  <script src="../js/site.js?v=1"></script>
+
+</body>
+</html>
