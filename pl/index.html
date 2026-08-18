@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Co dziś założyć? – Weather Fit, aplikacja pogodowa, która Cię ubiera</title>
+  <meta name="description" content="Co dziś założyć, w jednym spojrzeniu. Weather Fit to bezpłatna aplikacja na iOS, która odczytuje prognozę i ubiera Twoją postać: szorty, kurtkę albo coś pomiędzy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://weatherfit.com/pl/">
+  <meta property="og:locale"      content="pl_PL">
+  <meta property="og:title"       content="Co dziś założyć? – Weather Fit, aplikacja pogodowa, która Cię ubiera">
+  <meta property="og:description" content="Co dziś założyć, w jednym spojrzeniu. Weather Fit to bezpłatna aplikacja na iOS, która odczytuje prognozę i ubiera Twoją postać: szorty, kurtkę albo coś pomiędzy.">
+  <meta property="og:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@weatherfitapp">
+  <meta name="twitter:title"       content="Co dziś założyć? – Weather Fit, aplikacja pogodowa, która Cię ubiera">
+  <meta name="twitter:description" content="Co dziś założyć, w jednym spojrzeniu. Weather Fit to bezpłatna aplikacja na iOS, która odczytuje prognozę i ubiera Twoją postać: szorty, kurtkę albo coś pomiędzy.">
+  <meta name="twitter:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://weatherfit.com/pl/">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="en">
+  <link rel="alternate" href="https://weatherfit.com/de/"     hreflang="de">
+  <link rel="alternate" href="https://weatherfit.com/es/"     hreflang="es">
+  <link rel="alternate" href="https://weatherfit.com/fr/"     hreflang="fr">
+  <link rel="alternate" href="https://weatherfit.com/ja/"     hreflang="ja">
+  <link rel="alternate" href="https://weatherfit.com/ko/"     hreflang="ko">
+  <link rel="alternate" href="https://weatherfit.com/nl/"     hreflang="nl">
+  <link rel="alternate" href="https://weatherfit.com/pl/"     hreflang="pl">
+  <link rel="alternate" href="https://weatherfit.com/uk/"     hreflang="uk">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hans/" hreflang="zh-Hans">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hant/" hreflang="zh-Hant">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="x-default">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon"    href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/webclip.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
+       The LCP element differs by layout: below 1024px the hero is single-column and
+       the "Apps We Love" badge sits on top (it's the LCP); at >=1024px the phone
+       screenshot moves beside the text and becomes the LCP. Scope each preload to its
+       breakpoint so we never high-priority-fetch the wrong, below-the-fold image. -->
+  <link rel="preload" as="image" href="../images/award-apps-we-love.webp" fetchpriority="high" media="(max-width: 1023.98px)">
+  <link rel="preload" as="image" href="../images/screen-home.webp" fetchpriority="high" media="(min-width: 1024px)">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/pl/#webpage",
+        "url": "https://weatherfit.com/pl/",
+        "name": "Co dziś założyć? – Weather Fit, aplikacja pogodowa, która Cię ubiera",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "inLanguage": "pl"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "applicationCategory": "Weather",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "installUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "screenshot": [
+          "https://weatherfit.com/images/screen-home.webp",
+          "https://weatherfit.com/images/watch-app.webp"
+        ],
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "description": "Co dziś założyć, w jednym spojrzeniu. Weather Fit to bezpłatna aplikacja na iOS, która odczytuje prognozę i ubiera Twoją postać: szorty, kurtkę albo coś pomiędzy.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "16000" },
+        "author": { "@id": "https://weatherfit.com/#anton" },
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt-BR","es","zh-Hans","zh-Hant","tr","uk"],
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://weatherfit.com/pl/#faq",
+        "isPartOf": { "@id": "https://weatherfit.com/pl/#webpage" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "inLanguage": "pl",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Co dziś założyć?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Otwórz Weather Fit i od razu zobaczysz dzisiejszy strój. Twoja postać nosi prawdziwe ubrania z Twojej garderoby, dobrane do aktualnej prognozy. Żadnych temperatur do rozszyfrowywania, żadnego zgadywania. Wystarczy spojrzeć, w co ubrana jest postać, i wychodzisz z domu." }
+          },
+          {
+            "@type": "Question",
+            "name": "Co założyć dziś przy takiej pogodzie?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit odczytuje dzisiejszą prognozę i ubiera Twoją postać w rzeczy, które faktycznie masz. Strój widzisz jeszcze przed wyjściem z domu, a w ciągu dnia zmienia się razem z pogodą." }
+          },
+          {
+            "@type": "Question",
+            "name": "Jakie ubranie założyć dziś?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit dobiera odpowiednie warstwy na dany dzień: koszulkę albo sweter, szorty albo spodnie, kurtkę albo nic. Uwzględnia przy tym, czy wolisz ubierać się lżej, czy cieplej, dzięki czemu podpowiedź pasuje właśnie do Ciebie. Wszystko, co proponuje, pochodzi z ubrań, które już masz." }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak się dziś ubrać na taką pogodę?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit łączy dzisiejszą prognozę z Twoją garderobą i tym, jak ciepło lubisz się ubierać. Jeśli szybko robi Ci się gorąco, proponuje lżejsze warstwy; jeśli marzniesz, ubiera Cię cieplej i wcześniej. Twoja postać nosi wyłącznie rzeczy, które naprawdę masz, żadnych ogólnych porad." }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy dziś mogę założyć szorty?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Otwórz Weather Fit, a Twoja postać sama Ci podpowie. Aplikacja odczytuje dzisiejszą temperaturę, uwzględnia to, jak lubisz się ubierać, i pokazuje, czy szorty to dobry wybór, czy lepiej sięgnąć po spodnie. Pokazuje też jutro i najbliższe 10 dni, więc wieczorem nie musisz już zgadywać." }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy dziś potrzebuję kurtki?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit pokazuje Twoją postać ubraną odpowiednio do dzisiejszej pogody. Jeśli kurtka jest potrzebna, postać ją nosi. Jeśli nie, to nie. Żadnego liczenia, żadnych wątpliwości." }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy dziś mogę założyć sukienkę?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit bierze pod uwagę temperaturę, wiatr i deszcz, aby powiedzieć Ci, czy to dzień na sukienkę i czy warto założyć coś na wierzch. Dodaj swoje sukienki i spódnice do garderoby, a Twoja postać założy je, gdy tylko pozwoli na to pogoda." }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy Weather Fit jest bezpłatna?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Tak. Podstawowa wersja aplikacji jest bezpłatna i bez limitu czasowego: prognozy, propozycje stroju, Twoja postać i jeden widżet na ekran początkowy. Premium odblokowuje dodatkowe widżety, krajobrazy, codzienne powiadomienia, aplikację na Apple Watch oraz nieograniczoną liczbę ubrań." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y268716VCV',{'anonymize_ip':true});</script>
+
+  <!-- Mixpanel -->
+  <script type="text/javascript">
+    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+    mixpanel.init("a7e3e55d260afe151cf13deabcac5663");
+  </script>
+  <script>mixpanel.track('page viewed',{'page name':document.title,'url':window.location.pathname});</script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div id="header-sentinel" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-logo" href="/pl/">
+        <img src="../images/logo.svg" alt="Weather Fit">
+      </a>
+      <a class="btn btn-nav"
+         href="https://apps.apple.com/app/apple-store/id1194408342"
+         target="_blank"
+         rel="noopener"
+         data-tracker="TOP_APPSTORE|HOME_PL">
+        <span>Pobierz za darmo</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <!-- Apps We Love badge -->
+          <div class="hero__award">
+            <img src="../images/award-apps-we-love.webp"
+                 alt="Wyróżniona w zestawieniu „Apps We Love” w App Store"
+                 width="1434" height="316"
+                 loading="eager" fetchpriority="high" decoding="async">
+          </div>
+          <h1 class="hero__eyebrow">Co dziś założyć, w zależności od pogody</h1>
+          <h2 class="hero__headline">Koniec zgadywania.<br>Po prostu się ubierz.</h2>
+          <p class="hero__subhead">
+            Postać, która wygląda jak Ty, ubrana na dzisiejszą pogodę.
+            Otwieraj aplikację co rano i zawsze będziesz wiedzieć, co założyć.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="HERO_APPSTORE|HOME_PL">
+              <img src="../images/app-store.svg" alt="Pobierz w App Store" width="156" height="44">
+            </a>
+            <div class="hero__trust">
+              <div class="hero__trust-top">
+                <span class="hero__stars" role="img" aria-label="Ocena 4,6 na 5 gwiazdek"></span>
+                <span class="hero__trust-score"><strong>4,6</strong> na 5</span>
+              </div>
+              <span class="hero__trust-count">Ponad 16 000 ocen w App Store</span>
+            </div>
+
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <div class="phone-bezel">
+            <img class="phone-bezel__screen"
+                 src="../images/screen-home.webp"
+                 alt="Ekran główny Weather Fit z postacią ubraną na pochmurną pogodę w Nowym Jorku"
+                 width="1179" height="2556"
+                 decoding="async">
+            <img class="phone-bezel__frame"
+                 src="../images/iphone-bezel.webp"
+                 alt="" role="presentation"
+                 width="1800" height="3680"
+                 aria-hidden="true">
+          </div>
+        </figure>
+      </div>
+
+      <!-- Testimonials marquee -->
+      <div class="proof-bar">
+        <div class="proof-bar__track" role="marquee" aria-label="Opinie z App Store">
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Weather Fit rządzi!</p>
+            <p class="proof-bar__handle">Z-Finnley</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Po przebudzeniu nie zawsze wiem, co założyć. Z Weather Fit zawsze wiem, co włożyć na dany dzień. Poleciłam ją wielu osobom i gorąco polecam.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Przydatna i pogodna</p>
+            <p class="proof-bar__handle">MaiaPanthera</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Zabawny, radosny sposób na wybranie stroju. Koniec z ubieraniem się na słońce i moknięciem w deszczu! Twórca odpowiada od razu i naprawdę dodaje funkcje, o które proszą użytkownicy.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Świetna dla kreatywnych!</p>
+            <p class="proof-bar__handle">GnomesR-us</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Bardzo polecam osobom z ADHD i tym z kreatywnym umysłem. Świetna wizualna podpowiedź, jak ubrać się na pogodę. Przyjemna w użyciu i naprawdę przydatna.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Najlepsza aplikacja pogodowa</p>
+            <p class="proof-bar__handle">Jake2000000</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Niesamowicie przydatna, a przy tym prosta. Pokazuje, co założyć, i codziennie oszczędza mi czas. Wsparcie odpowiedziało szybko, a prognoza jest dokładniejsza niż w większości innych aplikacji pogodowych.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Aplikacja, której zawsze mi brakowało</p>
+            <p class="proof-bar__handle">Bromeo192</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Jako student zawsze dzwoniłem do mamy, żeby zapytać, jaka będzie pogoda. Ta aplikacja mówi mi, co założyć, i nikogo przy tym nie fatyguje. Uwielbiam ją.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Koniec ze stresem przy szafie</p>
+            <p class="proof-bar__handle">PikaPika-Choooooooo</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Jestem w spektrum autyzmu i ta aplikacja pomaga mi wybrać ubranie przy minimalnym stresie. Twórca odpowiada na każde pytanie bardzo szybko. 10/10, polecam znajomym.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Świetna aplikacja!</p>
+            <p class="proof-bar__handle">happysimplemodern</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Używam jej jako głównego źródła prognozy, z widżetem na ekranie głównym. Uwielbiam opcje garderoby, a design jest po prostu uroczy. To już część mojej codziennej rutyny.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Świetna aplikacja pogodowa!</p>
+            <p class="proof-bar__handle">Daisy Field</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Aplikacja jest pięknie zaprojektowana i działa bez zarzutu. Postać we własnych ubraniach za każdym razem poprawia mi humor. Twórca odpowiada i naprawia problemy błyskawicznie.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Sprawdzam ją co rano przed pracą</p>
+            <p class="proof-bar__handle">나토토토</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Wcześniej ciągle nie trafiałem z ubraniem w okresach przejściowych. Dzięki tej aplikacji zawsze trafiam i unikam wpadek. To już część mojego porannego rytuału.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Bardzo przydatna</p>
+            <p class="proof-bar__handle">BDGReview</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Podoba mi się, że aplikacja proponuje też stroje przejściowe. Zamiast skakać prosto z zimowej kurtki do szortów, trafia w złoty środek. Ten niuans naprawdę robi różnicę.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Uwielbiam ją!!</p>
+            <p class="proof-bar__handle">LenaM720</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Bardzo przydatna i bardzo urocza. Owszem, za widżet trzeba zapłacić w ramach subskrypcji, ale moim zdaniem w pełni warto. Funkcje są świetne.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Mój asystent od stylizacji</p>
+            <p class="proof-bar__handle">teamazwhi</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 gwiazdek"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Pomaga mi szybko zdecydować, co założyć na daną pogodę, bez potrzeby wychodzenia z domu. Dokładnie to, co powinna umieć aplikacja pogodowa.</p>
+          </div>
+
+
+        </div>
+      </div><!-- /.proof-bar -->
+
+    </section><!-- /.hero -->
+
+    <!-- SECTION 4 - THE PROBLEM → THE PROMISE -->
+    <section class="pivot">
+      <div class="container">
+
+        <h2 class="pivot__question">Co dziś założyć?</h2>
+
+        <p class="pivot__problem">Codziennie rano sprawdzasz pogodę. Widzisz 12°C i ikonkę słońca zza chmur, ale nadal nie wiesz, czy to oznacza szorty, lekką kurtkę, ciężki płaszcz czy po prostu buty zimowe.</p>
+
+        <div class="pivot__temp-badge">
+          <img src="../images/cloud.sun.webp" alt="" role="presentation" aria-hidden="true" width="22" height="22">
+          <span class="pivot__temp-badge-num">12°</span>
+        </div>
+
+        <!-- Mobile: chips left + character + chips right -->
+        <div class="pivot__mobile-layout" aria-label="Postać otoczona pytaniami o ubranie">
+          <div class="pivot__chips-left" aria-hidden="true">
+            <span class="pivot__chip">Szorty?</span>
+            <span class="pivot__chip">Lekka kurtka?</span>
+            <span class="pivot__chip">Ciężki płaszcz?</span>
+            <span class="pivot__chip">Parasol?</span>
+            <span class="pivot__chip">Czapka?</span>
+          </div>
+          <img class="pivot__character" src="../images/character-rain.webp" alt="Postać z Weather Fit ubrana na deszczową pogodę" width="896" height="2431" loading="lazy">
+          <div class="pivot__chips-right" aria-hidden="true">
+            <span class="pivot__chip">Koszulka?</span>
+            <span class="pivot__chip">Sweter?</span>
+            <span class="pivot__chip">Buty zimowe?</span>
+            <span class="pivot__chip">Szalik?</span>
+            <span class="pivot__chip">Okulary przeciwsłoneczne?</span>
+          </div>
+        </div>
+
+        <!-- Desktop: chips floating around character -->
+        <div class="pivot__stage" aria-hidden="true">
+          <img class="pivot__character" src="../images/character-rain.webp" alt="Postać z Weather Fit ubrana na deszczową pogodę" width="896" height="2431" loading="lazy">
+          <span class="pivot__chip pivot__chip--tl">Szorty?</span>
+          <span class="pivot__chip pivot__chip--tl2">Czapka?</span>
+          <span class="pivot__chip pivot__chip--tc">Koszulka?</span>
+          <span class="pivot__chip pivot__chip--tr">Lekka kurtka?</span>
+          <span class="pivot__chip pivot__chip--tr2">Okulary przeciwsłoneczne?</span>
+          <span class="pivot__chip pivot__chip--ml">Parasol?</span>
+          <span class="pivot__chip pivot__chip--mr">Sweter?</span>
+          <span class="pivot__chip pivot__chip--bl">Ciężki płaszcz?</span>
+          <span class="pivot__chip pivot__chip--bc">Szalik?</span>
+          <span class="pivot__chip pivot__chip--br">Buty zimowe?</span>
+        </div>
+
+        <p class="pivot__promise"><strong>Tu z pomocą przychodzi Weather Fit.</strong> Aplikacja odczytuje prognozę, zna Twoją garderobę i pokazuje, co założyć.</p>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5 - HOW IT WORKS -->
+    <section class="howto">
+      <div class="container">
+
+        <h2 class="howto__title" data-reveal>Ubierz się w trzech krokach</h2>
+
+        <ol class="howto__steps" data-reveal-stagger>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-character.webp" alt="Ekran tworzenia postaci w Weather Fit" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">01</span>
+            <h3 class="howto__step-title">Stwórz swoją postać</h3>
+            <p class="howto__step-body">Wybierz płeć, kolor skóry, fryzurę, kolor włosów, brwi, okulary i zarost.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-wardrobe.webp" alt="Ekran ustawień garderoby w Weather Fit" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">02</span>
+            <h3 class="howto__step-title">Uzupełnij garderobę</h3>
+            <p class="howto__step-body">Dodaj ubrania, które masz, i powiedz aplikacji, co naprawdę lubisz nosić. Nigdy nie zaproponuje Ci czegoś, czego nie masz.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-forecast.webp" alt="Postać z Weather Fit ubrana zgodnie z prognozą" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">03</span>
+            <h3 class="howto__step-title">Zobacz, co założyć</h3>
+            <p class="howto__step-body">Twoja postać pojawia się ubrana zgodnie z prognozą, na każdą porę dnia.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 6 - CORE FEATURES -->
+    <section class="features">
+
+      <div class="features__header container" data-reveal>
+        <h2 class="features__title">Propozycje strojów dopasowane do pogody</h2>
+      </div>
+
+      <!-- Block 1: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-character.webp" alt="Postać z Weather Fit ubrana na aktualną pogodę" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Twoja postać, ubrana zgodnie z prognozą</h3>
+              <p class="features__item-body">Każdego ranka Twoja postać ubiera się na dzisiejszą pogodę: szorty, gdy robi się cieplej, kurtka zimowa, gdy przychodzi chłód, okulary przeciwsłoneczne w słoneczne popołudnia, parasol przed deszczem. Strój zmienia się rano, po południu, wieczorem i w nocy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 2: warm yellow gradient -->
+      <div class="features__block features__block--warm" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-wardrobe.webp" alt="Ekran garderoby w Weather Fit z ubraniami podzielonymi na kategorie" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Nosi tylko to, co naprawdę masz</h3>
+              <p class="features__item-body">Dodawaj ubrania według kategorii: góra, dół, kurtki, obuwie i akcesoria. Ustaw, czy wolisz ubierać się lżej, czy cieplej. Wyłącz rzeczy, których i tak nigdy nie zakładasz. Aplikacja proponuje wyłącznie to, co naprawdę nosisz.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 3: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-weather.webp" alt="Ekran prognozy w Weather Fit z danymi Apple Weather" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Ta sama prognoza co w aplikacji Pogoda na Twoim iPhonie</h3>
+              <p class="features__item-body">Weather Fit działa na danych Apple Weather. Prognoza na dziś, na jutro i na najbliższe 10 dni, do tego opady co minutę, indeks UV, wiatr, wilgotność, jakość powietrza, faza księżyca, wschód i zachód słońca. Do tego ostrzeżenia pogodowe, gdy zapowiadane są groźne zjawiska.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 4: cool blue gradient -->
+      <div class="features__block features__block--cool" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-locations.webp" alt="Ekran zapisanych lokalizacji w Weather Fit" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Pogoda wszędzie, gdzie bywasz</h3>
+              <p class="features__item-body">Zapisz dowolną liczbę lokalizacji. Twoje bieżące położenie aktualizuje się samo. Każde miejsce ma swój własny krajobraz: miasto, góry, plaża albo przedmieście. Niebo zmienia kolor w zależności od pory dnia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 7 - WIDGETS & LOCK SCREEN -->
+    <section class="widgets">
+      <div class="container">
+
+        <h2 class="widgets__title" data-reveal>Twój strój, zanim jeszcze odblokujesz telefon</h2>
+
+        <p class="widgets__lead" data-reveal>
+          Weather Fit umieszcza Twoją postać i prognozę na ekranie początkowym i ekranie blokady iPhone’a. Postać jest już tam, ubrana na dany dzień. Wystarczy jedno spojrzenie.
+        </p>
+
+        <div class="widgets__grid" data-reveal>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--home">
+              <span class="widgets__stat-num" data-count="10">0</span>
+              <span class="widgets__stat-label">stylów widżetów na ekran początkowy</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-home-dark.webp" alt="Widżety Weather Fit na ekranie początkowym z postacią i prognozą" width="1608" height="3496" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--lock">
+              <span class="widgets__stat-num" data-count="19">0</span>
+              <span class="widgets__stat-label">wariantów widżetów na ekran blokady</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-lock.webp" alt="Widżety Weather Fit na ekranie blokady z postacią i prognozą" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- SECTION 8 - APPLE WATCH -->
+    <section class="watch">
+      <div class="container">
+
+        <h2 class="watch__title" data-reveal>
+          Sprawdź, czy potrzebujesz kurtki. Bez sięgania po telefon
+        </h2>
+
+        <p class="watch__lead" data-reveal>
+          Aplikacja Weather Fit na Apple Watch pokazuje ubraną postać, aktualną
+          temperaturę, temperaturę odczuwalną i prognozę opadów. Dodaj
+          komplikację do tarczy zegarka, a poranne sprawdzenie pogody masz
+          z głowy.
+        </p>
+
+        <div class="watch__visual" data-reveal>
+          <img src="../images/screen-watch.webp" alt="Aplikacja Weather Fit na Apple Watch z ubraną postacią i temperaturą" width="3344" height="1322" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 9 - NOTIFICATIONS -->
+    <section class="notify features__block" data-reveal>
+      <div class="container">
+        <div class="features__item">
+          <figure class="features__visual" aria-hidden="true">
+            <img class="features__screen" src="../images/screen-notifications.webp" alt="Ekran blokady iPhone’a z powiadomieniami Weather Fit: raport poranny, raport wieczorny, przypomnienie o parasolu i przypomnienie o kremie z filtrem" width="1179" height="2556" loading="lazy">
+            <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+          </figure>
+          <div class="features__copy">
+            <h2 class="features__item-title">Wie, zanim zdążysz zapytać</h2>
+            <p class="features__item-body">Dwa raporty dziennie, o porach, które sam wybierzesz, każdy z postacią już ubraną zgodnie z prognozą. Do tego dwa przypomnienia, które milczą, dopóki pogoda niczego nie wymaga.</p>
+            <ul class="notify__list">
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☀️</span>
+                <span><strong>Raport poranny:</strong> dzisiejsza maksymalna i minimalna temperatura, jak zmieni się pogoda w ciągu dnia i co założyć.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🌧️</span>
+                <span><strong>Raport wieczorny:</strong> to samo na jutro, żebyś wiedział już wieczorem.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☔️</span>
+                <span><strong>Przypomnienie o parasolu:</strong> tylko w dni, gdy zapowiadany jest deszcz, i o której godzinie się go spodziewać.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🧴</span>
+                <span><strong>Przypomnienie o kremie z filtrem:</strong> tylko gdy indeks UV ma przekroczyć wybrany przez Ciebie poziom.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 - FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__glass" data-reveal>
+
+        <h2 class="faq__title">Najczęściej zadawane pytania</h2>
+
+        <ul class="faq__list">
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Co dziś założyć?</summary>
+              <div class="faq__answer"><p>Otwórz Weather Fit i od razu zobaczysz dzisiejszy strój. Twoja postać nosi prawdziwe ubrania z Twojej garderoby, dobrane do aktualnej prognozy. Żadnych temperatur do rozszyfrowywania, żadnego zgadywania. Wystarczy spojrzeć, w co ubrana jest postać, i wychodzisz z domu.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Co założyć dziś przy takiej pogodzie?</summary>
+              <div class="faq__answer"><p>Weather Fit odczytuje dzisiejszą prognozę i ubiera Twoją postać w rzeczy, które faktycznie masz. Strój widzisz jeszcze przed wyjściem z domu, a w ciągu dnia zmienia się razem z pogodą.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Jakie ubranie założyć dziś?</summary>
+              <div class="faq__answer"><p>Weather Fit dobiera odpowiednie warstwy na dany dzień: koszulkę albo sweter, szorty albo spodnie, kurtkę albo nic. Uwzględnia przy tym, czy wolisz ubierać się lżej, czy cieplej, dzięki czemu podpowiedź pasuje właśnie do Ciebie. Wszystko, co proponuje, pochodzi z ubrań, które już masz.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Jak się dziś ubrać na taką pogodę?</summary>
+              <div class="faq__answer"><p>Weather Fit łączy dzisiejszą prognozę z Twoją garderobą i tym, jak ciepło lubisz się ubierać. Jeśli szybko robi Ci się gorąco, proponuje lżejsze warstwy; jeśli marzniesz, ubiera Cię cieplej i wcześniej. Twoja postać nosi wyłącznie rzeczy, które naprawdę masz, żadnych ogólnych porad.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Czy dziś mogę założyć szorty?</summary>
+              <div class="faq__answer"><p>Otwórz Weather Fit, a Twoja postać sama Ci podpowie. Aplikacja odczytuje dzisiejszą temperaturę, uwzględnia to, jak lubisz się ubierać, i pokazuje, czy szorty to dobry wybór, czy lepiej sięgnąć po spodnie. Pokazuje też jutro i najbliższe 10 dni, więc wieczorem nie musisz już zgadywać.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Czy dziś potrzebuję kurtki?</summary>
+              <div class="faq__answer"><p>Weather Fit pokazuje Twoją postać ubraną odpowiednio do dzisiejszej pogody. Jeśli kurtka jest potrzebna, postać ją nosi. Jeśli nie, to nie. Żadnego liczenia, żadnych wątpliwości.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Czy dziś mogę założyć sukienkę?</summary>
+              <div class="faq__answer"><p>Weather Fit bierze pod uwagę temperaturę, wiatr i deszcz, aby powiedzieć Ci, czy to dzień na sukienkę i czy warto założyć coś na wierzch. Dodaj swoje sukienki i spódnice do garderoby, a Twoja postać założy je, gdy tylko pozwoli na to pogoda.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Czy Weather Fit jest bezpłatna?</summary>
+              <div class="faq__answer"><p>Tak. Podstawowa wersja aplikacji jest bezpłatna i bez limitu czasowego: prognozy, propozycje stroju, Twoja postać i jeden widżet na ekran początkowy. Premium odblokowuje dodatkowe widżety, krajobrazy, codzienne powiadomienia, aplikację na Apple Watch oraz nieograniczoną liczbę ubrań.</p></div>
+            </details>
+          </li>
+
+        </ul>
+
+        <div class="faq__footer">
+          <a class="btn btn-ghost" href="/faq" data-tracker="FAQ_SEE_ALL|HOME_PL">Zobacz wszystkie pytania</a>
+        </div>
+
+        </div><!-- /.faq__glass -->
+      </div>
+    </section>
+
+    <!-- SECTION 11 - FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="final-cta__grid" data-reveal-stagger>
+
+          <div class="final-cta__content">
+            <h2 class="final-cta__title">Jutro rano od razu będziesz wiedzieć, co założyć</h2>
+            <p class="final-cta__body">
+              Weather Fit jest bezpłatna, a jej konfiguracja zajmuje około dwóch minut.
+              Twoja postać już czeka.
+            </p>
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="FINAL_CTA_APPSTORE|HOME_PL">
+              <img src="../images/app-store.svg" alt="Pobierz w App Store" width="156" height="44">
+            </a>
+          </div>
+
+          <figure class="final-cta__visual" aria-hidden="true">
+            <img src="../images/screen-final-cta.webp" alt="Postać z Weather Fit ubrana na dany dzień" width="4420" height="5120" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
+        <a class="site-footer__logo" href="/pl/" aria-label="Weather Fit, strona główna">
+          <img src="../images/logo.svg" alt="Weather Fit">
+        </a>
+        <div class="site-footer__nav">
+          <div class="lang-select" data-lang-select>
+            <button type="button" class="lang-select__trigger" aria-expanded="false" aria-label="Język: polski">
+              <svg class="lang-select__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path>
+                <path d="M12 3c2.6 2.7 4 6 4 9s-1.4 6.3-4 9c-2.6-2.7-4-6-4-9s1.4-6.3 4-9z"></path>
+              </svg>
+              <span class="lang-select__label">Polski</span>
+              <svg class="lang-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <div class="lang-select__menu">
+              <a class="lang-select__option" href="/" hreflang="en" lang="en" data-tracker="FOOTER_LANG_EN|HOME_PL"><span>English</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/de/" hreflang="de" lang="de" data-tracker="FOOTER_LANG_DE|HOME_PL"><span>Deutsch</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/es/" hreflang="es" lang="es" data-tracker="FOOTER_LANG_ES|HOME_PL"><span>Español</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/fr/" hreflang="fr" lang="fr" data-tracker="FOOTER_LANG_FR|HOME_PL"><span>Français</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/nl/" hreflang="nl" lang="nl" data-tracker="FOOTER_LANG_NL|HOME_PL"><span>Nederlands</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/pl/" hreflang="pl" lang="pl" aria-current="page" data-tracker="FOOTER_LANG_PL|HOME_PL"><span>Polski</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/uk/" hreflang="uk" lang="uk" data-tracker="FOOTER_LANG_UK|HOME_PL"><span>Українська</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ja/" hreflang="ja" lang="ja" data-tracker="FOOTER_LANG_JA|HOME_PL"><span>日本語</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ko/" hreflang="ko" lang="ko" data-tracker="FOOTER_LANG_KO|HOME_PL"><span>한국어</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans" data-tracker="FOOTER_LANG_ZH|HOME_PL"><span>简体中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-tracker="FOOTER_LANG_ZHT|HOME_PL"><span>繁體中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+            </div>
+          </div>
+          <span class="site-footer__nav-sep" aria-hidden="true"></span>
+          <div class="site-footer__social">
+            <a class="js-email" data-eu="hi" data-ed="weatherfit.com" data-etext data-tracker="FOOTER_CONTACT|HOME_PL">E-mail</a>
+            <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME_PL">Instagram</a>
+            <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|HOME_PL">X</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. Wszelkie prawa zastrzeżone.</p>
+        <nav class="site-footer__links" aria-label="Informacje prawne">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|HOME_PL">Polityka prywatności</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|HOME_PL">Warunki korzystania</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|HOME_PL">Materiały prasowe</a>
+        </nav>
+      </div>
+
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple, iPhone, iPad, Apple Watch i App Store są znakami towarowymi Apple Inc.</p>
+        <p>Dane pogodowe dostarczane przez Apple Weather</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Tracker -->
+  <script src="../js/site.js?v=1"></script>
+
+</body>
+</html>
