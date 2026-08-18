@@ -18,7 +18,7 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 
 - `index.html` — homepage; full multi-section page (hero, problem→promise, how-it-works, core features, widgets & lock screen, Apple Watch, FAQ, final CTA).
 - `privacy-policy.html`, `terms-and-conditions.html`, `faq.html`, `press-kit.html`, `404.html` — standalone pages
-- `de/`, `es/`, `fr/`, `ja/`, `ko/`, `zh-Hans/`, `zh-Hant/` — localized homepages (AI-translated, not human-reviewed). `zh-Hant` targets Taiwan, not Hong Kong.
+- `de/`, `es/`, `fr/`, `ja/`, `ko/`, `nl/`, `zh-Hans/`, `zh-Hant/` — localized homepages (AI-translated, not human-reviewed). `zh-Hant` targets Taiwan, not Hong Kong.
 - `css/styles.css` — single tokenized stylesheet; all design tokens are CSS custom properties on `:root`
 - `js/site.js` — vanilla JS: sticky-header state, scroll-reveal animations, FAQ accordion, testimonials marquee, and the Mixpanel click tracker
 - `images/` — active assets for the new site
@@ -29,7 +29,7 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 
 ## Localized homepages
 
-- `de/index.html`, `es/index.html`, `fr/index.html`, `ja/index.html`, `ko/index.html`, `zh-Hans/index.html` and `zh-Hant/index.html` are structural mirrors of the root `index.html` — same markup, same classes, same section order; only the visible copy and `alt` text are translated, and asset/href paths are prefixed with `../`.
+- `de/index.html`, `es/index.html`, `fr/index.html`, `ja/index.html`, `ko/index.html`, `nl/index.html`, `zh-Hans/index.html` and `zh-Hant/index.html` are structural mirrors of the root `index.html` — same markup, same classes, same section order; only the visible copy and `alt` text are translated, and asset/href paths are prefixed with `../`.
 - **Always mirror non-content changes from `index.html` to all localized homepages.** Any edit to structure, markup, classes, attributes (e.g. `fetchpriority`, `loading`, `preload` hints), `<head>` meta, or scripts must be applied to every locale folder in the same change — adjusting only the relative paths (`images/…` → `../images/…`). Do **not** translate or alter their existing copy/`alt` text while doing so.
 - The localized homepages carry 8 FAQ entries where the root carries 10; they intentionally omit "Is it shorts weather today?" and "What should I wear tomorrow?". Keep the JSON-LD `FAQPage` byte-identical to the visible accordion on every page.
 - Adding a locale means touching more than the new folder: `hreflang` alternates in every homepage, the `lang-select` menu in all homepages **and** the five standalone pages (`404`, `faq`, `press-kit`, `privacy-policy`, `terms-and-conditions`), and a `<url>` entry in `sitemap.xml`.

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Wat trek ik vandaag aan? – Weather Fit, de weerapp die je aankleedt</title>
+  <meta name="description" content="Wat je vandaag aantrekt, in één oogopslag. Weather Fit is een gratis iOS-app die de verwachting leest en je personage aankleedt: short, jas of iets ertussenin.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://weatherfit.com/nl/">
+  <meta property="og:locale"      content="nl_NL">
+  <meta property="og:title"       content="Wat trek ik vandaag aan? – Weather Fit, de weerapp die je aankleedt">
+  <meta property="og:description" content="Wat je vandaag aantrekt, in één oogopslag. Weather Fit is een gratis iOS-app die de verwachting leest en je personage aankleedt: short, jas of iets ertussenin.">
+  <meta property="og:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@weatherfitapp">
+  <meta name="twitter:title"       content="Wat trek ik vandaag aan? – Weather Fit, de weerapp die je aankleedt">
+  <meta name="twitter:description" content="Wat je vandaag aantrekt, in één oogopslag. Weather Fit is een gratis iOS-app die de verwachting leest en je personage aankleedt: short, jas of iets ertussenin.">
+  <meta name="twitter:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://weatherfit.com/nl/">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="en">
+  <link rel="alternate" href="https://weatherfit.com/de/"     hreflang="de">
+  <link rel="alternate" href="https://weatherfit.com/es/"     hreflang="es">
+  <link rel="alternate" href="https://weatherfit.com/fr/"     hreflang="fr">
+  <link rel="alternate" href="https://weatherfit.com/ja/"     hreflang="ja">
+  <link rel="alternate" href="https://weatherfit.com/ko/"     hreflang="ko">
+  <link rel="alternate" href="https://weatherfit.com/nl/"     hreflang="nl">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hans/" hreflang="zh-Hans">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hant/" hreflang="zh-Hant">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="x-default">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon"    href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/webclip.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
+       The LCP element differs by layout: below 1024px the hero is single-column and
+       the "Apps We Love" badge sits on top (it's the LCP); at >=1024px the phone
+       screenshot moves beside the text and becomes the LCP. Scope each preload to its
+       breakpoint so we never high-priority-fetch the wrong, below-the-fold image. -->
+  <link rel="preload" as="image" href="../images/award-apps-we-love.webp" fetchpriority="high" media="(max-width: 1023.98px)">
+  <link rel="preload" as="image" href="../images/screen-home.webp" fetchpriority="high" media="(min-width: 1024px)">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/nl/#webpage",
+        "url": "https://weatherfit.com/nl/",
+        "name": "Wat trek ik vandaag aan? – Weather Fit, de weerapp die je aankleedt",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "inLanguage": "nl"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "applicationCategory": "Weather",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "installUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "screenshot": [
+          "https://weatherfit.com/images/screen-home.webp",
+          "https://weatherfit.com/images/watch-app.webp"
+        ],
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "description": "Wat je vandaag aantrekt, in één oogopslag. Weather Fit is een gratis iOS-app die de verwachting leest en je personage aankleedt: short, jas of iets ertussenin.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "16000" },
+        "author": { "@id": "https://weatherfit.com/#anton" },
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt-BR","es","zh-Hans","zh-Hant","tr","uk"],
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://weatherfit.com/nl/#faq",
+        "isPartOf": { "@id": "https://weatherfit.com/nl/#webpage" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "inLanguage": "nl",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wat trek ik vandaag aan?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Open Weather Fit en je ziet de outfit van vandaag in één oogopslag. Je personage draagt echte kleding uit je garderobe, gekozen op basis van de verwachting. Geen temperaturen ontcijferen, geen giswerk. Kijk wat je personage aanheeft en ga op pad." }
+          },
+          {
+            "@type": "Question",
+            "name": "Wat trek ik aan bij dit weer?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit leest de verwachting van vandaag en kleedt je personage in kleding die je zelf hebt. Je ziet de outfit voordat je de deur uit gaat, en hij past zich aan als de omstandigheden door de dag heen veranderen." }
+          },
+          {
+            "@type": "Question",
+            "name": "Wat voor kleding trek ik vandaag aan?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit kiest de juiste lagen voor de dag: T-shirt of trui, short of broek, jas of niet. En hij houdt er rekening mee of je liever luchtigere of warmere kleding draagt, zodat het advies bij jou past. Alles wat hij voorstelt komt uit de kleding die je al hebt." }
+          },
+          {
+            "@type": "Question",
+            "name": "Hoe kleed ik me op het weer van vandaag?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit combineert de verwachting van vandaag met je garderobe en met hoe warm jij je graag kleedt. Heb je het snel warm, dan stelt hij lichtere lagen voor; heb je het snel koud, dan pakt hij je eerder in. Je personage draagt alleen dingen die je echt hebt, geen algemeen advies." }
+          },
+          {
+            "@type": "Question",
+            "name": "Kan ik vandaag een short aan?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Open Weather Fit en je personage vertelt het je. De app leest de temperatuur van vandaag, houdt er rekening mee hoe warm jij je graag kleedt en laat zien of een short een goed idee is of dat je liever een broek wilt. Hij kijkt ook vooruit naar morgen en de komende 10 dagen, dus je hoeft de avond ervoor niet meer te gokken." }
+          },
+          {
+            "@type": "Question",
+            "name": "Heb ik vandaag een jas nodig?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit laat je personage zien, aangekleed voor het weer van vandaag. Is er een jas nodig, dan draagt je personage er een. Zo niet, dan niet. Geen rekenwerk, geen twijfel." }
+          },
+          {
+            "@type": "Question",
+            "name": "Kan ik vandaag een jurk dragen?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit weegt temperatuur, wind en regen mee om je te vertellen of het een jurkdag is en of je er iets overheen wilt. Voeg je jurken en rokken toe aan je garderobe en je personage draagt ze zodra het weer meezit." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Weather Fit gratis?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ja. De kern van de app is gratis en zonder tijdslimiet: verwachtingen, outfitadvies, je personage en één widget voor het beginscherm. Premium ontgrendelt extra widgets, landschappen, dagelijkse meldingen, de Apple Watch-app en een onbeperkte garderobe." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y268716VCV',{'anonymize_ip':true});</script>
+
+  <!-- Mixpanel -->
+  <script type="text/javascript">
+    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+    mixpanel.init("a7e3e55d260afe151cf13deabcac5663");
+  </script>
+  <script>mixpanel.track('page viewed',{'page name':document.title,'url':window.location.pathname});</script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div id="header-sentinel" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-logo" href="/nl/">
+        <img src="../images/logo.svg" alt="Weather Fit">
+      </a>
+      <a class="btn btn-nav"
+         href="https://apps.apple.com/app/apple-store/id1194408342"
+         target="_blank"
+         rel="noopener"
+         data-tracker="TOP_APPSTORE|HOME_NL">
+        <span>Gratis downloaden</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <!-- Apps We Love badge -->
+          <div class="hero__award">
+            <img src="../images/award-apps-we-love.webp"
+                 alt="Uitgelicht in “Apps We Love” in de App Store"
+                 width="1434" height="316"
+                 loading="eager" fetchpriority="high" decoding="async">
+          </div>
+          <h1 class="hero__eyebrow">Wat je vandaag aantrekt, afgestemd op het weer</h1>
+          <h2 class="hero__headline">Niet meer gokken.<br>Gewoon aankleden.</h2>
+          <p class="hero__subhead">
+            Een personage dat op je lijkt, aangekleed voor het weer van vandaag.
+            Open de app elke ochtend en je weet precies wat je aan moet.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="HERO_APPSTORE|HOME_NL">
+              <img src="../images/app-store.svg" alt="Download in de App Store" width="156" height="44">
+            </a>
+            <div class="hero__trust">
+              <div class="hero__trust-top">
+                <span class="hero__stars" role="img" aria-label="Beoordeeld met 4,6 van de 5 sterren"></span>
+                <span class="hero__trust-score"><strong>4,6</strong> van de 5</span>
+              </div>
+              <span class="hero__trust-count">Meer dan 16.000 beoordelingen in de App Store</span>
+            </div>
+
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <div class="phone-bezel">
+            <img class="phone-bezel__screen"
+                 src="../images/screen-home.webp"
+                 alt="Hoofdscherm van Weather Fit met een personage aangekleed voor bewolkt weer in New York"
+                 width="1179" height="2556"
+                 decoding="async">
+            <img class="phone-bezel__frame"
+                 src="../images/iphone-bezel.webp"
+                 alt="" role="presentation"
+                 width="1800" height="3680"
+                 aria-hidden="true">
+          </div>
+        </figure>
+      </div>
+
+      <!-- Testimonials marquee -->
+      <div class="proof-bar">
+        <div class="proof-bar__track" role="marquee" aria-label="Beoordelingen in de App Store">
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Weather Fit is top!</p>
+            <p class="proof-bar__handle">Z-Finnley</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Ik weet 's ochtends niet altijd wat ik aan moet. Met Weather Fit weet ik elke dag wat ik aantrek. Ik heb hem al aan veel mensen laten zien en raad hem van harte aan.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Handig en vrolijk</p>
+            <p class="proof-bar__handle">MaiaPanthera</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Een leuke en vrolijke manier om je outfit te kiezen. Nooit meer aankleden voor de zon en dan doorweekt raken in de regen! De ontwikkelaar reageert meteen en voegt echt de functies toe waar je om vraagt.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Geweldig voor creatieve mensen!</p>
+            <p class="proof-bar__handle">GnomesR-us</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Een aanrader voor iedereen met ADHD of een creatieve inslag. Fantastische visuele hulp om je naar het weer te kleden. Leuk in gebruik en echt nuttig.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Beste weerapp</p>
+            <p class="proof-bar__handle">Jake2000000</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Ongelooflijk handig zonder ingewikkeld te zijn. Hij laat zien wat je aan moet en bespaart me elke dag tijd. De klantenservice reageerde snel en de verwachting klopt beter dan bij de meeste weerapps.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">De app die ik altijd al nodig had</p>
+            <p class="proof-bar__handle">Bromeo192</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Als student belde ik altijd mijn moeder om te vragen wat voor weer het zou worden. Deze app vertelt me wat ik aan moet zonder iemand lastig te vallen. Ik ben er heel blij mee.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Geen stress meer over wat je aantrekt</p>
+            <p class="proof-bar__handle">PikaPika-Choooooooo</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Ik ben autistisch en deze app helpt me om met zo min mogelijk stress te bepalen wat ik aantrek. De ontwikkelaar reageert supersnel op elke vraag. 10/10, ik raad hem aan bij mijn vrienden.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Toffe app!</p>
+            <p class="proof-bar__handle">happysimplemodern</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Ik gebruik hem als mijn belangrijkste weerbron, met een widget op mijn beginscherm. Ik ben dol op de garderobeopties en het ontwerp is zo schattig. Het hoort inmiddels bij mijn dagelijkse routine.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Geweldige weerapp!</p>
+            <p class="proof-bar__handle">Daisy Field</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Deze app ziet er prachtig uit en werkt uitstekend. Het personage met mijn eigen kleding maakt me elke keer blij. De ontwikkelaar reageert en lost problemen razendsnel op.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Elke ochtend even kijken voor ik wegga</p>
+            <p class="proof-bar__handle">나토토토</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Vroeger trok ik in de tussenseizoenen steeds het verkeerde aan. Dankzij deze app kleed ik me goed en voorkom ik miskleunen. Het is een vast ochtendritueel geworden.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Heel handig</p>
+            <p class="proof-bar__handle">BDGReview</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Ik vind het fijn dat de app ook tussenoutfits voorstelt. In plaats van meteen van winterjas naar short te springen, vindt hij precies het juiste midden. Dat verschil merk je echt.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Ik ben er dol op!!</p>
+            <p class="proof-bar__handle">LenaM720</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Superhandig en heel schattig. Je moet inderdaad een abonnement nemen om de widget te gebruiken, maar dat is het geld helemaal waard. De functies zijn top.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Mijn outfitassistent</p>
+            <p class="proof-bar__handle">teamazwhi</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 sterren"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Hij helpt me snel te bepalen wat ik aantrek op basis van het weer, zonder naar buiten te hoeven. Precies wat een weerapp moet doen.</p>
+          </div>
+
+
+        </div>
+      </div><!-- /.proof-bar -->
+
+    </section><!-- /.hero -->
+
+    <!-- SECTION 4 - THE PROBLEM → THE PROMISE -->
+    <section class="pivot">
+      <div class="container">
+
+        <h2 class="pivot__question">Wat trek ik vandaag aan?</h2>
+
+        <p class="pivot__problem">Elke ochtend check je het weer. Je ziet 12 °C en een icoon met zon en wolken, maar je weet nog steeds niet of dat een short betekent, een lichte jas, een dikke winterjas of gewoon laarzen.</p>
+
+        <div class="pivot__temp-badge">
+          <img src="../images/cloud.sun.webp" alt="" role="presentation" aria-hidden="true" width="22" height="22">
+          <span class="pivot__temp-badge-num">12°</span>
+        </div>
+
+        <!-- Mobile: chips left + character + chips right -->
+        <div class="pivot__mobile-layout" aria-label="Personage omringd door vragen over kleding">
+          <div class="pivot__chips-left" aria-hidden="true">
+            <span class="pivot__chip">Short?</span>
+            <span class="pivot__chip">Lichte jas?</span>
+            <span class="pivot__chip">Winterjas?</span>
+            <span class="pivot__chip">Paraplu?</span>
+            <span class="pivot__chip">Muts?</span>
+          </div>
+          <img class="pivot__character" src="../images/character-rain.webp" alt="Weather Fit-personage aangekleed voor regen" width="896" height="2431" loading="lazy">
+          <div class="pivot__chips-right" aria-hidden="true">
+            <span class="pivot__chip">T-shirt?</span>
+            <span class="pivot__chip">Trui?</span>
+            <span class="pivot__chip">Laarzen?</span>
+            <span class="pivot__chip">Sjaal?</span>
+            <span class="pivot__chip">Zonnebril?</span>
+          </div>
+        </div>
+
+        <!-- Desktop: chips floating around character -->
+        <div class="pivot__stage" aria-hidden="true">
+          <img class="pivot__character" src="../images/character-rain.webp" alt="Weather Fit-personage aangekleed voor regen" width="896" height="2431" loading="lazy">
+          <span class="pivot__chip pivot__chip--tl">Short?</span>
+          <span class="pivot__chip pivot__chip--tl2">Muts?</span>
+          <span class="pivot__chip pivot__chip--tc">T-shirt?</span>
+          <span class="pivot__chip pivot__chip--tr">Lichte jas?</span>
+          <span class="pivot__chip pivot__chip--tr2">Zonnebril?</span>
+          <span class="pivot__chip pivot__chip--ml">Paraplu?</span>
+          <span class="pivot__chip pivot__chip--mr">Trui?</span>
+          <span class="pivot__chip pivot__chip--bl">Winterjas?</span>
+          <span class="pivot__chip pivot__chip--bc">Sjaal?</span>
+          <span class="pivot__chip pivot__chip--br">Laarzen?</span>
+        </div>
+
+        <p class="pivot__promise"><strong>Daar komt Weather Fit om de hoek kijken.</strong> De app leest de verwachting, kent je garderobe en laat zien wat je aan moet.</p>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5 - HOW IT WORKS -->
+    <section class="howto">
+      <div class="container">
+
+        <h2 class="howto__title" data-reveal>In drie stappen aangekleed</h2>
+
+        <ol class="howto__steps" data-reveal-stagger>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-character.webp" alt="Scherm waarin je je Weather Fit-personage samenstelt" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">01</span>
+            <h3 class="howto__step-title">Maak je personage</h3>
+            <p class="howto__step-body">Kies geslacht, huidskleur, kapsel, haarkleur, wenkbrauwen, bril en gezichtshaar.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-wardrobe.webp" alt="Scherm waarin je je garderobe in Weather Fit instelt" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">02</span>
+            <h3 class="howto__step-title">Vul je garderobe</h3>
+            <p class="howto__step-body">Voeg de kleding toe die je hebt en vertel de app wat je echt graag draagt. Hij stelt nooit iets voor wat je niet hebt.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-forecast.webp" alt="Weather Fit-personage aangekleed volgens de verwachting" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">03</span>
+            <h3 class="howto__step-title">Kijk wat je aan moet</h3>
+            <p class="howto__step-body">Je personage verschijnt aangekleed volgens de verwachting, voor elk moment van de dag.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 6 - CORE FEATURES -->
+    <section class="features">
+
+      <div class="features__header container" data-reveal>
+        <h2 class="features__title">Outfits afgestemd op het weer</h2>
+      </div>
+
+      <!-- Block 1: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-character.webp" alt="Weather Fit-personage aangekleed voor het huidige weer" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Je personage, aangekleed volgens de verwachting</h3>
+              <p class="features__item-body">Elke ochtend kleedt je personage zich naar het weer van vandaag: een short als het warmer wordt, een winterjas als de kou invalt, een zonnebril op zonnige middagen, een paraplu voordat het gaat regenen. En de outfit verandert mee in de ochtend, de middag, de avond en de nacht.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 2: warm yellow gradient -->
+      <div class="features__block features__block--warm" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-wardrobe.webp" alt="Garderobescherm van Weather Fit met de kleding per categorie" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Alleen kleding die je echt hebt</h3>
+              <p class="features__item-body">Voeg je kleding toe per categorie: tops, bottoms, jassen, schoenen en accessoires. Geef aan of je liever luchtigere of warmere kleding draagt. Zet uit wat je toch nooit aantrekt. De app stelt alleen dingen voor die je echt zou dragen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 3: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-weather.webp" alt="Verwachtingsscherm van Weather Fit met gegevens van Apple Weer" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Dezelfde verwachting als de Weer-app op je iPhone</h3>
+              <p class="features__item-body">Weather Fit werkt met gegevens van Apple Weer. De verwachting voor vandaag, morgen en de komende 10 dagen, met neerslag per minuut, de UV-index, wind, vochtigheid, luchtkwaliteit, maanstand, zonsopgang en zonsondergang. En weerwaarschuwingen zodra er zwaar weer op komst is.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 4: cool blue gradient -->
+      <div class="features__block features__block--cool" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-locations.webp" alt="Scherm met bewaarde locaties in Weather Fit" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Het weer overal waar je komt</h3>
+              <p class="features__item-body">Bewaar zoveel locaties als je wilt, en je huidige locatie wordt automatisch bijgewerkt. Elke locatie krijgt zijn eigen landschap: stad, bergen, strand of buitenwijk. De lucht verandert van kleur naarmate de dag vordert.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 7 - WIDGETS & LOCK SCREEN -->
+    <section class="widgets">
+      <div class="container">
+
+        <h2 class="widgets__title" data-reveal>Je outfit, nog voordat je je telefoon ontgrendelt</h2>
+
+        <p class="widgets__lead" data-reveal>
+          Weather Fit zet je personage en de verwachting op het beginscherm en het toegangsscherm van je iPhone. Je personage staat er al, aangekleed voor de dag. Eén blik is genoeg.
+        </p>
+
+        <div class="widgets__grid" data-reveal>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--home">
+              <span class="widgets__stat-num" data-count="10">0</span>
+              <span class="widgets__stat-label">widgetstijlen voor het beginscherm</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-home-dark.webp" alt="Weather Fit-widgets op het beginscherm, met het personage en de verwachting" width="1608" height="3496" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--lock">
+              <span class="widgets__stat-num" data-count="19">0</span>
+              <span class="widgets__stat-label">widgetvarianten voor het toegangsscherm</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-lock.webp" alt="Weather Fit-widgets op het toegangsscherm, met het personage en de verwachting" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- SECTION 8 - APPLE WATCH -->
+    <section class="watch">
+      <div class="container">
+
+        <h2 class="watch__title" data-reveal>
+          Weten of je een jas nodig hebt. Zonder je telefoon te pakken
+        </h2>
+
+        <p class="watch__lead" data-reveal>
+          De Weather Fit-app voor de Apple Watch laat je personage aangekleed
+          zien, met de actuele temperatuur, de gevoelstemperatuur en de
+          neerslagverwachting. Voeg een complicatie toe aan je wijzerplaat en je
+          ochtendcheck is geregeld.
+        </p>
+
+        <div class="watch__visual" data-reveal>
+          <img src="../images/screen-watch.webp" alt="Weather Fit-app voor de Apple Watch met het aangeklede personage en de temperatuur" width="3344" height="1322" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 9 - NOTIFICATIONS -->
+    <section class="notify features__block" data-reveal>
+      <div class="container">
+        <div class="features__item">
+          <figure class="features__visual" aria-hidden="true">
+            <img class="features__screen" src="../images/screen-notifications.webp" alt="Toegangsscherm van een iPhone met meldingen van Weather Fit: ochtendbericht, avondbericht, parapluherinnering en zonnebrandherinnering" width="1179" height="2556" loading="lazy">
+            <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+          </figure>
+          <div class="features__copy">
+            <h2 class="features__item-title">Je hoort het voordat je het vraagt</h2>
+            <p class="features__item-body">Twee berichten per dag, op tijden die jij kiest, elk met je personage al aangekleed voor de verwachting. Plus twee herinneringen die stil blijven zolang het weer niets vraagt.</p>
+            <ul class="notify__list">
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☀️</span>
+                <span><strong>Ochtendbericht:</strong> de maximum- en minimumtemperatuur van vandaag, hoe het weer zich door de dag ontwikkelt en wat je aan moet.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🌧️</span>
+                <span><strong>Avondbericht:</strong> hetzelfde voor morgen, zodat je het de avond ervoor al weet.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☔️</span>
+                <span><strong>Parapluherinnering:</strong> alleen op dagen dat er regen komt, en wanneer je die kunt verwachten.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🧴</span>
+                <span><strong>Zonnebrandherinnering:</strong> alleen als de UV-index naar verwachting boven het niveau komt dat jij instelt.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 - FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__glass" data-reveal>
+
+        <h2 class="faq__title">Veelgestelde vragen</h2>
+
+        <ul class="faq__list">
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Wat trek ik vandaag aan?</summary>
+              <div class="faq__answer"><p>Open Weather Fit en je ziet de outfit van vandaag in één oogopslag. Je personage draagt echte kleding uit je garderobe, gekozen op basis van de verwachting. Geen temperaturen ontcijferen, geen giswerk. Kijk wat je personage aanheeft en ga op pad.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Wat trek ik aan bij dit weer?</summary>
+              <div class="faq__answer"><p>Weather Fit leest de verwachting van vandaag en kleedt je personage in kleding die je zelf hebt. Je ziet de outfit voordat je de deur uit gaat, en hij past zich aan als de omstandigheden door de dag heen veranderen.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Wat voor kleding trek ik vandaag aan?</summary>
+              <div class="faq__answer"><p>Weather Fit kiest de juiste lagen voor de dag: T-shirt of trui, short of broek, jas of niet. En hij houdt er rekening mee of je liever luchtigere of warmere kleding draagt, zodat het advies bij jou past. Alles wat hij voorstelt komt uit de kleding die je al hebt.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Hoe kleed ik me op het weer van vandaag?</summary>
+              <div class="faq__answer"><p>Weather Fit combineert de verwachting van vandaag met je garderobe en met hoe warm jij je graag kleedt. Heb je het snel warm, dan stelt hij lichtere lagen voor; heb je het snel koud, dan pakt hij je eerder in. Je personage draagt alleen dingen die je echt hebt, geen algemeen advies.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Kan ik vandaag een short aan?</summary>
+              <div class="faq__answer"><p>Open Weather Fit en je personage vertelt het je. De app leest de temperatuur van vandaag, houdt er rekening mee hoe warm jij je graag kleedt en laat zien of een short een goed idee is of dat je liever een broek wilt. Hij kijkt ook vooruit naar morgen en de komende 10 dagen, dus je hoeft de avond ervoor niet meer te gokken.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Heb ik vandaag een jas nodig?</summary>
+              <div class="faq__answer"><p>Weather Fit laat je personage zien, aangekleed voor het weer van vandaag. Is er een jas nodig, dan draagt je personage er een. Zo niet, dan niet. Geen rekenwerk, geen twijfel.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Kan ik vandaag een jurk dragen?</summary>
+              <div class="faq__answer"><p>Weather Fit weegt temperatuur, wind en regen mee om je te vertellen of het een jurkdag is en of je er iets overheen wilt. Voeg je jurken en rokken toe aan je garderobe en je personage draagt ze zodra het weer meezit.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Is Weather Fit gratis?</summary>
+              <div class="faq__answer"><p>Ja. De kern van de app is gratis en zonder tijdslimiet: verwachtingen, outfitadvies, je personage en één widget voor het beginscherm. Premium ontgrendelt extra widgets, landschappen, dagelijkse meldingen, de Apple Watch-app en een onbeperkte garderobe.</p></div>
+            </details>
+          </li>
+
+        </ul>
+
+        <div class="faq__footer">
+          <a class="btn btn-ghost" href="/faq" data-tracker="FAQ_SEE_ALL|HOME_NL">Bekijk alle vragen</a>
+        </div>
+
+        </div><!-- /.faq__glass -->
+      </div>
+    </section>
+
+    <!-- SECTION 11 - FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="final-cta__grid" data-reveal-stagger>
+
+          <div class="final-cta__content">
+            <h2 class="final-cta__title">Morgenochtend weet je precies wat je aan moet</h2>
+            <p class="final-cta__body">
+              Weather Fit is gratis te downloaden en in ongeveer twee minuten ingesteld.
+              Je personage staat klaar.
+            </p>
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="FINAL_CTA_APPSTORE|HOME_NL">
+              <img src="../images/app-store.svg" alt="Download in de App Store" width="156" height="44">
+            </a>
+          </div>
+
+          <figure class="final-cta__visual" aria-hidden="true">
+            <img src="../images/screen-final-cta.webp" alt="Weather Fit-personage aangekleed voor de dag" width="4420" height="5120" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
+        <a class="site-footer__logo" href="/nl/" aria-label="Weather Fit-startpagina">
+          <img src="../images/logo.svg" alt="Weather Fit">
+        </a>
+        <div class="site-footer__nav">
+          <div class="lang-select" data-lang-select>
+            <button type="button" class="lang-select__trigger" aria-expanded="false" aria-label="Taal: Nederlands">
+              <svg class="lang-select__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path>
+                <path d="M12 3c2.6 2.7 4 6 4 9s-1.4 6.3-4 9c-2.6-2.7-4-6-4-9s1.4-6.3 4-9z"></path>
+              </svg>
+              <span class="lang-select__label">Nederlands</span>
+              <svg class="lang-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <div class="lang-select__menu">
+              <a class="lang-select__option" href="/" hreflang="en" lang="en" data-tracker="FOOTER_LANG_EN|HOME_NL"><span>English</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/de/" hreflang="de" lang="de" data-tracker="FOOTER_LANG_DE|HOME_NL"><span>Deutsch</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/es/" hreflang="es" lang="es" data-tracker="FOOTER_LANG_ES|HOME_NL"><span>Español</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/fr/" hreflang="fr" lang="fr" data-tracker="FOOTER_LANG_FR|HOME_NL"><span>Français</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ja/" hreflang="ja" lang="ja" data-tracker="FOOTER_LANG_JA|HOME_NL"><span>日本語</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ko/" hreflang="ko" lang="ko" data-tracker="FOOTER_LANG_KO|HOME_NL"><span>한국어</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/nl/" hreflang="nl" lang="nl" aria-current="page" data-tracker="FOOTER_LANG_NL|HOME_NL"><span>Nederlands</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans" data-tracker="FOOTER_LANG_ZH|HOME_NL"><span>简体中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-tracker="FOOTER_LANG_ZHT|HOME_NL"><span>繁體中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+            </div>
+          </div>
+          <span class="site-footer__nav-sep" aria-hidden="true"></span>
+          <div class="site-footer__social">
+            <a class="js-email" data-eu="hi" data-ed="weatherfit.com" data-etext data-tracker="FOOTER_CONTACT|HOME_NL">E-mail</a>
+            <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME_NL">Instagram</a>
+            <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|HOME_NL">X</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. Alle rechten voorbehouden.</p>
+        <nav class="site-footer__links" aria-label="Juridisch">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|HOME_NL">Privacybeleid</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|HOME_NL">Gebruiksvoorwaarden</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|HOME_NL">Perskit</a>
+        </nav>
+      </div>
+
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple, iPhone, iPad, Apple Watch en App Store zijn handelsmerken van Apple Inc.</p>
+        <p>Weergegevens geleverd door Apple Weer</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Tracker -->
+  <script src="../js/site.js?v=1"></script>
+
+</body>
+</html>
