@@ -215,3 +215,163 @@ document.addEventListener('click', (e) => {
   if (parts.length !== 2) return;
   if (typeof mixpanel !== 'undefined') mixpanel.track(parts[0], { label: parts[1] });
 });
+
+// Android email capture — hero + final CTA on the home pages.
+// Runs only when the inline <head> detector put `.ua-android` on <html>.
+//
+// There is no form endpoint: the submission is a Mixpanel event carrying the
+// address, so spam bots that harvest `action` attributes have nothing to POST
+// to. The cost is that Mixpanel is on ad-block lists, which makes one rule the
+// whole point of this block — never say "you're on the list" unless Mixpanel
+// confirmed it. Blocked, offline, or silent for 4s all fall back to a mailto.
+;(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('ua-android')) return;
+
+  var forms = document.querySelectorAll('.android-capture');
+  if (!forms.length) return;
+
+  var SEND_TIMEOUT_MS = 4000;
+  var EMAIL_USER = 'hi';
+  var EMAIL_DOMAIN = 'weatherfit.com';
+
+  // The async Mixpanel stub pre-defines `track`, `identify`, `people.set` etc.
+  // as queue-pushers, but not `get_distinct_id` — so this is true only once
+  // the real library has actually loaded.
+  function mixpanelLoaded() {
+    return typeof mixpanel !== 'undefined' && typeof mixpanel.get_distinct_id === 'function';
+  }
+
+  function setStatus(status, state, text) {
+    status.textContent = text || '';
+    if (state) status.setAttribute('data-state', state);
+    else status.removeAttribute('data-state');
+  }
+
+  // Honest failure: we could not record it, so say so and offer a human path.
+  // The address is assembled here so it never ships as plaintext in the HTML
+  // (same reason as the `js-email` links above).
+  function showFallback(form, status) {
+    var addr = EMAIL_USER + '@' + EMAIL_DOMAIN;
+    setStatus(status, 'fallback', form.dataset.msgFallback + ' ');
+    var a = document.createElement('a');
+    a.href = 'mailto:' + addr + '?subject=Android';
+    a.textContent = addr;
+    status.appendChild(a);
+  }
+
+  // SHOWN is the denominator for the capture rate, so it goes through the stub
+  // queue rather than waiting on mixpanelLoaded() — the library is async and is
+  // usually still in flight here. Undercounting it would inflate the rate.
+  if (typeof mixpanel !== 'undefined') {
+    mixpanel.track('ANDROID_CAPTURE_SHOWN', { label: forms[0].dataset.label });
+  }
+
+  forms.forEach(function (form) {
+    var status = form.querySelector('.android-capture__status');
+    var row    = form.querySelector('.android-capture__row');
+    var button = form.querySelector('.android-capture__button');
+    var input  = form.querySelector('input[name="email"]');
+    var label  = form.dataset.label;   // 'HOME' | 'HOME_DE' | 'HOME_ZH' …
+    var source = form.dataset.source;  // 'HERO' | 'FINAL_CTA'
+    var focused = false;
+
+    input.addEventListener('focus', function () {
+      if (focused || !mixpanelLoaded()) return;
+      focused = true;
+      mixpanel.track('ANDROID_CAPTURE_FOCUS', { label: label, source: source });
+    });
+
+    // Clear the error the moment they start fixing it, so a red border never
+    // outlives the mistake. Fallback and success are left alone — the fallback
+    // holds a mailto they may still be reading.
+    input.addEventListener('input', function () {
+      if (status.getAttribute('data-state') !== 'error') return;
+      setStatus(status, null, '');
+      input.removeAttribute('aria-invalid');
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Honeypot. A real bot gets nothing useful out of the mailto (the address
+      // is assembled in this file either way), and routing here rather than
+      // returning silently means a human whose password manager filled the
+      // field still has a working path instead of a button that does nothing.
+      if (form.website && form.website.value) {
+        showFallback(form, status);
+        return;
+      }
+
+      input.value = input.value.trim();
+      setStatus(status, null, '');
+      input.removeAttribute('aria-invalid');
+
+      if (!input.checkValidity()) {                     // novalidate is on; validate ourselves
+        setStatus(status, 'error', form.dataset.msgError);
+        input.setAttribute('aria-invalid', 'true');
+        input.focus();
+        return;
+      }
+
+      var originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = '…';
+
+      var settled = false;
+      var poll = null;
+      function settle(ok) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        if (poll) clearInterval(poll);
+        if (ok) {
+          row.hidden = true;
+          setStatus(status, 'success', form.dataset.msgSuccess);
+          status.setAttribute('tabindex', '-1');
+          status.focus();
+        } else {
+          button.disabled = false;
+          button.textContent = originalText;
+          showFallback(form, status);
+        }
+      }
+
+      // If the callback never fires (request hangs, network dropped after load,
+      // or the library never arrives), this is what keeps us from leaving the
+      // button spinning forever — and it's the only thing allowed to declare
+      // failure. Nothing below shortcuts it.
+      var timer = setTimeout(function () { settle(false); }, SEND_TIMEOUT_MS);
+
+      function send() {
+        mixpanel.track('ANDROID_CAPTURE_SUBMITTED', {
+          label: label,
+          source: source,
+          email: input.value.toLowerCase(),
+          locale: root.lang || 'en',
+          page: location.pathname,
+          browser_language: navigator.language || '',
+          referrer: document.referrer || ''
+        }, { send_immediately: true }, function (response) {
+          settle(!!response);   // the SDK passes 1 on accept, 0 on failure
+        });
+      }
+
+      // mixpanelLoaded() can't tell "blocked" from "hasn't landed yet", and the
+      // library is async while this form sits above the fold. Declaring failure
+      // the moment it's absent would tell a visitor on a slow connection that
+      // their browser blocks us and drop a signup the stub queue would have
+      // delivered. Wait for it inside the timeout budget that already exists.
+      if (mixpanelLoaded()) {
+        send();
+      } else {
+        poll = setInterval(function () {
+          if (settled || !mixpanelLoaded()) return;
+          clearInterval(poll);
+          poll = null;
+          send();
+        }, 100);
+      }
+    });
+  });
+})();

@@ -16,6 +16,9 @@
   --border-on-dark: rgba(255,255,255,0.10);
   --accent:       #007AFF;
   --accent-warm:  #FFB341;
+  --error:        #D70015;  /* Apple's accessible systemRed — 5.4:1 on white.
+                               Plain systemRed (#FF3B30) is only 3.6:1 and
+                               fails AA at the 14px this is used at. */
 
   /* Typography */
   --font-display: ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
@@ -145,6 +148,21 @@ summary:focus-visible {
   }
 }
 
+/* Present for assistive tech and for bots that skip `display:none`, absent
+   from the visual layout. Used by the Android capture's label and honeypot. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 
 /* ============================================================
    UTILITIES
@@ -230,6 +248,201 @@ summary:focus-visible {
 .btn-ghost:hover {
   background: rgba(0, 122, 255, 0.07);
   opacity: 1;
+}
+
+
+/* ============================================================
+   ANDROID EMAIL CAPTURE
+   ----
+   Stands in for the App Store badge, and only on Android: a small
+   inline script in <head> puts `.ua-android` on <html> before the
+   stylesheet applies, so there's no flash of the wrong CTA. Every
+   other visitor — iOS, iPadOS, macOS, Windows, crawlers, no-JS —
+   gets the badge exactly as before.
+
+   The button is the site's own black pill — it reuses .btn-nav
+   outright, hover state included, so there's one black-CTA shape
+   on the page instead of a second one invented for this slot. It
+   keeps the badge's 52px height so the hero's rhythm is unchanged;
+   the field above it takes the same pill so the two read as a unit.
+   ============================================================ */
+.android-capture {
+  display: none;
+  width: 100%;
+  max-width: 320px;
+  margin-inline: auto;   /* hero and final CTA are centred below 1024px */
+}
+
+.ua-android .android-capture { display: block; }
+
+/* The App Store anchors stay in the DOM for crawlers and no-JS; CSS alone
+   decides what's visible. The nav's "Download free" is deliberately left
+   alone — it's the path for an Android visitor who also owns an iPad. */
+.ua-android .hero__cta > .btn-appstore,
+.ua-android .final-cta__content > .btn-appstore { display: none; }
+
+.android-capture__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.android-capture__row[hidden] { display: none; }  /* success replaces it */
+
+.android-capture__input {
+  width: 100%;
+  height: 52px;                 /* == .btn-appstore img height */
+  font-family: var(--font-text);
+  font-size: 1rem;              /* >=16px prevents iOS auto-zoom on focus */
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;             /* don't inherit the centred hero */
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill); /* == the button below it */
+  padding: 0 24px;                   /* clears the pill's curve */
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.android-capture__input::placeholder {
+  color: var(--text-muted);
+  opacity: 1; /* Firefox normalisation */
+}
+
+.android-capture__input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
+}
+
+/* Carries .btn .btn-nav in the markup — colour, radius, weight and the
+   blue hover all come from there. These are the only differences: full
+   width, the badge's height rather than the nav's 48px, and room for a
+   long translation to wrap instead of being clipped. */
+.android-capture__button {
+  width: 100%;
+  height: auto;                     /* .btn-nav pins 48px */
+  min-height: 52px;                 /* == the App Store badge's rendered height */
+  padding: var(--sp-2) var(--sp-6);
+  line-height: 1.25;
+  white-space: normal;              /* .btn-nav is nowrap */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* .btn-nav:hover has no :not([disabled]) guard and :hover still matches a
+   disabled button, so without the background/shadow resets the in-flight
+   button reads as an active blue CTA while it's inert. */
+.android-capture__button[disabled] {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+  background: var(--text);
+  box-shadow: none;
+}
+
+/* Collapses to nothing until there's something to say, so the caption stays
+   tucked under the button it belongs to. An empty <p> is zero-height, so the
+   margin is what has to be conditional. The spec reserved a line here to stop
+   a message shifting the stars — but that paid ~29px of dead space on every
+   page load to prevent a shift that only happens on interaction (and which
+   CLS excludes for that reason). The grouping is worth more. */
+.android-capture__status {
+  font-size: var(--fs-micro);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.android-capture__status[data-state] {
+  margin-top: var(--sp-2);
+}
+
+/* Success has to land — it's the only thing that replaces a 52px field and
+   a 52px button, so at caption size it reads as fine print. Body size in the
+   display face, with the accent check carrying the "done" signal. */
+.android-capture__status[data-state="success"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.android-capture__status[data-state="success"]::before {
+  content: '\2713';
+  margin-right: 0.4em;
+  color: var(--accent);
+}
+
+.android-capture__status[data-state="error"] {
+  color: var(--error);
+  font-weight: 500;
+}
+
+/* The fallback is the only route left when Mixpanel is blocked, so a visitor
+   who skims past it is a signup lost outright — at caption size that's exactly
+   what happens. It gets a panel and body type so it reads as a notice rather
+   than fine print, and the address drops onto its own line as an obvious tap
+   target. Still not red: this is our form failing, not the visitor's mistake. */
+.android-capture__status[data-state="fallback"] {
+  margin-top: var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--bg-blue-soft);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.android-capture__status[data-state="fallback"] a {
+  display: block;
+  margin-top: var(--sp-2);
+  font-weight: 600;
+  word-break: break-word;   /* the address can never overflow the panel */
+}
+
+/* JS already sets aria-invalid on the field, so the border needs no extra
+   hook — a red message pointing at a neutral field is half the feedback. */
+.android-capture__input[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.android-capture__input[aria-invalid="true"]:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(215, 0, 21, 0.20);
+}
+
+.android-capture__status a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Now the iOS cross-sell rather than a disclaimer: the visitor who also owns
+   an iPhone or iPad can convert today, and the nav's "Download free" doesn't
+   say who it's for. Same link treatment as .legal a. */
+.android-capture__caption {
+  margin-top: var(--sp-3);      /* half the gap to the star rating below, so
+                                   the caption reads as the button's footnote */
+  font-size: var(--fs-micro);   /* == .hero__trust-count */
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.android-capture__caption a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* The badge sits 16px off the rating; the taller capture block needs a
+   clearer break, or the caption and the stars run together as one lump. */
+.ua-android .hero__cta {
+  gap: var(--sp-6);
 }
 
 
@@ -500,6 +713,17 @@ summary:focus-visible {
 
   .hero__trust {
     align-items: flex-start;
+  }
+
+  /* Left-aligned hero: the capture takes the badge's slot, stars beside it
+     (or wrapping under, if a long translation needs the room). Top-aligned
+     so the rating sits level with the field rather than floating mid-block. */
+  .android-capture { margin-inline: 0; }
+
+  .ua-android .hero__cta {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;   /* horizontal here — restore the row gap, not the stacked one */
   }
 
   .hero__visual {

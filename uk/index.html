@@ -41,8 +41,25 @@
   <link rel="shortcut icon"    href="../images/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="../images/webclip.png">
 
+  <!-- Android detection — runs before the stylesheet so there is no flash of the
+       wrong CTA. It only sets a class: the App Store links stay in the DOM and
+       CSS decides what's visible. Fails open to the App Store button on anything
+       that isn't plainly Android — no JS, an unknown UA, or a crawler (Google's
+       smartphone bot sends an Android UA, and the badge is what we want indexed). -->
+  <script>
+  (function () {
+    try {
+      var ua = navigator.userAgent || '';
+      var isAndroid = /Android/i.test(ua) ||
+        (navigator.userAgentData && navigator.userAgentData.platform === 'Android');
+      var isBot = /bot|crawl|spider|slurp|googlebot|bingbot|yandex|baidu|duckduck|facebookexternalhit|preview/i.test(ua);
+      if (isAndroid && !isBot) document.documentElement.classList.add('ua-android');
+    } catch (e) {}
+  })();
+  </script>
+
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/styles.css?v=3">
+  <link rel="stylesheet" href="../css/styles.css?v=4">
 
   <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
        The LCP element differs by layout: below 1024px the hero is single-column and
@@ -230,6 +247,37 @@
                data-tracker="HERO_APPSTORE|HOME_UK">
               <img src="../images/app-store.svg" alt="Завантажити в App Store" width="156" height="44">
             </a>
+
+            <!-- Android only, in place of the badge above. No `action` and no
+                 `method`: the submission is a Mixpanel event (see js/site.js),
+                 so there is no endpoint for form-spam bots to POST to. -->
+            <form class="android-capture" hidden
+                  data-source="HERO"
+                  data-label="HOME_UK"
+                  data-msg-success="Ти в списку."
+                  data-msg-error="Це не схоже на адресу пошти."
+                  data-msg-fallback="Схоже, твій браузер блокує форму. Напиши нам із «Android» у темі, і ми додамо тебе вручну:"
+                  novalidate
+                  onsubmit="return false">
+              <div class="android-capture__row">
+                <label for="android-email-hero" class="visually-hidden">Пошта</label>
+                <input id="android-email-hero" class="android-capture__input" type="email" name="email"
+                       placeholder="Твоя пошта" autocomplete="email" inputmode="email" required>
+                <button type="submit" class="btn btn-nav android-capture__button">Повідомити про Android</button>
+              </div>
+
+              <p class="android-capture__status" role="status" aria-live="polite"></p>
+              <p class="android-capture__caption">Маєш iPhone або iPad?
+                <a href="https://apps.apple.com/app/apple-store/id1194408342"
+                   target="_blank"
+                   rel="noopener"
+                   data-tracker="HERO_IOS_CROSSSELL|HOME_UK">Завантаж тут</a></p>
+
+              <!-- Honeypot: a JS-executing bot that fills every field gets dropped
+                   client-side. Visually hidden rather than display:none — some bots
+                   skip fields that are display:none. -->
+              <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </form>
             <div class="hero__trust">
               <div class="hero__trust-top">
                 <span class="hero__stars" role="img" aria-label="Оцінка 4,6 з 5 зірок"></span>
@@ -714,6 +762,37 @@
                data-tracker="FINAL_CTA_APPSTORE|HOME_UK">
               <img src="../images/app-store.svg" alt="Завантажити в App Store" width="156" height="44">
             </a>
+
+            <!-- Android only, in place of the badge above. No `action` and no
+                 `method`: the submission is a Mixpanel event (see js/site.js),
+                 so there is no endpoint for form-spam bots to POST to. -->
+            <form class="android-capture" hidden
+                  data-source="FINAL_CTA"
+                  data-label="HOME_UK"
+                  data-msg-success="Ти в списку."
+                  data-msg-error="Це не схоже на адресу пошти."
+                  data-msg-fallback="Схоже, твій браузер блокує форму. Напиши нам із «Android» у темі, і ми додамо тебе вручну:"
+                  novalidate
+                  onsubmit="return false">
+              <div class="android-capture__row">
+                <label for="android-email-final" class="visually-hidden">Пошта</label>
+                <input id="android-email-final" class="android-capture__input" type="email" name="email"
+                       placeholder="Твоя пошта" autocomplete="email" inputmode="email" required>
+                <button type="submit" class="btn btn-nav android-capture__button">Повідомити про Android</button>
+              </div>
+
+              <p class="android-capture__status" role="status" aria-live="polite"></p>
+              <p class="android-capture__caption">Маєш iPhone або iPad?
+                <a href="https://apps.apple.com/app/apple-store/id1194408342"
+                   target="_blank"
+                   rel="noopener"
+                   data-tracker="FINAL_CTA_IOS_CROSSSELL|HOME_UK">Завантаж тут</a></p>
+
+              <!-- Honeypot: a JS-executing bot that fills every field gets dropped
+                   client-side. Visually hidden rather than display:none — some bots
+                   skip fields that are display:none. -->
+              <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </form>
           </div>
 
           <figure class="final-cta__visual" aria-hidden="true">
@@ -789,7 +868,7 @@
   </footer>
 
   <!-- Tracker -->
-  <script src="../js/site.js?v=1"></script>
+  <script src="../js/site.js?v=2"></script>
 
 </body>
 </html>
