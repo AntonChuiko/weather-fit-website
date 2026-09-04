@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bugün ne giysem? – Weather Fit, seni giydiren hava durumu uygulaması</title>
+  <meta name="description" content="Bugün ne giyeceğini tek bakışta gör. Weather Fit, hava tahminini okuyup karakterini giydiren ücretsiz bir iOS uygulaması: şort, ceket ya da ikisinin arası.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://weatherfit.com/tr/">
+  <meta property="og:locale"      content="tr_TR">
+  <meta property="og:title"       content="Bugün ne giysem? – Weather Fit, seni giydiren hava durumu uygulaması">
+  <meta property="og:description" content="Bugün ne giyeceğini tek bakışta gör. Weather Fit, hava tahminini okuyup karakterini giydiren ücretsiz bir iOS uygulaması: şort, ceket ya da ikisinin arası.">
+  <meta property="og:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@weatherfitapp">
+  <meta name="twitter:title"       content="Bugün ne giysem? – Weather Fit, seni giydiren hava durumu uygulaması">
+  <meta name="twitter:description" content="Bugün ne giyeceğini tek bakışta gör. Weather Fit, hava tahminini okuyup karakterini giydiren ücretsiz bir iOS uygulaması: şort, ceket ya da ikisinin arası.">
+  <meta name="twitter:image"       content="https://weatherfit.com/images/wf-og-image.jpg">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://weatherfit.com/tr/">
+  <link rel="alternate" href="https://weatherfit.com/"         hreflang="en">
+  <link rel="alternate" href="https://weatherfit.com/de/"      hreflang="de">
+  <link rel="alternate" href="https://weatherfit.com/es/"      hreflang="es">
+  <link rel="alternate" href="https://weatherfit.com/fr/"      hreflang="fr">
+  <link rel="alternate" href="https://weatherfit.com/it/"      hreflang="it">
+  <link rel="alternate" href="https://weatherfit.com/ja/"      hreflang="ja">
+  <link rel="alternate" href="https://weatherfit.com/ko/"      hreflang="ko">
+  <link rel="alternate" href="https://weatherfit.com/nl/"      hreflang="nl">
+  <link rel="alternate" href="https://weatherfit.com/pl/"      hreflang="pl">
+  <link rel="alternate" href="https://weatherfit.com/pt-BR/"   hreflang="pt-BR">
+  <link rel="alternate" href="https://weatherfit.com/tr/"      hreflang="tr">
+  <link rel="alternate" href="https://weatherfit.com/uk/"      hreflang="uk">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hans/" hreflang="zh-Hans">
+  <link rel="alternate" href="https://weatherfit.com/zh-Hant/" hreflang="zh-Hant">
+  <link rel="alternate" href="https://weatherfit.com/"        hreflang="x-default">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon"    href="../images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../images/webclip.png">
+
+  <!-- Android detection — runs before the stylesheet so there is no flash of the
+       wrong CTA. It only sets a class: the App Store links stay in the DOM and
+       CSS decides what's visible. Fails open to the App Store button on anything
+       that isn't plainly Android — no JS, an unknown UA, or a crawler (Google's
+       smartphone bot sends an Android UA, and the badge is what we want indexed). -->
+  <script>
+  (function () {
+    try {
+      var ua = navigator.userAgent || '';
+      var isAndroid = /Android/i.test(ua) ||
+        (navigator.userAgentData && navigator.userAgentData.platform === 'Android');
+      var isBot = /bot|crawl|spider|slurp|googlebot|bingbot|yandex|baidu|duckduck|facebookexternalhit|preview/i.test(ua);
+      if (isAndroid && !isBot) document.documentElement.classList.add('ua-android');
+    } catch (e) {}
+  })();
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css?v=4">
+
+  <!-- Preload the LCP hero image so it starts downloading early and paints sooner.
+       The LCP element differs by layout: below 1024px the hero is single-column and
+       the "Apps We Love" badge sits on top (it's the LCP); at >=1024px the phone
+       screenshot moves beside the text and becomes the LCP. Scope each preload to its
+       breakpoint so we never high-priority-fetch the wrong, below-the-fold image. -->
+  <link rel="preload" as="image" href="../images/award-apps-we-love.webp" fetchpriority="high" media="(max-width: 1023.98px)">
+  <link rel="preload" as="image" href="../images/screen-home.webp" fetchpriority="high" media="(min-width: 1024px)">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://weatherfit.com/#organization",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/tr/",
+        "logo": { "@type": "ImageObject", "url": "https://weatherfit.com/images/webclip.png", "width": 256, "height": 256 },
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "founder": { "@id": "https://weatherfit.com/#anton" },
+        "sameAs": [
+          "https://x.com/weatherfitapp",
+          "https://www.instagram.com/weatherfitapp/",
+          "https://apps.apple.com/app/apple-store/id1194408342"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://weatherfit.com/#anton",
+        "name": "Anton Chuiko",
+        "url": "https://antonchuiko.com/",
+        "sameAs": ["https://antonchuiko.com/", "https://flexum.io/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://weatherfit.com/#website",
+        "url": "https://weatherfit.com/tr/",
+        "name": "Weather Fit",
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://weatherfit.com/tr/#webpage",
+        "url": "https://weatherfit.com/tr/",
+        "name": "Bugün ne giysem? – Weather Fit, seni giydiren hava durumu uygulaması",
+        "isPartOf": { "@id": "https://weatherfit.com/#website" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "primaryImageOfPage": "https://weatherfit.com/images/wf-og-image.jpg",
+        "inLanguage": "tr"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://weatherfit.com/#app",
+        "name": "Weather Fit",
+        "url": "https://weatherfit.com/tr/",
+        "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later",
+        "applicationCategory": "Weather",
+        "downloadUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "installUrl": "https://apps.apple.com/app/apple-store/id1194408342",
+        "screenshot": [
+          "https://weatherfit.com/images/screen-home.webp",
+          "https://weatherfit.com/images/watch-app.webp"
+        ],
+        "image": "https://weatherfit.com/images/wf-og-image.jpg",
+        "description": "Bugün ne giyeceğini tek bakışta gör. Weather Fit, hava tahminini okuyup karakterini giydiren ücretsiz bir iOS uygulaması: şort, ceket ya da ikisinin arası.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "16000" },
+        "author": { "@id": "https://weatherfit.com/#anton" },
+        "publisher": { "@id": "https://weatherfit.com/#organization" },
+        "inLanguage": ["en","nl","fr","de","it","ja","ko","pl","pt-BR","es","zh-Hans","zh-Hant","tr","uk"],
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://weatherfit.com/tr/#faq",
+        "isPartOf": { "@id": "https://weatherfit.com/tr/#webpage" },
+        "about": { "@id": "https://weatherfit.com/#app" },
+        "inLanguage": "tr",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bugün ne giysem?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit’i aç, bugünün kombinini tek bakışta gör. Karakterin, gardırobundaki gerçek kıyafetlerle, gerçek hava tahminine göre giyinir. Derece yorumlamak yok, kafa yormak yok. Karakterinin ne giydiğine bak, çık." }
+          },
+          {
+            "@type": "Question",
+            "name": "Bugün havaya göre ne giysem?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit bugünün hava tahminini okur ve karakterini gerçekten sahip olduğun kıyafetlerle giydirir. Kombini evden çıkmadan görürsün, hava değiştikçe gün içinde güncellenir." }
+          },
+          {
+            "@type": "Question",
+            "name": "Bugün ne tür kıyafetler giymeliyim?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit güne uygun katmanları seçer: tişört mü kazak mı, şort mu pantolon mu, ceket var mı yok mu. Bunları kişisel konfor seviyene göre ayarlar, yani çabuk üşüsen de çabuk sıcaklasan da öneri sana göre olur. Önerdiği her şey zaten sahip olduğun kıyafetlerden gelir." }
+          },
+          {
+            "@type": "Question",
+            "name": "Bugünün havasına göre nasıl giyinmeliyim?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit bugünün hava tahminini gardırobunla ve senin belirlediğin konfor seviyesiyle birleştirir. Çabuk sıcaklıyorsan daha ince katmanlar önerir, çabuk üşüyorsan daha erken kalın giydirir. Karakterin yalnızca gerçekten sahip olduğun şeyleri giyer, genel geçer tavsiye vermez." }
+          },
+          {
+            "@type": "Question",
+            "name": "Bugün şort giysem olur mu?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit’i aç, karakterin sana söylesin. Uygulama bugünün sıcaklığını okur, kişisel konfor seviyeni hesaba katar ve şortun doğru seçim mi, yoksa pantolonun mu daha iyi olduğunu gösterir. Yarını ve önümüzdeki 10 günü de kapsar, böylece bir gece önceden kafa yormana gerek kalmaz." }
+          },
+          {
+            "@type": "Question",
+            "name": "Bugün ceket lazım mı?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit karakterini bugünün havasına göre giyinmiş gösterir. Ceket lazımsa karakterin ceket giymiştir, lazım değilse giymemiştir. Hesap kitap yok, tereddüt yok." }
+          },
+          {
+            "@type": "Question",
+            "name": "Bugün elbise giyebilir miyim?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Weather Fit sıcaklığı, rüzgârı ve yağmuru birlikte değerlendirir; bugünün elbise günü olup olmadığını ve üstüne bir şey alman gerekip gerekmediğini söyler. Elbiselerini ve eteklerini gardırobuna ekle, hava uygun olduğunda karakterin onları giysin." }
+          },
+          {
+            "@type": "Question",
+            "name": "Weather Fit ücretsiz mi?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Evet. Uygulamanın temel sürümü süresiz ücretsiz: hava tahminleri, kıyafet önerileri, karakterin ve bir Ana Ekran araç takımı. Premium ise ek araç takımlarını, manzaraları, günlük bildirimleri, Apple Watch uygulamasını ve sınırsız gardırop öğesini açar." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y268716VCV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y268716VCV',{'anonymize_ip':true});</script>
+
+  <!-- Mixpanel -->
+  <script type="text/javascript">
+    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+    mixpanel.init("a7e3e55d260afe151cf13deabcac5663");
+  </script>
+  <script>mixpanel.track('page viewed',{'page name':document.title,'url':window.location.pathname});</script>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div id="header-sentinel" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-logo" href="/tr/">
+        <img src="../images/logo.svg" alt="Weather Fit">
+      </a>
+      <a class="btn btn-nav"
+         href="https://apps.apple.com/app/apple-store/id1194408342"
+         target="_blank"
+         rel="noopener"
+         data-tracker="TOP_APPSTORE|HOME_TR">
+        <span>Ücretsiz İndir</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <!-- Apps We Love badge -->
+          <div class="hero__award">
+            <img src="../images/award-apps-we-love.webp"
+                 alt="App Store’daki “Apps We Love” seçkisinde yer aldı"
+                 width="1434" height="316"
+                 loading="eager" fetchpriority="high" decoding="async">
+          </div>
+          <h1 class="hero__eyebrow">Bugün havaya göre ne giymeli</h1>
+          <h2 class="hero__headline">Kafa yormayı bırak.<br>Giyinmeye bak.</h2>
+          <p class="hero__subhead">
+            Sana benzeyen bir karakter, bugünün havasına göre giyinmiş.
+            Her sabah uygulamayı aç, ne giyeceğin belli olsun.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="HERO_APPSTORE|HOME_TR">
+              <img src="../images/app-store.svg" alt="App Store’dan İndir" width="156" height="44">
+            </a>
+
+            <!-- Android only, in place of the badge above. No `action` and no
+                 `method`: the submission is a Mixpanel event (see js/site.js),
+                 so there is no endpoint for form-spam bots to POST to. -->
+            <form class="android-capture" hidden
+                  data-source="HERO"
+                  data-label="HOME_TR"
+                  data-msg-success="Listeye eklendin."
+                  data-msg-error="Bu bir e-posta adresine benzemiyor."
+                  data-msg-fallback="Tarayıcın formumuzu engelliyor gibi görünüyor. Konu satırına “Android” yazıp bize e-posta gönder, seni elle ekleyelim:"
+                  novalidate
+                  onsubmit="return false">
+              <div class="android-capture__row">
+                <label for="android-email-hero" class="visually-hidden">E-posta</label>
+                <input id="android-email-hero" class="android-capture__input" type="email" name="email"
+                       placeholder="E-posta adresin" autocomplete="email" inputmode="email" required>
+                <button type="submit" class="btn btn-nav android-capture__button">Android Çıkınca Haber Ver</button>
+              </div>
+
+              <p class="android-capture__status" role="status" aria-live="polite"></p>
+              <p class="android-capture__caption">iPhone’un ya da iPad’in mi var?
+                <a href="https://apps.apple.com/app/apple-store/id1194408342"
+                   target="_blank"
+                   rel="noopener"
+                   data-tracker="HERO_IOS_CROSSSELL|HOME_TR">Buradan indir</a></p>
+
+              <!-- Honeypot: a JS-executing bot that fills every field gets dropped
+                   client-side. Visually hidden rather than display:none — some bots
+                   skip fields that are display:none. -->
+              <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </form>
+            <div class="hero__trust">
+              <div class="hero__trust-top">
+                <span class="hero__stars" role="img" aria-label="5 üzerinden 4,6 puan"></span>
+                <span class="hero__trust-score"><strong>4,6</strong> / 5</span>
+              </div>
+              <span class="hero__trust-count">App Store’da 16.000+ puan</span>
+            </div>
+
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <div class="phone-bezel">
+            <img class="phone-bezel__screen"
+                 src="../images/screen-home.webp"
+                 alt="New York’ta bulutlu havaya göre giyinmiş karakteri gösteren Weather Fit ana ekranı"
+                 width="1179" height="2556"
+                 decoding="async">
+            <img class="phone-bezel__frame"
+                 src="../images/iphone-bezel.webp"
+                 alt="" role="presentation"
+                 width="1800" height="3680"
+                 aria-hidden="true">
+          </div>
+        </figure>
+      </div>
+
+      <!-- Testimonials marquee -->
+      <div class="proof-bar">
+        <div class="proof-bar__track" role="marquee" aria-label="App Store değerlendirmeleri">
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Weather Fit Harika!</p>
+            <p class="proof-bar__handle">Z-Finnley</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Uyandığımda ne giyeceğimden her zaman emin olamıyorum. Weather Fit sayesinde o gün ne giyeceğimi hep biliyorum. Pek çok kişiye tanıttım ve kesinlikle tavsiye ederim.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Faydalı ve Neşeli</p>
+            <p class="proof-bar__handle">MaiaPanthera</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Kombinini seçmenin eğlenceli, neşeli bir yolu. Güneşe göre giyinip yağmurda ıslanmak yok artık! Geliştirici hemen yanıt veriyor ve istediğin özellikleri gerçekten ekliyor.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Yaratıcı Ruhlar için Harika Bir Uygulama!</p>
+            <p class="proof-bar__handle">GnomesR-us</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">DEHB’si olan ya da yaratıcı tarafı ağır basan herkese kesinlikle öneririm. Havaya uygun giyinmek için harika bir görsel yardımcı. Kullanması eğlenceli ve gerçekten işe yarıyor.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">En İyi Hava Durumu Uygulaması</p>
+            <p class="proof-bar__handle">Jake2000000</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Karmaşık olmadan inanılmaz faydalı. Ne giyeceğini gösteriyor ve her gün bana zaman kazandırıyor. Destek ekibi hızlı yanıt verdi, tahminler de çoğu hava durumu uygulamasından daha isabetli.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Her Zaman İhtiyacım Olan Uygulama</p>
+            <p class="proof-bar__handle">Bromeo192</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Öğrenciyim ve hava nasıl olacak diye hep annemi arardım. Bu uygulama kimseyi rahatsız etmeden ne giyeceğimi söylüyor. Bayıldım.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Ne Giyeceğim Stresine Son</p>
+            <p class="proof-bar__handle">PikaPika-Choooooooo</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Otizmli biri olarak ne giyeceğime bu uygulama sayesinde çok daha az stresle karar veriyorum. Geliştirici her soruya inanılmaz hızlı yanıt veriyor. 10/10, arkadaşlarıma öneriyorum.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Harika Uygulama!</p>
+            <p class="proof-bar__handle">happysimplemodern</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Ana Ekranımdaki araç takımıyla birlikte ana hava durumu kaynağım olarak kullanıyorum. Gardırop seçeneklerine bayılıyorum, tasarım da çok tatlı. Günlük rutinimin bir parçası oldu.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Harika Bir Hava Durumu Uygulaması!</p>
+            <p class="proof-bar__handle">Daisy Field</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Uygulama çok güzel tasarlanmış ve harika çalışıyor. Kendi kıyafetlerini giyen karakteri her gördüğümde keyifleniyorum. Geliştirici yanıt vermekte ve sorunları çözmekte çok hızlı.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Her Sabah İşten Önce Bakıyorum</p>
+            <p class="proof-bar__handle">나토토토</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Mevsim geçişlerinde sürekli yanlış giyiniyordum. Bu uygulama sayesinde doğru giyiniyor ve kombin felaketlerinden kurtuluyorum. Artık sabah rutinimin bir parçası.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Çok Faydalı</p>
+            <p class="proof-bar__handle">BDGReview</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Uygulamanın ara kombinler sunmasına bayılıyorum. Kalın monttan doğrudan şorta atlamak yerine arada kalan havaları doğru biliyor. Bu incelik gerçekten fark yaratıyor.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Bayıldım!!</p>
+            <p class="proof-bar__handle">LenaM720</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Süper faydalı ve çok tatlı. Araç takımını kullanmak için aboneliğe para vermen gerekiyor ama bence fiyatına kesinlikle değer. İşlevleri harika.</p>
+          </div>
+
+          <div class="proof-bar__card">
+            <p class="proof-bar__title">Kombin Asistanım</p>
+            <p class="proof-bar__handle">teamazwhi</p>
+            <span class="proof-bar__stars" role="img" aria-label="5 yıldız"></span>
+            <div class="proof-bar__divider" aria-hidden="true"></div>
+            <p class="proof-bar__text">Dışarı çıkmama gerek kalmadan havaya göre ne giyeceğime hızlıca karar vermemi sağlıyor. Bir hava durumu uygulamasının yapması gereken tam olarak bu.</p>
+          </div>
+
+
+        </div>
+      </div><!-- /.proof-bar -->
+
+    </section><!-- /.hero -->
+
+    <!-- SECTION 4 - THE PROBLEM → THE PROMISE -->
+    <section class="pivot">
+      <div class="container">
+
+        <h2 class="pivot__question">Bugün ne giysem?</h2>
+
+        <p class="pivot__problem">Her sabah hava durumuna bakıyorsun. 12 °C ve parçalı bulutlu simgesini görüyorsun ama bunun şort mu, ince ceket mi, kalın mont mu, yoksa sadece bot mu demek olduğunu yine de çıkaramıyorsun.</p>
+
+        <div class="pivot__temp-badge">
+          <img src="../images/cloud.sun.webp" alt="" role="presentation" aria-hidden="true" width="22" height="22">
+          <span class="pivot__temp-badge-num">12°</span>
+        </div>
+
+        <!-- Mobile: chips left + character + chips right -->
+        <div class="pivot__mobile-layout" aria-label="Kıyafet sorularıyla çevrili karakter">
+          <div class="pivot__chips-left" aria-hidden="true">
+            <span class="pivot__chip">Şort?</span>
+            <span class="pivot__chip">İnce ceket?</span>
+            <span class="pivot__chip">Kalın mont?</span>
+            <span class="pivot__chip">Şemsiye?</span>
+            <span class="pivot__chip">Şapka?</span>
+          </div>
+          <img class="pivot__character" src="../images/character-rain.webp" alt="Yağmurlu havaya göre giyinmiş Weather Fit karakteri" width="896" height="2431" loading="lazy">
+          <div class="pivot__chips-right" aria-hidden="true">
+            <span class="pivot__chip">Tişört?</span>
+            <span class="pivot__chip">Kazak?</span>
+            <span class="pivot__chip">Bot?</span>
+            <span class="pivot__chip">Atkı?</span>
+            <span class="pivot__chip">Güneş gözlüğü?</span>
+          </div>
+        </div>
+
+        <!-- Desktop: chips floating around character -->
+        <div class="pivot__stage" aria-hidden="true">
+          <img class="pivot__character" src="../images/character-rain.webp" alt="Yağmurlu havaya göre giyinmiş Weather Fit karakteri" width="896" height="2431" loading="lazy">
+          <span class="pivot__chip pivot__chip--tl">Şort?</span>
+          <span class="pivot__chip pivot__chip--tl2">Şapka?</span>
+          <span class="pivot__chip pivot__chip--tc">Tişört?</span>
+          <span class="pivot__chip pivot__chip--tr">İnce ceket?</span>
+          <span class="pivot__chip pivot__chip--tr2">Güneş gözlüğü?</span>
+          <span class="pivot__chip pivot__chip--ml">Şemsiye?</span>
+          <span class="pivot__chip pivot__chip--mr">Kazak?</span>
+          <span class="pivot__chip pivot__chip--bl">Kalın mont?</span>
+          <span class="pivot__chip pivot__chip--bc">Atkı?</span>
+          <span class="pivot__chip pivot__chip--br">Bot?</span>
+        </div>
+
+        <p class="pivot__promise"><strong>Weather Fit işte bu boşluğu dolduruyor.</strong> Hava tahminini okuyor, gardırobunu biliyor ve ne giyeceğini gösteriyor.</p>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5 - HOW IT WORKS -->
+    <section class="howto">
+      <div class="container">
+
+        <h2 class="howto__title" data-reveal>Üç Adımda Giyin</h2>
+
+        <ol class="howto__steps" data-reveal-stagger>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-character.webp" alt="Weather Fit karakter oluşturma ekranı" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">01</span>
+            <h3 class="howto__step-title">Karakterini Oluştur</h3>
+            <p class="howto__step-body">Cinsiyetini, cilt tonunu, saç modelini, saç rengini, kaşlarını, gözlüğünü ve sakalını seç.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-wardrobe.webp" alt="Weather Fit gardırop kurulum ekranı" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">02</span>
+            <h3 class="howto__step-title">Gardırobunu Kur</h3>
+            <p class="howto__step-body">Sahip olduğun kıyafetleri ekle ve uygulamaya gerçekten ne giymeyi sevdiğini söyle. Sende olmayan hiçbir şeyi önermez.</p>
+          </li>
+
+          <li class="howto__step">
+            <figure class="howto__visual" aria-hidden="true">
+              <img class="howto__screen" src="../images/screen-howto-forecast.webp" alt="Hava tahminine göre giyinmiş Weather Fit karakteri" width="1179" height="2556" loading="lazy">
+              <img class="howto__frame"  src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <span class="howto__number" aria-hidden="true">03</span>
+            <h3 class="howto__step-title">Ne Giyeceğini Gör</h3>
+            <p class="howto__step-body">Karakterin, günün her bölümü için hava tahminine göre giyinmiş olarak karşına çıkar.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- SECTION 6 - CORE FEATURES -->
+    <section class="features">
+
+      <div class="features__header container" data-reveal>
+        <h2 class="features__title">Havaya Göre Kıyafet Önerileri</h2>
+      </div>
+
+      <!-- Block 1: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-character.webp" alt="Güncel havaya göre giyinmiş Weather Fit karakteri" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Karakterin, hava tahminine göre giyinmiş</h3>
+              <p class="features__item-body">Her sabah karakterin bugünün havasını yansıtır: hava ısınınca şort, sıcaklık düşünce şişme mont, güneşli öğleden sonralarda güneş gözlüğü, yağmurdan önce şemsiye. Sabah, öğleden sonra, akşam ve gece için ayrı ayrı güncellenir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 2: warm yellow gradient -->
+      <div class="features__block features__block--warm" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-wardrobe.webp" alt="Kıyafetlerin kategorilere ayrıldığı Weather Fit gardırop ekranı" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Sadece gerçekten sahip olduklarını giyer</h3>
+              <p class="features__item-body">Kıyafetlerini kategorilere göre ekle: üst giyim, alt giyim, dış giyim, ayakkabı, aksesuar. Konfor seviyeni ayarla, uygulama daha ince ya da daha kalın giydirsin. Hiç giymediğin öğeleri kapat. Uygulama yalnızca gerçekten giyeceğin şeyleri önerir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 3: white -->
+      <div class="features__block" data-reveal>
+        <div class="container">
+          <div class="features__item">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-weather.webp" alt="Apple Weather ile çalışan Weather Fit hava tahmini ekranı" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">iPhone’undaki Hava Durumu uygulamasıyla aynı tahmin</h3>
+              <p class="features__item-body">Weather Fit’in arkasında Apple Weather var. Bugünün ve yarının tahmini, önümüzdeki 10 gün; ayrıca dakika dakika yağış, UV indeksi, rüzgâr, nem, hava kalitesi, ay evresi, gün doğumu ve gün batımı. Şiddetli hava koşulları beklendiğinde hava durumu uyarıları da alırsın.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 4: cool blue gradient -->
+      <div class="features__block features__block--cool" data-reveal>
+        <div class="container">
+          <div class="features__item features__item--flip">
+            <figure class="features__visual" aria-hidden="true">
+              <img class="features__screen" src="../images/screen-feature-locations.webp" alt="Weather Fit kayıtlı konumlar ekranı" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+            <div class="features__copy">
+              <h3 class="features__item-title">Gittiğin her yerin hava durumu</h3>
+              <p class="features__item-body">İstediğin kadar konum kaydet. Şu anki konumun otomatik olarak güncellenir. Her konumun kendi manzarası olur: Şehir, Dağ, Plaj ya da Banliyö. Gökyüzü günün saatine göre renk değiştirir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SECTION 7 - WIDGETS & LOCK SCREEN -->
+    <section class="widgets">
+      <div class="container">
+
+        <h2 class="widgets__title" data-reveal>Kombinin, daha telefonunun kilidini bile açmadan</h2>
+
+        <p class="widgets__lead" data-reveal>
+          Weather Fit karakterini ve hava tahminini iPhone’unun Ana Ekranına ve Kilit Ekranına ekler. Karakterin tam orada, o güne göre giyinmiş. Tek bir bakış yeterli.
+        </p>
+
+        <div class="widgets__grid" data-reveal>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--home">
+              <span class="widgets__stat-num" data-count="10">0</span>
+              <span class="widgets__stat-label">Ana Ekran araç takımı stili</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-home-dark.webp" alt="Karakter ve hava tahmini gösteren Weather Fit Ana Ekran araç takımları" width="1608" height="3496" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+          <div class="widgets__col">
+            <div class="widgets__stat widgets__stat--lock">
+              <span class="widgets__stat-num" data-count="19">0</span>
+              <span class="widgets__stat-label">Kilit Ekranı araç takımı çeşidi</span>
+            </div>
+            <figure class="widgets__phone" aria-hidden="true">
+              <img class="widgets__screen" src="../images/screen-widgets-lock.webp" alt="Karakter ve hava tahmini gösteren Weather Fit Kilit Ekranı araç takımları" width="1179" height="2556" loading="lazy">
+              <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- SECTION 8 - APPLE WATCH -->
+    <section class="watch">
+      <div class="container">
+
+        <h2 class="watch__title" data-reveal>
+          Ceket lazım mı, öğren. Telefonuna uzanmadan
+        </h2>
+
+        <p class="watch__lead" data-reveal>
+          Weather Fit’in Apple Watch uygulaması kombinli karakterini, güncel
+          sıcaklığı, hissedilen sıcaklığı ve yağış tahminini gösterir. Saat
+          kadranına bir komplikasyon ekle, sabah kontrolünü bileğinden hallet.
+        </p>
+
+        <div class="watch__visual" data-reveal>
+          <img src="../images/screen-watch.webp" alt="Kombinli karakteri ve sıcaklığı gösteren Weather Fit Apple Watch uygulaması" width="3344" height="1322" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 9 - NOTIFICATIONS -->
+    <section class="notify features__block" data-reveal>
+      <div class="container">
+        <div class="features__item">
+          <figure class="features__visual" aria-hidden="true">
+            <img class="features__screen" src="../images/screen-notifications.webp" alt="Weather Fit bildirimlerini gösteren iPhone Kilit Ekranı: sabah kombin raporu, akşam raporu, şemsiye hatırlatıcısı ve güneş kremi hatırlatıcısı" width="1179" height="2556" loading="lazy">
+            <img src="../images/iphone-bezel.webp" alt="" role="presentation" width="1800" height="3680" loading="lazy">
+          </figure>
+          <div class="features__copy">
+            <h2 class="features__item-title">Sen sormadan söyler</h2>
+            <p class="features__item-body">Günde iki rapor, senin seçtiğin saatlerde; her birinde karakterin hava tahminine göre çoktan giyinmiş. Ayrıca hava gerektirmedikçe sessiz kalan iki hatırlatıcı.</p>
+            <ul class="notify__list">
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☀️</span>
+                <span><strong>Sabah raporu:</strong> bugünün en yüksek ve en düşük sıcaklığı, havanın gün içinde nasıl değiştiği ve ne giyeceğin.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🌧️</span>
+                <span><strong>Akşam raporu:</strong> yarın için aynısı, bir gece önceden bilesin diye.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">☔️</span>
+                <span><strong>Şemsiye hatırlatıcısı:</strong> yalnızca yağmur beklenen günlerde, saatiyle birlikte.</span>
+              </li>
+              <li class="notify__item">
+                <span class="notify__item-icon" aria-hidden="true">🧴</span>
+                <span><strong>Güneş kremi hatırlatıcısı:</strong> yalnızca UV indeksinin belirlediğin seviyeyi aşması beklendiğinde.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 - FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__glass" data-reveal>
+
+        <h2 class="faq__title">Sık Sorulan Sorular</h2>
+
+        <ul class="faq__list">
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugün ne giysem?</summary>
+              <div class="faq__answer"><p>Weather Fit’i aç, bugünün kombinini tek bakışta gör. Karakterin, gardırobundaki gerçek kıyafetlerle, gerçek hava tahminine göre giyinir. Derece yorumlamak yok, kafa yormak yok. Karakterinin ne giydiğine bak, çık.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugün havaya göre ne giysem?</summary>
+              <div class="faq__answer"><p>Weather Fit bugünün hava tahminini okur ve karakterini gerçekten sahip olduğun kıyafetlerle giydirir. Kombini evden çıkmadan görürsün, hava değiştikçe gün içinde güncellenir.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugün ne tür kıyafetler giymeliyim?</summary>
+              <div class="faq__answer"><p>Weather Fit güne uygun katmanları seçer: tişört mü kazak mı, şort mu pantolon mu, ceket var mı yok mu. Bunları kişisel konfor seviyene göre ayarlar, yani çabuk üşüsen de çabuk sıcaklasan da öneri sana göre olur. Önerdiği her şey zaten sahip olduğun kıyafetlerden gelir.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugünün havasına göre nasıl giyinmeliyim?</summary>
+              <div class="faq__answer"><p>Weather Fit bugünün hava tahminini gardırobunla ve senin belirlediğin konfor seviyesiyle birleştirir. Çabuk sıcaklıyorsan daha ince katmanlar önerir, çabuk üşüyorsan daha erken kalın giydirir. Karakterin yalnızca gerçekten sahip olduğun şeyleri giyer, genel geçer tavsiye vermez.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugün şort giysem olur mu?</summary>
+              <div class="faq__answer"><p>Weather Fit’i aç, karakterin sana söylesin. Uygulama bugünün sıcaklığını okur, kişisel konfor seviyeni hesaba katar ve şortun doğru seçim mi, yoksa pantolonun mu daha iyi olduğunu gösterir. Yarını ve önümüzdeki 10 günü de kapsar, böylece bir gece önceden kafa yormana gerek kalmaz.</p></div>
+            </details>
+          </li>
+
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugün ceket lazım mı?</summary>
+              <div class="faq__answer"><p>Weather Fit karakterini bugünün havasına göre giyinmiş gösterir. Ceket lazımsa karakterin ceket giymiştir, lazım değilse giymemiştir. Hesap kitap yok, tereddüt yok.</p></div>
+            </details>
+          </li>
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Bugün elbise giyebilir miyim?</summary>
+              <div class="faq__answer"><p>Weather Fit sıcaklığı, rüzgârı ve yağmuru birlikte değerlendirir; bugünün elbise günü olup olmadığını ve üstüne bir şey alman gerekip gerekmediğini söyler. Elbiselerini ve eteklerini gardırobuna ekle, hava uygun olduğunda karakterin onları giysin.</p></div>
+            </details>
+          </li>
+
+
+          <li class="faq__item">
+            <details class="faq__details">
+              <summary class="faq__question">Weather Fit ücretsiz mi?</summary>
+              <div class="faq__answer"><p>Evet. Uygulamanın temel sürümü süresiz ücretsiz: hava tahminleri, kıyafet önerileri, karakterin ve bir Ana Ekran araç takımı. Premium ise ek araç takımlarını, manzaraları, günlük bildirimleri, Apple Watch uygulamasını ve sınırsız gardırop öğesini açar.</p></div>
+            </details>
+          </li>
+
+        </ul>
+
+        <div class="faq__footer">
+          <a class="btn btn-ghost" href="/faq" data-tracker="FAQ_SEE_ALL|HOME_TR">Tüm Soruları Gör</a>
+        </div>
+
+        </div><!-- /.faq__glass -->
+      </div>
+    </section>
+
+    <!-- SECTION 11 - FINAL CTA -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="final-cta__grid" data-reveal-stagger>
+
+          <div class="final-cta__content">
+            <h2 class="final-cta__title">Yarın sabah ne giyeceğini tam olarak bileceksin</h2>
+            <p class="final-cta__body">
+              Weather Fit’i indirmek ücretsiz, kurulumu yaklaşık iki dakika sürüyor.
+              Karakterin seni bekliyor.
+            </p>
+            <a class="btn btn-appstore"
+               href="https://apps.apple.com/app/apple-store/id1194408342"
+               target="_blank"
+               rel="noopener"
+               data-tracker="FINAL_CTA_APPSTORE|HOME_TR">
+              <img src="../images/app-store.svg" alt="App Store’dan İndir" width="156" height="44">
+            </a>
+
+            <!-- Android only, in place of the badge above. No `action` and no
+                 `method`: the submission is a Mixpanel event (see js/site.js),
+                 so there is no endpoint for form-spam bots to POST to. -->
+            <form class="android-capture" hidden
+                  data-source="FINAL_CTA"
+                  data-label="HOME_TR"
+                  data-msg-success="Listeye eklendin."
+                  data-msg-error="Bu bir e-posta adresine benzemiyor."
+                  data-msg-fallback="Tarayıcın formumuzu engelliyor gibi görünüyor. Konu satırına “Android” yazıp bize e-posta gönder, seni elle ekleyelim:"
+                  novalidate
+                  onsubmit="return false">
+              <div class="android-capture__row">
+                <label for="android-email-final" class="visually-hidden">E-posta</label>
+                <input id="android-email-final" class="android-capture__input" type="email" name="email"
+                       placeholder="E-posta adresin" autocomplete="email" inputmode="email" required>
+                <button type="submit" class="btn btn-nav android-capture__button">Android Çıkınca Haber Ver</button>
+              </div>
+
+              <p class="android-capture__status" role="status" aria-live="polite"></p>
+              <p class="android-capture__caption">iPhone’un ya da iPad’in mi var?
+                <a href="https://apps.apple.com/app/apple-store/id1194408342"
+                   target="_blank"
+                   rel="noopener"
+                   data-tracker="FINAL_CTA_IOS_CROSSSELL|HOME_TR">Buradan indir</a></p>
+
+              <!-- Honeypot: a JS-executing bot that fills every field gets dropped
+                   client-side. Visually hidden rather than display:none — some bots
+                   skip fields that are display:none. -->
+              <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </form>
+          </div>
+
+          <figure class="final-cta__visual" aria-hidden="true">
+            <img src="../images/screen-final-cta.webp" alt="O güne göre giyinmiş Weather Fit karakteri" width="4420" height="5120" loading="lazy">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- Row 1: logo + contact/social -->
+      <div class="site-footer__row site-footer__row--brand">
+        <a class="site-footer__logo" href="/tr/" aria-label="Weather Fit ana sayfa">
+          <img src="../images/logo.svg" alt="Weather Fit">
+        </a>
+        <div class="site-footer__nav">
+          <div class="lang-select" data-lang-select>
+            <button type="button" class="lang-select__trigger" aria-expanded="false" aria-label="Dil: Türkçe">
+              <svg class="lang-select__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path>
+                <path d="M12 3c2.6 2.7 4 6 4 9s-1.4 6.3-4 9c-2.6-2.7-4-6-4-9s1.4-6.3 4-9z"></path>
+              </svg>
+              <span class="lang-select__label">Türkçe</span>
+              <svg class="lang-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <div class="lang-select__menu">
+              <a class="lang-select__option" href="/" hreflang="en" lang="en" data-tracker="FOOTER_LANG_EN|HOME_TR"><span>English</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/de/" hreflang="de" lang="de" data-tracker="FOOTER_LANG_DE|HOME_TR"><span>Deutsch</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/es/" hreflang="es" lang="es" data-tracker="FOOTER_LANG_ES|HOME_TR"><span>Español</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/fr/" hreflang="fr" lang="fr" data-tracker="FOOTER_LANG_FR|HOME_TR"><span>Français</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/it/" hreflang="it" lang="it" data-tracker="FOOTER_LANG_IT|HOME_TR"><span>Italiano</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/nl/" hreflang="nl" lang="nl" data-tracker="FOOTER_LANG_NL|HOME_TR"><span>Nederlands</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/pl/" hreflang="pl" lang="pl" data-tracker="FOOTER_LANG_PL|HOME_TR"><span>Polski</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/pt-BR/" hreflang="pt-BR" lang="pt-BR" data-tracker="FOOTER_LANG_PT|HOME_TR"><span>Português (Brasil)</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/tr/" hreflang="tr" lang="tr" aria-current="page" data-tracker="FOOTER_LANG_TR|HOME_TR"><span>Türkçe</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/uk/" hreflang="uk" lang="uk" data-tracker="FOOTER_LANG_UK|HOME_TR"><span>Українська</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ja/" hreflang="ja" lang="ja" data-tracker="FOOTER_LANG_JA|HOME_TR"><span>日本語</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/ko/" hreflang="ko" lang="ko" data-tracker="FOOTER_LANG_KO|HOME_TR"><span>한국어</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hans/" hreflang="zh-Hans" lang="zh-Hans" data-tracker="FOOTER_LANG_ZH|HOME_TR"><span>简体中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+              <a class="lang-select__option" href="/zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-tracker="FOOTER_LANG_ZHT|HOME_TR"><span>繁體中文</span><svg class="lang-select__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></a>
+            </div>
+          </div>
+          <span class="site-footer__nav-sep" aria-hidden="true"></span>
+          <div class="site-footer__social">
+            <a class="js-email" data-eu="hi" data-ed="weatherfit.com" data-etext data-tracker="FOOTER_CONTACT|HOME_TR">E-posta</a>
+            <a href="https://www.instagram.com/weatherfitapp/" target="_blank" rel="noopener" data-tracker="FOOTER_INSTAGRAM|HOME_TR">Instagram</a>
+            <a href="https://x.com/weatherfitapp" target="_blank" rel="noopener" data-tracker="FOOTER_X|HOME_TR">X</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="site-footer__divider">
+
+      <!-- Row 2: copyright left, legal links right -->
+      <div class="site-footer__row site-footer__row--legal">
+        <p class="site-footer__copyright">© <span class="copyright-year">2026</span> Weather Fit. Tüm hakları saklıdır.</p>
+        <nav class="site-footer__links" aria-label="Yasal bilgiler">
+          <a href="/privacy-policy" data-tracker="FOOTER_PRIVACY|HOME_TR">Gizlilik Politikası</a>
+          <a href="/terms-and-conditions" data-tracker="FOOTER_TERMS|HOME_TR">Kullanım Koşulları</a>
+          <a href="/press-kit" data-tracker="FOOTER_PRESSKIT|HOME_TR">Basın Kiti</a>
+        </nav>
+      </div>
+
+      <!-- Row 3: disclaimers -->
+      <div class="site-footer__row site-footer__row--disclaimers">
+        <p>Apple, iPhone, iPad, Apple Watch ve App Store, Apple Inc. şirketinin ticari markalarıdır</p>
+        <p>Hava durumu verileri Apple Weather tarafından sağlanmaktadır</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Tracker -->
+  <script src="../js/site.js?v=2"></script>
+
+</body>
+</html>
