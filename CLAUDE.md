@@ -5,8 +5,8 @@ Marketing website for the Weather Fit iOS app (weatherfit.com), hosted on GitHub
 ## Git workflow
 
 - **Never commit automatically.** Wait for the user to explicitly say to commit before running `git commit`. Do not stage files or propose commit messages unprompted.
-- Active development branch: `redesign`, being prepared for release to `master`. The critical sub-pages have all been rebuilt (privacy-policy, terms-and-conditions, faq, press-kit, 404, and the `de`/`zh-Hans`/`zh-Hant` localized homepages).
-- The live site serves from `master` — changes there deploy immediately to weatherfit.com.
+- `master` is the working branch. The `redesign` release has landed, so there is no long-lived feature branch any more.
+- The live site serves from `master` — pushing there deploys immediately to weatherfit.com. Work on a short-lived branch and merge once the user has tested, rather than committing straight to `master`.
 
 ## Testing
 
